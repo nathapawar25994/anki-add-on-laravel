@@ -111,7 +111,7 @@
                     <form>
                         @csrf
                         <input type="text" required="" placeholder="Please input your Sentence" value="" name="sentence" class="txt">
-                        <input type="text" required="" placeholder="Please input Highlight Word" value="" name="highlight_word" class="txt">
+                        <input type="text" required="" placeholder="Please input Highlight Word" value="" id="highlight_word" name="highlight_word" class="txt">
                         <input type="button" value="Images" name="search_images" class="txt2" id="search">
                     </form>
                 </div>
@@ -157,7 +157,7 @@
         // $(#set).hide();
 
         $('#search').on('click', function() {
-            var search = $(this).val();
+            var search = $('#highlight_word').val();
             //alert(category_id);
             $.ajax({
                     url: '{{ url("search/get_images")}}',
@@ -182,7 +182,8 @@
                     $('#picHolder').empty();
                     for (i = 0; i < response.length; i++) {
                         // var file = ticketFileAttahmentName1[i];
-                        var src = response[i].Image;
+                        //  alert(response['i']);
+                        var src = response[i].link;
                         var pic = $('<img class="picNameId" name="picNameId" style="height: 100px; width: 100px; display: ;">');
                         pic.attr('src', src);
                         $('#picHolder').append(pic);

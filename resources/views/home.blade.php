@@ -69,10 +69,11 @@
             </div>
             <span class="info">ex. Game, Music, Video, Photography</span>
             <!-- <div class="inner-form"> -->
-
-            <div class="input-field second-wrap">
-                <a href="{{ action('SearchController@setSentence')}}" type="button" class="btn btn-primary">Search</a>
-            </div>
+            <!-- <div class="inner-form"> -->
+                <div class="input-field second-wrap">
+                    <a href="{{ action('SearchController@setSentence')}}" type="button" class="btn btn-primary">Search Sentence</a>
+                </div>
+            <!-- </div> -->
 
             <!-- </div> -->
         </form>
