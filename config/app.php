@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         'JanDrda\LaravelGoogleCustomSearchEngine\LaravelGoogleCustomSearchEngineProvider',
+        Weidner\Goutte\GoutteServiceProvider::class, // [1] This will register the Package in the laravel echo system
 
 
         /*
@@ -229,6 +230,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'GoogleCseSearch' => 'JanDrda\LaravelGoogleCustomSearchEngine\Facades\LaravelGoogleCustomSearchEngineProvider',
+        'Goutte' => Weidner\Goutte\GoutteFacade::class, // [2] It will register as an alias for the Goutte facade
+
 
 
     ],

@@ -19,7 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+// Route::post('/home/get_images', 'SearchController@searchImage');
+
 // Route::post('/search', 'SearchController@search')->name('search');
 
 //Project        
@@ -34,4 +36,13 @@ Route::group(['prefix' => 'search', 'middleware' => ['auth']], function () {
     // Route::get('{id}/edit', 'ProjectController@edit');
     // Route::post('{id}/update', 'ProjectController@update');
     // Route::post('{id}/delete', 'ProjectController@delete');
+});
+
+//Project        
+Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::post('/get_word', 'SearchController@searchWord');
+
+    Route::post('/get_image', 'SearchController@searchImage');
+
 });

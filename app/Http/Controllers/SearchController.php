@@ -6,6 +6,8 @@ use Auth;
 // use App\Fields;
 use Illuminate\Http\Request;
 use JanDrda\LaravelGoogleCustomSearchEngine\LaravelGoogleCustomSearchEngine;
+use Goutte\Client;
+use GuzzleHttp\Client as GuzzleClient;
 
 class SearchController extends Controller
 {
@@ -53,17 +55,47 @@ class SearchController extends Controller
         //     dd("search for Image");
         //     die;
         // }
-        $parameters = array(
-            'start' => 10,
-            'num' => 10 ,
-            'searchType'=>'image',
+        // $parameters = array(
+        //     'start' => 10,
+        //     'num' => 10 ,
+        //     'searchType'=>'image',
 
-        );
+        // );
 
-        $fulltext = new LaravelGoogleCustomSearchEngine(); // initialize
-        $results = $fulltext->getResults('cat',$parameters); // get first 10 results for query 'some phrase'
-        print_r($results);die;
+        // $fulltext = new LaravelGoogleCustomSearchEngine(); // initialize
+        // $results = $fulltext->getResults('cat',$parameters); // get first 10 results for query 'some phrase'
+        // print_r($results);die;
         
+        // $goutteClient = new Client();
+        // $guzzleClient = new GuzzleClient(array(
+        //     'timeout' => 60,
+        //     'verify' => false
+        // ));
+        // $goutteClient->setClient($guzzleClient);
+        // $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/good');
+        // $crawler->filter('.entry_content')->each(function ($node) {
+
+        //     $results = $node->html();
+        //     return view('setSentence.create', compact('someArray'));
+        // });
+
+
+        $goutteClient = new Client();
+        $guzzleClient = new GuzzleClient(array(
+            'timeout' => 60,
+            'verify' => false
+        ));
+        $someArray=[];
+        $goutteClient->setClient($guzzleClient);
+        $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/good');
+        $crawler->filter('.entry_content')->each(function ($node) {
+            $someArray []= $node->html();
+        
+        });
+           echo"<pre>"; print_r($someArray);die; 
+
+        return view('setSentence.word',compact('someArray'));
+
     }
 
     public function setSentence(Request $request)
@@ -114,6 +146,36 @@ class SearchController extends Controller
         return view('setSentence.create', compact('someArray'));
     }
 
+    public function searchWord(Request $request)
+    {
+        // $parameters = array(
+        //     'start' => 10,
+        //     'num' => 10 ,
+        //     'searchType'=>'image',
+
+        // );
+
+        // $fulltext = new LaravelGoogleCustomSearchEngine(); // initialize
+        // $results = $fulltext->getResults($request->search,$parameters); // get first 10 results for query 'some phrase'
+        
+        // echo json_encode($results);
+        // die;
+       $word= $request->search;
+    //    print_r($word);die;
+        $goutteClient = new Client();
+        $guzzleClient = new GuzzleClient(array(
+            'timeout' => 60,
+            'verify' => false
+        ));
+        $goutteClient->setClient($guzzleClient);
+        $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/'.$word);
+        $crawler->filter('.entry_content')->each(function ($node) {
+            $results = $node->html();
+            echo $results;
+        die;
+        });
+    }
+
     public function searchImage(Request $request)
     {
         $parameters = array(
@@ -128,6 +190,19 @@ class SearchController extends Controller
         
         echo json_encode($results);
         die;
+
+        // $goutteClient = new Client();
+        // $guzzleClient = new GuzzleClient(array(
+        //     'timeout' => 60,
+        //     'verify' => false
+        // ));
+        // $goutteClient->setClient($guzzleClient);
+        // $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/good');
+        // $crawler->filter('.entry_content')->each(function ($node) {
+        //     $results = $node->html();
+        //     echo $results;
+        // die;
+        // });
     }
 
     // public function create()

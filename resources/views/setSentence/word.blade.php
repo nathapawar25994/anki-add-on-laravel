@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://pixel.quantserve.com/">
 
 <link rel="preconnect" href="https://securepubads.g.doubleclick.net/">
-<link rel="preconnect" href="https://ap.lijit.com/">
+<link rel="p    reconnect" href="https://ap.lijit.com/">
 <link rel="preconnect" href="https://fastlane.rubiconproject.com/">
 <link rel="preconnect" href="https://adserver.adtech.de/">
 <link rel="preconnect" href="https://adserver-us.adtech.advertising.com/">
@@ -121,119 +121,17 @@ fbq('track', "PageView");</script>
             <!-- Pubstack Tag -->
     <script src="https://boot.pubstack.io/v1/tag/66315a56-6573-4a85-b4fa-f443efdf8eb2" async></script>
 
-    <style>
-        form_main {
-    width: 100%;
-}
-.form_main h4 {
-    font-family: roboto;
-    font-size: 20px;
-    font-weight: 300;
-    margin-bottom: 15px;
-    margin-top: 20px;
-    text-transform: uppercase;
-}
-.heading {
-    border-bottom: 1px solid #fcab0e;
-    padding-bottom: 9px;
-    position: relative;
-}
-.heading span {
-    background: #9e6600 none repeat scroll 0 0;
-    bottom: -2px;
-    height: 3px;
-    left: 0;
-    position: absolute;
-    width: 75px;
-}   
-.form {
-    border-radius: 7px;
-    padding: 6px;
-}
-.txt[type="text"] {
-    border: 1px solid #ccc;
-    margin: 10px 0;
-    padding: 10px 0 10px 5px;
-    width: 100%;
-}
-.txt_3[type="text"] {
-    margin: 10px 0 0;
-    padding: 10px 0 10px 5px;
-    width: 100%;
-}
-.txt2[type="submit"] {
-    background: #242424 none repeat scroll 0 0;
-    border: 1px solid #4f5c04;
-    border-radius: 25px;
-    color: #fff;
-    font-size: 16px;
-    font-style: normal;
-    line-height: 35px;
-    margin: 10px 0;
-    padding: 0;
-    text-transform: uppercase;
-    width: 30%;
-}
-.txt2:hover {
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    color: #5793ef;
-    transition: all 0.5s ease 0s;
-}
-
-    </style>
+ 
     <!------ Include the above in your HEAD tag ---------->
 </head>
 
 <body>
+<div id="picHolder">{!! $someArray !!}</div>
 
 </body>
-@if(!empty($someArray))
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="form_main">
-                <h4 class="heading"><strong>Quick </strong> Search <span></span></h4>
-                <div class="form">
-                    <form>
-                        @csrf
-                        <input type="text" required="" placeholder="Please input your Sentence" value="" name="sentence" class="txt">
-                        <input type="text" required="" placeholder="Please input Highlight Word" value="" name="highlight_word" class="txt">
-                        <input type="submit" value="Images" name="search_images" class="txt2">
-                    </form>
-                </div>
-            </div>
-            @foreach($someArray as $page)
-            <tr>
-                <img src="{{$page['Image']}}" alt="Smiley face" height="50" width="50" padding-right="50" ;>
 
-            </tr>
-            @endforeach
-        </div>
 
-    </div>
-</div>
-@else
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="form_main">
-                <h4 class="heading"><strong>Quick </strong> Search <span></span></h4>
-                <div class="form">
-                    <form>
-                        @csrf
-                        <input type="text" required="" placeholder="Please input your Sentence" value="" name="sentence" class="txt">
-                        <input type="text" required="" placeholder="Please input Highlight Word" value="" id="highlight_word" name="highlight_word" class="txt">
-                        <input type="button" value="Images" name="search_images" class="txt2" id="search">
-                    </form>
-                </div>
-            </div>
-            <div id="picHolder"></div>
-            <input type="hidden" name="ticketFileAttahmentName" id="ticketFileAttahmentName" value=""> <br>
-        </div>
 
-    </div>
-</div>
-@endif
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -300,6 +198,43 @@ fbq('track', "PageView");</script>
                     //     $('#picHolder').append(src);
                     // }
                     $('#picHolder').append(response);
+                });
+            // $(#set).show();
+        });
+
+        $('#search1').on('click', function() {
+            var search = $('#highlight_word').val();
+            //alert(category_id);
+            $.ajax({
+                    url: '{{ url("search/get_images")}}',
+                    type: "POST",
+                    data: {
+                        'search': search
+                    }
+                })
+                .done(function(data) {
+
+                    var response =data;
+                    console.log(response);
+                    // $('#sub_category_id').find('option').remove().end();
+                    // for(var i=0;i<response.length;i++){
+                    //     // var oldSrc = 'http://example.com/smith.gif';
+                    //     // var newSrc = 'http://example.com/johnson.gif';
+                    //     // $('img[src="' + response[i].Image + '"]').attr('src', response[i].Image );
+                    //     $('#set').attr('src', response[i].Image);
+
+                    // }
+
+                    $('#picHolder').empty();
+                    for (i = 0; i < response.length; i++) {
+                        // var file = ticketFileAttahmentName1[i];
+                        //  alert(response['i']);
+                        var src = response[i].link;
+                        // var pic = $('<img class="picNameId" name="picNameId" style="height: 100px; width: 100px; display: ;">');
+                        // pic.attr('src', src);
+                        $('#picHolder').append(src);
+                    }
+                    // $('#picHolder').append(response);
                 });
             // $(#set).show();
         });
