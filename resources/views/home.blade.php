@@ -36,7 +36,7 @@
     <link rel="alternate" hreflang="ja" href="https://www.ldoceonline.com/jp/dictionary/good" />
     <link rel="alternate" hreflang="es-419" href="https://www.ldoceonline.com/es-LA/dictionary/good" />
     <link rel="alternate" hreflang="ko" href="https://www.ldoceonline.com/ko/dictionary/good" />
-    <link rel="shortcut icon" type="image/x-icon" href="https://d27ucmmhxk51xv.cloudfront.net/external/images/favicon.ico?version=1.2.1" />
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="https://d27ucmmhxk51xv.cloudfront.net/external/images/favicon.ico?version=1.2.1" /> -->
     <link rel="stylesheet" href="https://d27ucmmhxk51xv.cloudfront.net/common.css?version=1.2.1" />
     <link rel="stylesheet" href="https://d27ucmmhxk51xv.cloudfront.net/external/fonts/font-awesome/5.12.0/css/font-awesome.min.css?version=1.2.1" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css' />
@@ -58,7 +58,7 @@
     </script>
 
     <script type="text/javascript" src="https://d27ucmmhxk51xv.cloudfront.net/ias.js?placements=topslot%2Cleftslot%2Cbtmslot%2Crightslot%2Ccontentslot_1%2Ccontentslot_2%2Ccontentslot_3%2Ccontentslot_4%2Ccontentslot_5%2Ccontentslot_6&layout=default&version=1.2.1"></script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         window.cookieconsent_options = {
             "message": "We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners.",
             "dismiss": "Got it!",
@@ -69,7 +69,7 @@
     </script>
 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
-
+ -->
     <script>
         ! function(f, b, e, v, n, t, s) {
             if (f.fbq) return;
@@ -157,6 +157,7 @@
     <script type="text/javascript" src="https://d27ucmmhxk51xv.cloudfront.net/common.js?version=1.2.1"></script>
     <!-- Pubstack Tag -->
     <script src="https://boot.pubstack.io/v1/tag/66315a56-6573-4a85-b4fa-f443efdf8eb2" async></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <style>
         form_main {
