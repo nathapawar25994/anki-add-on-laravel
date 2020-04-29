@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "sebastian/resource-operations": "^2.0",
+        "symfony/dom-crawler": "^5.0",
         "weidner/goutte": "^1.5"
     },
     "require-dev": {
@@ -50,6 +51,7 @@
             "Tests\\": "tests/"
         }
     },
+    
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {

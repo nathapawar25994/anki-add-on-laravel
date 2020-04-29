@@ -29,6 +29,11 @@ class SearchController extends Controller
     //     return view('fields.index', compact('fields', 'count','id'));
     // }
 
+
+    public function index()
+    {
+        return view('browser');
+    }
     /**
      * Display the specified resource.
      *

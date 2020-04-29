@@ -26,7 +26,7 @@ Auth::routes();
 
 //Project        
 Route::group(['prefix' => 'search', 'middleware' => ['auth']], function () {
-    // Route::get('/', 'ProjectController@index');
+    Route::get('/browser', 'SearchController@index')->name('browser');
     // Route::get('create', 'ProjectController@create');
     Route::post('/', 'SearchController@search')->name('search');
     Route::get('/sentence', 'SearchController@setSentence')->name('searchSentence');
@@ -38,11 +38,24 @@ Route::group(['prefix' => 'search', 'middleware' => ['auth']], function () {
     // Route::post('{id}/delete', 'ProjectController@delete');
 });
 
-//Project        
+     
 Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('create', 'HomeController@create');
+    Route::post('/', 'HomeController@store')->name('store');
+    Route::get('{id}/edit', 'HomeController@edit');
+    Route::post('{id}/update', 'HomeController@update')->name('update');
+    Route::get('{id}/delete', 'HomeController@delete');
     Route::post('/get_word', 'SearchController@searchWord');
-
     Route::post('/get_image', 'SearchController@searchImage');
+    
+
+});
+
+
+
+
+Route::group(['prefix' => 'cards', 'middleware' => ['auth']], function () {
+    Route::get('create', 'CardsController@create');
 
 });
