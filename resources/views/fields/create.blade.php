@@ -10,18 +10,32 @@
                     <div class="widget ">
                         <div class="widget-header">
                             <i class="icon-user"></i>
-                            <h3>Create Deck</h3>
+                            <h3>Create Field</h3>
                         </div> <!-- /widget-header -->
                         <div class="widget-content">
-                            <form id="edit-profile" method="POST" action="{{ route('store_deck') }}" class="form-horizontal">
-                            @csrf
+                            <form id="edit-profile" method="POST" action="{{ route('store_fields') }}" class="form-horizontal">
+                                @csrf
                                 <fieldset>
                                     <div class="control-group">
-                                        <label class="control-label" for="name">Deck Name</label>
+                                        <label class="control-label" for="name">Deck</label>
+                                        <div class="controls">
+                                            <?php $decks = App\Decks::all();
+                                            ?>
+                                            <select name="deck_id" id="filter" data-live-search="true" class="selectpicker show-tick show-menu-arrow">
+                                                <option value="">Select Deck</option>
+                                                @foreach($decks as $deck)
+                                                <option value="{{ $deck->id}}">{{ $deck->name }}</option>
+                                                @endforeach
+                                            </select><!-- /controls -->
+                                        </div> <!-- /controls -->
+                                    </div> <!-- /control-group -->
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Field Name</label>
                                         <div class="controls">
                                             <input type="text" class="span6" name="name" id="name">
                                         </div> <!-- /controls -->
                                     </div> <!-- /control-group -->
+
                                     <div class="form-actions">
                                         <button type="submit" class="btn btn-primary">Save</button>
                                         <button class="btn">Cancel</button>

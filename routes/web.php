@@ -42,14 +42,15 @@ Route::group(['prefix' => 'search', 'middleware' => ['auth']], function () {
 Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('create', 'HomeController@create');
-    Route::post('/', 'HomeController@store')->name('store');
+    Route::post('/', 'HomeController@store')->name('store_deck');
     Route::get('{id}/edit', 'HomeController@edit');
     Route::post('{id}/update', 'HomeController@update')->name('update');
     Route::get('{id}/delete', 'HomeController@delete');
     Route::post('/get_word', 'SearchController@searchWord');
     Route::post('/get_image', 'SearchController@searchImage');
-    
-
+    Route::post('/get_fields', 'HomeController@getFields');
+    Route::get('add', 'HomeController@add')->name('Add');
+    Route::post('/add', 'HomeController@storeFieldForm')->name('store_addField_form');
 });
 
 
@@ -59,3 +60,15 @@ Route::group(['prefix' => 'cards', 'middleware' => ['auth']], function () {
     Route::get('create', 'CardsController@create');
 
 });
+
+
+//Holidays
+Route::group(['prefix' => 'fields', 'middleware' => ['auth']], function () {
+    Route::get('/', 'FieldsController@index')->name('field_list');
+    Route::get('create', 'FieldsController@create');
+    Route::post('/', 'FieldsController@store')->name('store_fields');
+    Route::get('{id}/edit', 'FieldsController@edit');
+    Route::post('{id}/update', 'FieldsController@update');
+    Route::get('{id}/delete', 'FieldsController@delete');
+});
+
