@@ -31,7 +31,7 @@
                                                 @endforeach
                                             </select><!-- /controls -->
                                             <a href="{{ route('field_list') }}" type="button" class="btn btn-success">Fields...</a>
-                                            <a href="{{ action('HomeController@create')}}" type="button" class="btn btn-primary">Cards...</a>
+                                            <a href="{{ route('create_cards')}}" type="button" class="btn btn-primary">Cards...</a>
 
                                         </div> <!-- /controls -->
                                     </div> <!-- /control-group -->
@@ -69,25 +69,25 @@
         });
         var deck_id = $('#deck_id').val();
         //alert(category_id);
-        $.ajax({
-                url: '{{ url("home/get_fields")}}',
-                type: "POST",
-                data: {
-                    'deck_id': deck_id
-                }
-            })
-            .done(function(data) {
+        // $.ajax({
+        //         url: '{{ url("home/get_fields")}}',
+        //         type: "POST",
+        //         data: {
+        //             'deck_id': deck_id
+        //         }
+        //     })
+        //     .done(function(data) {
 
-                var response = JSON.parse(data);
-                console.log(response);
-                $('#sub_category_id').find('option').remove().end();
-                for (var i = 0; i < response.length; i++) {
-                    var option = $('<option></option>').text(response[i].sub_category_name).val(response[i].id);
-                    $('#sub_category_id').append(option);
-                }
-                $('#sub_category_id').show().closest('div').find('.bootstrap-select').hide();
+        //         var response = JSON.parse(data);
+        //         console.log(response);
+        //         $('#sub_category_id').find('option').remove().end();
+        //         for (var i = 0; i < response.length; i++) {
+        //             var option = $('<option></option>').text(response[i].sub_category_name).val(response[i].id);
+        //             $('#sub_category_id').append(option);
+        //         }
+        //         $('#sub_category_id').show().closest('div').find('.bootstrap-select').hide();
 
-            });
+        //     });
 
         $('#deck_id').on('change', function() {
             var deck_id = $(this).val();

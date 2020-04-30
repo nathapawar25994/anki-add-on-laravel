@@ -12,6 +12,7 @@
     <!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet"> -->
     <link href="{{ asset('css/bootstrap-responsive.min.css') }}" rel="stylesheet">
+    <!-- <link href="css/pages/plans.css" rel="stylesheet">  -->
 
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
@@ -19,6 +20,7 @@
     <!-- <link href="css/style.css" rel="stylesheet"> -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/pages/plans.css') }}" rel="stylesheet">
 
     <!-- <link href="css/font-awesome.css" rel="stylesheet"> -->
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -122,7 +124,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>
+    <!-- <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script> -->
     <!-- <script src="js/excanvas.min.js"></script> -->
     <script src="{{ asset('js/full-calendar/fullcalendar.min.js') }}"></script>
 

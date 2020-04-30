@@ -4,22 +4,23 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Fields extends Model
+class Cards extends Model
 {
-    protected $table = 'fields_desc';
+    protected $table = 'cards_show';
 
     protected $fillable = [
         'id',
-        'name',
-        'status',
-        'type',
         'deck_id',
-        'position',
+        'font_family',
+        'font_size',
+        'text_align	',
+        'color',
+        'background_color',
 
     ];
    
     protected $searchableColumns = [
-        'name' => 20
+        'deck_id' => 20
     ];
 
     protected $dates = ['created_at', 'updated_at'];

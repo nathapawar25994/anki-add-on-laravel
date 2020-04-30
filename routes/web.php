@@ -57,8 +57,11 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
 
 
 Route::group(['prefix' => 'cards', 'middleware' => ['auth']], function () {
-    Route::get('create', 'CardsController@create');
-
+    Route::get('/', 'CardsController@index')->name('cards_index');
+    Route::get('{id}/show', 'CardsController@show')->name('show_card');
+    Route::get('create', 'CardsController@create')->name('create_cards');
+    Route::post('/', 'CardsController@store')->name('store_card');
+    Route::post('/get_fields', 'HomeController@getFields');
 });
 
 

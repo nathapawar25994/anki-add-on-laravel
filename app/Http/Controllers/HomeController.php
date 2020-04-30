@@ -62,31 +62,37 @@ class HomeController extends Controller
         //Model Validation
         // $this->validate($request, ['name' => 'unique:mst_goals,name']);
         $req = $request->all();
-        $fields = Fields::where('deck_id',$request->deck_id)->pluck('name', 'id');
-        if(!empty($fields) && !empty($req)){
-            $fields=$fields->toArray();
-            // print_r($fields);die;
-           $number_id= rand(1, 1000000);
-            $array_new = [];
-            foreach ($req as  $key => $value) {
-                // print_r($key);die;
-                if (array_key_exists($key, $fields)) {
-                    $fields_nd_val = new FieldsAndValue();
-                    $fields_nd_val->field_id =$key;
-                    $fields_nd_val->value =$value;
-                    $fields_nd_val->status =1;
-                    $fields_nd_val->number_id =$number_id;
-                    $fields_nd_val->deck_id = $request->deck_id;
-                    $fields_nd_val->save();
-    
-                }
-            }
-        }else{
-            return Redirect::back()->withErrors(['msg', 'Add fields for this deck']);
+        if (!empty($request->deck_id) && !empty($req)) {
+            $fields = Fields::where('deck_id', $request->deck_id)->pluck('name', 'id');
+            if (!empty($fields)) {
 
+                $fields = $fields->toArray();
+                // print_r($fields);die;
+                $number_id = rand(1, 1000000);
+                $array_new = [];
+                foreach ($req as  $key => $value) {
+                    // print_r($key);die;
+                    if (array_key_exists($key, $fields)) {
+                        $fields_nd_val = new FieldsAndValue();
+                        $fields_nd_val->field_id = $key;
+                        $fields_nd_val->value = $value;
+                        $fields_nd_val->status = 1;
+                        $fields_nd_val->number_id = $number_id;
+                        $fields_nd_val->deck_id = $request->deck_id;
+                        $fields_nd_val->save();
+                    }
+                }
+
+                $deck = Decks::find($request->deck_id);
+                $deck->total_count += 1;
+                $deck->rem_count += 1;
+                $deck->save();
+            }
+        } else {
+            return Redirect::back()->withErrors(['msg', 'Add fields for this deck']);
         }
-       
-       
+
+
 
         // flash()->success('Database was successfully created');
 
