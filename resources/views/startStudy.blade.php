@@ -24,10 +24,6 @@
 
                             <ul>
                                 @foreach ($questions as $question)
-                                <?php
-                                $count_de = App\Decks::where('id', 2)->first();
-                                // print_r($count_de);die;
-                                ?>
                                 <li>
                                     <div class="plan-title question">
                                         {{$question->value}}

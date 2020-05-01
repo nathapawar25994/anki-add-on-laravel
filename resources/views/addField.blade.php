@@ -22,7 +22,7 @@
                                     <div class="control-group">
                                         <label class="control-label" for="name">Deck</label>
                                         <div class="controls">
-                                            <?php $decks = App\Decks::all();
+                                            <?php $decks = App\Decks::where('status',1)->get();
                                             ?>
                                             <select name="deck_id" id="deck_id" data-live-search="true" class="selectpicker show-tick show-menu-arrow">
                                                 <option value="">Select Deck</option>

@@ -45,8 +45,10 @@ class CardsController extends Controller
 
         $cards = new Cards($request->all());
         if(!empty($request->field_id)){
-            FieldsAndValue::where('id', $request->field_id)->update(array('position' =>1));
+            
+            FieldsAndValue::where('field_id', $request->field_id)->update(['position' =>1]);
 
+            // print_r($request->field_id);die;
         }
         // print_r($request->all());die;
         $cards->save();
