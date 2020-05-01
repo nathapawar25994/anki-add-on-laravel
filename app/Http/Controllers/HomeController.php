@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Decks;
 use App\Fields;
 use App\FieldsAndValue;
+use App\Cards;
 
 class HomeController extends Controller
 {
@@ -139,4 +140,27 @@ class HomeController extends Controller
         echo json_encode($results);
         die;
     }
+
+
+    public function updateCount(Request $request)
+    {
+        // print_r);die;
+        Decks::where('id', $request->deck_id)->update(array('total_count' => $request->count));
+       
+        echo json_encode($request->deck_id);
+        die;
+    }
+
+    public function startStudy($id)
+    {
+        $questions=FieldsAndValue::where('deck_id',$id)->where('position',1)->get();
+        $answers=FieldsAndValue::where('deck_id',$id)->where('position',NULL)->get();
+    //  print_r($answer->toArray());die;
+        $decks=Decks::find($id);
+        $count= $decks->total_count;
+        $cards=Cards::where('deck_id',$id)->first();
+        return view('startStudy',compact('questions','answers','cards','count'));
+    }
+
+
 }

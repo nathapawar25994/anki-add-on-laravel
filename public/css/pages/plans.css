@@ -6,8 +6,10 @@ Bootstrap Admin Template by EGrappler.com
 /*-- Plan Container --*/
 
 .plan-container {
-    position: relative;
-    float: left;    
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+  
 }
 
 /*-- Plan --*/
@@ -32,7 +34,7 @@ Bootstrap Admin Template by EGrappler.com
 
 
 .plan-title {
-    padding: 10px 0;
+    padding: 30px 0;
     
 	font-size: 16px;
     color: #FFF;
@@ -78,12 +80,13 @@ Bootstrap Admin Template by EGrappler.com
 /*-- Plan Features --*/
 
 .plan-features {
-	border: 1px solid #DDD;	
+	border: 3px solid #DDD;	
 	border-bottom: none;
 }
 
 .plan-features {
-	padding-bottom: 1em;
+	padding-bottom: 5em;
+	padding-top: 5em;
 }
 
 .plan-features ul {
@@ -94,7 +97,7 @@ Bootstrap Admin Template by EGrappler.com
 }
 
 .plan-features li {	
-	padding: 1em 0;
+	padding: 10em 0;
 	margin: 0 2em;
 	
 	text-align: center;

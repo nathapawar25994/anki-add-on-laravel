@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('/login');
+    return redirect('home');
 });
 
 Auth::routes();
@@ -47,10 +47,12 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
     Route::post('{id}/update', 'HomeController@update')->name('update');
     Route::get('{id}/delete', 'HomeController@delete');
     Route::post('/get_word', 'SearchController@searchWord');
+    Route::post('/update_count', 'HomeController@updateCount');
     Route::post('/get_image', 'SearchController@searchImage');
     Route::post('/get_fields', 'HomeController@getFields');
     Route::get('add', 'HomeController@add')->name('Add');
     Route::post('/add', 'HomeController@storeFieldForm')->name('store_addField_form');
+    Route::get('{id}/study', 'HomeController@startStudy');
 });
 
 

@@ -41,7 +41,7 @@
                     <ul class="nav pull-right">
 
                         <li class="">
-                            <a href="signup.html" class="">
+                            <a href="{{ route('register') }}" class="">
                                 Don't have an account?
                             </a>
 

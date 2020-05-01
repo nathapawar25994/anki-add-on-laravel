@@ -70,8 +70,8 @@
                     <li class="active"><a href="{{ route('home') }}"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
                     <!-- <li><a href="reports.html"><i class="icon-list-alt"></i><span>Reports</span> </a> </li> -->
                     <!-- <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li> -->
-                    <li><a href="{{ route('Add') }}"><i class="icon-bar-chart"></i><span>Adds</span> </a> </li>
-                    <li><a href="{{ route('browser') }}"><i class="icon-search"></i><span>Browser</span> </a> </li>
+                    <li><a href="{{ route('Add') }}"><i class="icon-bar-chart"></i><span>Add</span> </a> </li>
+                    <li><a href="{{ route('browser') }}"><i class="icon-search"></i><span>Browse</span> </a> </li>
                     <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="icons.html">Icons</a></li>
@@ -131,6 +131,8 @@
     <script src="{{ asset('js/excanvas.min.js') }}"></script>
     <script src="{{ asset('js/chart.min.js') }}"></script>
     <script src="{{ asset('js/base.js') }}"></script>
+    <script src="{{ asset('js/ouicards.js') }}"></script>
+
     @yield('footer_scripts')
 
     <!-- <script src="js/chart.min.js" type="text/javascript"></script>

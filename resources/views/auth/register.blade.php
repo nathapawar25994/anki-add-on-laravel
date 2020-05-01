@@ -1,77 +1,139 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<head>
+    <meta charset="utf-8">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    <title>Signup - Bootstrap Admin Template</title>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="csrf" value="{{ csrf_token() }}">
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/pages/signin.css" rel="stylesheet" type="text/css">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+</head>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+<body>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+    <div class="navbar navbar-fixed-top">
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+        <div class="navbar-inner">
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+            <div class="container">
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
+                <a class="brand" href="index.html">
+                    Bootstrap Admin Template
+                </a>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="nav-collapse">
+                    <ul class="nav pull-right">
+                        <li class="">
+                            <a href="{{ route('login') }}" class="">
+                                Already have an account? Login now
+                            </a>
+
+                        </li>
+                        
+                    </ul>
+
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+                <!--/.nav-collapse -->
+
+            </div> <!-- /container -->
+
+        </div> <!-- /navbar-inner -->
+
+    </div> <!-- /navbar -->
+
+
+
+    <div class="account-container register">
+
+        <div class="content clearfix">
+
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <h1>Signup for Account</h1>
+
+                <div class="login-fields">
+
+                    <p>Create your account:</p>
+
+                    <div class="field">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" value="" placeholder="Name" class="login" />
+                    </div> <!-- /field -->
+
+                    <div class="field">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" value="" placeholder="Email" class="login" />
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div> <!-- /field -->
+
+                    <div class="field">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" value="" placeholder="Password" class="login" />
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div> <!-- /field -->
+
+                    <div class="field">
+                        <label for="password_confirmation">Confirm Password:</label>
+                        <input type="password" id="password-confirm" name="password_confirmation" value="" placeholder="Confirm Password" class="login" />
+                    </div> <!-- /field -->
+
+                </div> <!-- /login-fields -->
+
+                <div class="login-actions">
+
+                    <span class="login-checkbox">
+                        <input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
+                        <label class="choice" for="Field">Agree with the Terms & Conditions.</label>
+                    </span>
+
+                    <button type="submit" class="button btn btn-primary btn-large">Register</button>
+
+                </div> <!-- .actions -->
+
+            </form>
+
+        </div> <!-- /content -->
+
+    </div> <!-- /account-container -->
+
+
+    <!-- Text Under Box -->
+    <div class="login-extra">
+        Already have an account? <a href="{{ route('login') }}">Login to your account</a>
+    </div> <!-- /login-extra -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="js/signin.js"></script>
+
+</body>
+
+</html> 
