@@ -20,8 +20,6 @@
                             <ul>
 
                             @foreach ($alls as $all)
-
-
                                 <li>
                                     @foreach ($questions as $question)
                                     @if($question->number_id ==$all->number_id)

@@ -235,7 +235,7 @@ class HomeController extends Controller
                             $active_word_sentence_card = new FeildsValueWithCardType();
                             $active_word_sentence_card->field_id = 4;
                             $active_word_sentence_card->value = $req[4];
-                            $active_word_card->card_type_id = 4;
+                            $active_word_sentence_card->card_type_id = 4;
                             $active_word_sentence_card->type = 1;
                             $active_word_sentence_card->deck_id = $request->deck_id;
                             $active_word_sentence_card->position = 1;
@@ -367,7 +367,7 @@ class HomeController extends Controller
                             $active_word_sentence_card = new FeildsValueWithCardType();
                             $active_word_sentence_card->field_id = 4;
                             $active_word_sentence_card->value = $req[4];
-                            $active_word_card->card_type_id = 2;
+                            $active_word_sentence_card->card_type_id = 2;
                             $active_word_sentence_card->type = 2;
                             $active_word_sentence_card->deck_id = $request->deck_id;
                             $active_word_sentence_card->position = 1;

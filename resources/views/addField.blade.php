@@ -76,12 +76,12 @@
                                     </div>
 
 
-                                    <div class="control-group">
+                                    <!-- <div class="control-group">
                                         <label class="control-label" for="name">[X] Activate Listening/Reading Card (insert 'x' to activate)</label>
                                         <div class="controls">
                                             <input type="text" class="span10" name="active_listening_reading_card" id="active_listening_reading_card">
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <!-- <div id="picHolder" contentEditable="true"></div>
                                     <input type="hidden" name="ticketFileAttahmentName" id="ticketFileAttahmentName" value=""> <br> -->
