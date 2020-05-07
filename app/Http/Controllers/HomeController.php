@@ -63,6 +63,7 @@ class HomeController extends Controller
         //Model Validation
         // $this->validate($request, ['name' => 'unique:mst_goals,name']);
         $req = $request->all();
+        // print_r($request->deck_id);die;
         if (!empty($request->deck_id) && !empty($req)) {
             $fields = Fields::where('deck_id', $request->deck_id)->pluck('name', 'id');
             if (!empty($fields)) {
@@ -76,6 +77,14 @@ class HomeController extends Controller
                     if (array_key_exists($key, $fields)) {
                         $fields_nd_val = new FieldsAndValue();
                         $fields_nd_val->field_id = $key;
+                        $fields_nd_val->value = $value;
+                        $fields_nd_val->status = 1;
+                        $fields_nd_val->number_id = $number_id;
+                        $fields_nd_val->deck_id = $request->deck_id;
+                        $fields_nd_val->save();
+                    }else{
+                        $fields_nd_val = new FieldsAndValue();
+                        $fields_nd_val->field_id = 8;
                         $fields_nd_val->value = $value;
                         $fields_nd_val->status = 1;
                         $fields_nd_val->number_id = $number_id;

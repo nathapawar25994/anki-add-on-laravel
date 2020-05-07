@@ -47,6 +47,7 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
     Route::post('{id}/update', 'HomeController@update')->name('update');
     Route::get('{id}/delete', 'HomeController@delete');
     Route::post('/get_word', 'SearchController@searchWord');
+    Route::post('/get_PronCodes', 'SearchController@getPronCodes');
     Route::post('/update_count', 'HomeController@updateCount');
     Route::post('/get_image', 'SearchController@searchImage');
     Route::post('/get_fields', 'HomeController@getFields');

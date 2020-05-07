@@ -19,22 +19,59 @@
                             <form id="edit-profile" method="POST" action="{{ route('store_addField_form') }}" class="form-horizontal">
                                 @csrf
                                 <fieldset>
+
+                                    <?php $decks = App\Decks::find(20);
+                                    ?>
                                     <div class="control-group">
-                                        <label class="control-label" for="name">Deck</label>
+                                        <label class="control-label" for="name"><strong>Deck Name</strong></label>
                                         <div class="controls">
-                                            <?php $decks = App\Decks::where('status',1)->get();
-                                            ?>
-                                            <select name="deck_id" id="deck_id" data-live-search="true" class="selectpicker show-tick show-menu-arrow">
-                                                <option value="">Select Deck</option>
-                                                @foreach($decks as $deck)
-                                                <option value="{{ $deck->id}}">{{ $deck->name }}</option>
-                                                @endforeach
-                                            </select><!-- /controls -->
-                                            <a href="{{ route('field_list') }}" type="button" class="btn btn-success">Fields...</a>
-                                            <a href="{{ route('create_cards')}}" type="button" class="btn btn-primary">Cards...</a>
+                                            <input type="text" class="span10" name="deck_name" id="deck_id1" value="{{$decks->name}}" readonly></input>
+                                            <input type="hidden" class="span10" name="deck_id" id="deck_id" value="{{$decks->id}}">
 
                                         </div> <!-- /controls -->
                                     </div> <!-- /control-group -->
+
+
+                                    <?php $fields = App\Fields::select('name', 'id')->where('deck_id', 20)->get();
+                                    // print_r($fields);die;
+                                    ?>
+                                    @foreach($fields as $field)
+
+                                    @if($field->id==8)
+                                    <div class="control-group">
+                                        <label class="control-label" for="name"><strong>Images</strong></label>
+                                        <div class="controls" id="picHolder" contentEditable="true">
+
+                                        </div> <!-- /controls -->
+                                    </div> <!-- /control-group -->
+                                    @else
+                                    <div class="control-group">
+                                        <label class="control-label" for="name"><strong>{{$field->name}}</strong></label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="{{$field->id}}" id="{{$field->id}}">
+                                        </div> <!-- /controls -->
+                                    </div> <!-- /control-group -->
+                                    @endif
+                                    @endforeach
+
+                                    <!-- <div class="control-group">
+                                        <label class="control-label" for="name">Word</label>
+                                        <div class="controls">
+                                            <input type="text" class="span6" name="name" id="name">
+                                        </div>
+                                    </div> 
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Defination</label>
+                                        <div class="controls">
+                                            <input type="text" class="span6" name="name" id="name1">
+                                        </div>
+                                    </div>  -->
+
+
+
+                                    <!-- <div id="picHolder" contentEditable="true"></div>
+                                    <input type="hidden" name="ticketFileAttahmentName" id="ticketFileAttahmentName" value=""> <br> -->
+
 
 
                                     <div class="control-group controls" id="mydiv">
@@ -68,58 +105,67 @@
             }
         });
         var deck_id = $('#deck_id').val();
-        //alert(category_id);
-        // $.ajax({
-        //         url: '{{ url("home/get_fields")}}',
-        //         type: "POST",
-        //         data: {
-        //             'deck_id': deck_id
-        //         }
-        //     })
-        //     .done(function(data) {
 
-        //         var response = JSON.parse(data);
-        //         console.log(response);
-        //         $('#sub_category_id').find('option').remove().end();
-        //         for (var i = 0; i < response.length; i++) {
-        //             var option = $('<option></option>').text(response[i].sub_category_name).val(response[i].id);
-        //             $('#sub_category_id').append(option);
-        //         }
-        //         $('#sub_category_id').show().closest('div').find('.bootstrap-select').hide();
+        $('#4').change(function() {
+            var search = $('#4').val();
 
-        //     });
-
-        $('#deck_id').on('change', function() {
-            var deck_id = $(this).val();
-            //alert(category_id);
             $.ajax({
-                    url: '{{ url("home/get_fields")}}',
+                    url: '{{ url("home/get_word")}}',
                     type: "POST",
                     data: {
-                        'deck_id': deck_id
+                        'search': search
                     }
                 })
                 .done(function(data) {
 
+                    var response = data;
+                    console.log(response);
+                    $('#7').val(response);
+                });
+
+            $.ajax({
+                    url: '{{ url("home/get_PronCodes")}}',
+                    type: "POST",
+                    data: {
+                        'search': search
+                    }
+                })
+                .done(function(data) {
+
+                    var response = data;
+                    console.log(response);
+                    $('#5').val(response);
+                });
+            $.ajax({
+                    url: '{{ url("home/get_image")}}',
+                    type: "POST",
+                    data: {
+                        'search': search
+                    }
+                })
+                .done(function(data) {
                     var response = JSON.parse(data);
                     console.log(response);
-                    // $('#sub_category_id').find('option').remove().end();
-                    $('#mydiv').empty();
-                    var fieldSet = $("<fieldset id=\"yourform\"><legend>Your Form</legend></fieldset>");
+                    $('#picHolder').empty();
+                    for (i = 0; i < response.length; i++) {
+                        // var file = ticketFileAttahmentName1[i];
+                        //  alert(response['i']);
+                        var src = response[i].link;
+                        var pic = $('<img  name=\'pic' + i + '\' class="picNameId" style="height: 100px; width: 100px; padding-right: 20px; display: ;">');
 
-                    for (var i = 0; i < response.length; i++) {
-                        // var id = "input" + response.id);
-                        //console.log(response[i].name);
-                        var label = $("<label  for=\"" + response[i].name + "\">" + response[i].name + "</label>");
-                        var input = $("<input type=\"text\" class=\"span6\" id=\"" + response[i].id + "\" name=\"" + response[i].id + "\" />");
-                        // $('#sub_category_id').append(option);
-                        $('#mydiv').append(label, input);
+                        pic.attr('src', src);
+                        $('#picHolder').append(pic);
+
+                        $('#picHolder').append('<input type="hidden" name=\'pic' + i + '\' value=\'' + src + '\' />');
+
+
                     }
-                    // $('#sub_category_id').show().closest('div').find('.bootstrap-select').hide();
-
-
                 });
+
+
         });
+
+
     });
 </script>
 @stop 

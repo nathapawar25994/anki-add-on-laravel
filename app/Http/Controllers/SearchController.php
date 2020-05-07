@@ -150,7 +150,7 @@ class SearchController extends Controller
 
         return view('setSentence.create', compact('someArray'));
     }
-
+    
     public function searchWord(Request $request)
     {
         // $parameters = array(
@@ -174,8 +174,38 @@ class SearchController extends Controller
         ));
         $goutteClient->setClient($guzzleClient);
         $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/'.$word);
-        $crawler->filter('.entry_content')->each(function ($node) {
-            $results = $node->html();
+        $crawler->filter('.DEF')->each(function ($node) {
+            $results = $node->text();
+            echo $results;
+        die;
+        });
+    }
+
+    public function getPronCodes(Request $request)
+    {
+        // $parameters = array(
+        //     'start' => 10,
+        //     'num' => 10 ,
+        //     'searchType'=>'image',
+
+        // );
+
+        // $fulltext = new LaravelGoogleCustomSearchEngine(); // initialize
+        // $results = $fulltext->getResults($request->search,$parameters); // get first 10 results for query 'some phrase'
+        
+        // echo json_encode($results);
+        // die;
+       $word= $request->search;
+    //    print_r($word);die;
+        $goutteClient = new Client();
+        $guzzleClient = new GuzzleClient(array(
+            'timeout' => 60,
+            'verify' => false
+        ));
+        $goutteClient->setClient($guzzleClient);
+        $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/'.$word);
+        $crawler->filter('.PronCodes')->each(function ($node) {
+            $results = $node->text();
             echo $results;
         die;
         });
@@ -185,7 +215,7 @@ class SearchController extends Controller
     {
         $parameters = array(
             'start' => 10,
-            'num' => 10 ,
+            'num' => 3 ,
             'searchType'=>'image',
 
         );
