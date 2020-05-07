@@ -33,7 +33,7 @@
                     <span class="icon-bar"></span>
                 </a>
 
-                <a class="brand" href="index.html">
+                <a class="brand" href="#">
                     Anki-Web Search
                 </a>
 
