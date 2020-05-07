@@ -54,20 +54,34 @@
                                     @endif
                                     @endforeach
 
-                                    <!-- <div class="control-group">
-                                        <label class="control-label" for="name">Word</label>
-                                        <div class="controls">
-                                            <input type="text" class="span6" name="name" id="name">
-                                        </div>
-                                    </div> 
                                     <div class="control-group">
-                                        <label class="control-label" for="name">Defination</label>
+                                        <label class="control-label" for="name">[X] Activate New Word Card (insert 'x' to activate)</label>
                                         <div class="controls">
-                                            <input type="text" class="span6" name="name" id="name1">
+                                            <input type="text" class="span10" name="active_word_card" id="name1">
                                         </div>
-                                    </div>  -->
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">[X] Activate Word-sentence Card (insert 'x' to activate)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="active_word_sentence_card" id="active_word_sentence_card">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">[X] Activate Picture-word Card (insert 'x' to activate)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="active_picture_word_card" id="active_picture_word_card">
+                                        </div>
+                                    </div>
 
 
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">[X] Activate Listening/Reading Card (insert 'x' to activate)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="active_listening_reading_card" id="active_listening_reading_card">
+                                        </div>
+                                    </div>
 
                                     <!-- <div id="picHolder" contentEditable="true"></div>
                                     <input type="hidden" name="ticketFileAttahmentName" id="ticketFileAttahmentName" value=""> <br> -->
@@ -155,9 +169,10 @@
 
                         pic.attr('src', src);
                         $('#picHolder').append(pic);
-
-                        $('#picHolder').append('<input type="hidden" name=\'pic' + i + '\' value=\'' + src + '\' />');
-
+                        var style = 'height: 100px; width: 100px; padding-right: 20px;';
+                        var src1 =' <img src = \''+src+'\' style =\'' +style+'\' >';
+                  
+                            $('#picHolder').append("<input type='hidden' name=\"pic" + i + "\" value=\"" + src1 + "\" >");
 
                     }
                 });

@@ -17,7 +17,6 @@
                     <th> Name </th>
                     <th> Due </th>
                     <th> New </th>
-                    <th> Study </th>
                     <th class="td-actions">Action </th>
                 </tr>
             </thead>
@@ -25,10 +24,9 @@
             <tbody>
                 @foreach ($decks as $deck)
                 <tr>
-                    <td class="text-center">{{ $deck->name}}</td>
+                    <td class="text-center"> <a class="text-center" href="{{ action('HomeController@startStudy',['id' => $deck->id]) }}">{{ $deck->name}}</a></td>
                     <td class="text-center">{{ $deck->learn_count}}</td>
                     <td class="text-center">{{ $deck->rem_count}}</td>
-                    <td> <a class="btn btn-warning text-center" href="{{ action('HomeController@startStudy',['id' => $deck->id]) }}">Study Now</a></td>
                     <td>
                         <div class="control-group">
                             <div class="controls">

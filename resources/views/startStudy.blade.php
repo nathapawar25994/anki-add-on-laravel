@@ -7,53 +7,86 @@
     <div class="main-inner">
 
         <div class="container">
-            <div class="pricing-plans plans-3">
 
-                <div class="plan-container">
-                    <div class="plan" style="background-color:{{$cards->background_color}}">
-                        <div id='flashcards'>
-                            <div class="plan-header" id='flashcards' style="background-color:{{$cards->background_color}}">
-                                <div id='current-question' style="color:{{$cards->color}};text-align:Center"></div>
-                            </div>
-                            <div class="plan-features">
-                                <div id='current-answer' style="color:{{$cards->color}};text-align:Center"><br></div>
-                                <a type="button" href="{{ route('browser') }}"  name="search_images" class="btn btn-danger" id="searchL">Longman</a>
-                                <a type="button" href="{{ route('browser') }}" name="search_images" class="btn btn-warning" id="searchI">Images</a>
-                            </div>
-                            <input type="hidden" id="custId" name="custId" value="{{$count}}">
+            <div class="row">
+
+                <div class="span12">
+
+                    <div class="info-box" id="flashcards">
+                        <div class="row-fluid stats-box ">
+                            <div id='current-question' style="color:{{$cards->color}};text-align:Center" class="main"><br></div>
+                            <div id='current-answer' style="color:{{$cards->color}};text-align:Center"><br></div>
 
                             <ul>
-                                @foreach ($questions as $question)
+
+                            @foreach ($alls as $all)
+
+
                                 <li>
+                                    @foreach ($questions as $question)
+                                    @if($question->number_id ==$all->number_id)
+                                   
+                                    @if($question->field_id == 8)
                                     <div class="plan-title question">
                                         {{$question->value}}
-                                        <input type="hidden" id="deck_id" name="custId" value="{{$question->deck_id}}">
 
                                     </div> <!-- /plan-title -->
+                                    @else
+                                    <div class="plan-title question">
+                                        {{$question->value.'<br>'}}
+                                    </div> <!-- /plan-title -->
+                                    @endif
+                                    @endif
+                                    @endforeach
                                     @foreach ($answers as $answer)
-                                    @if($answer->number_id ==$question->number_id)
-                                    <div class="answer">{{$answer->value}}</div>
+                                    @if($answer->number_id ==$all->number_id)
+                                    <div class="answer"><span>{{'<br>'.$answer->value}}</span></div>
                                     @endif
                                     @endforeach
                                 </li>
                                 @endforeach
                             </ul>
-                            <!-- /plan-features -->
                             <div class="plan-actions">
                                 <a id='show-answer' href='#' class="btn">Show answer</a>
                                 <a id="correct" class="btn" href="#">Correct</a>
                                 <a id="wrong" class="btn" href="#">Wrong</a>
                             </div> <!-- /plan-actions -->
+                            <!-- <div class="span4">
+                                <div class="stats-box-title">Vizitor</div>
+                                <div class="stats-box-all-info"><i class="icon-user" style="color:#3366cc;"></i> 555K</div>
+                                <div class="wrap-chart">
+                                    <div id="visitor-stat" class="chart" style="padding: 0px; position: relative;"><canvas id="bar-chart1" class="chart-holder" height="150" width="325"></canvas></div>
+                                </div>
+                            </div>
+
+                            <div class="span4">
+                                <div class="stats-box-title">Likes</div>
+                                <div class="stats-box-all-info"><i class="icon-thumbs-up" style="color:#F30"></i> 66.66</div>
+                                <div class="wrap-chart">
+                                    <div id="order-stat" class="chart" style="padding: 0px; position: relative;"><canvas id="bar-chart2" class="chart-holder" height="150" width="325"></canvas></div>
+                                </div>
+                            </div>
+
+                            <div class="span4">
+                                <div class="stats-box-title">Orders</div>
+                                <div class="stats-box-all-info"><i class="icon-shopping-cart" style="color:#3C3"></i> 15.55</div>
+                                <div class="wrap-chart">
+
+                                    <div id="user-stat" class="chart" style="padding: 0px; position: relative;"><canvas id="bar-chart3" class="chart-holder" height="150" width="325"></canvas></div>
+
+                                </div>
+                            </div> -->
                         </div>
-                    </div> <!-- /plan -->
-                </div> <!-- /plan-container -->
-            </div> <!-- /pricing-plans -->
 
-        </div> <!-- /container -->
 
-    </div> <!-- /main-inner -->
+                    </div>
 
-</div> <!-- /main -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @stop
 @section('footer_scripts')
 <script>

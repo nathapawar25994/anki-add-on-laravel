@@ -54,6 +54,7 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
     Route::get('add', 'HomeController@add')->name('Add');
     Route::post('/add', 'HomeController@storeFieldForm')->name('store_addField_form');
     Route::get('{id}/study', 'HomeController@startStudy');
+    Route::get('{id}/start', 'HomeController@startStudyFromCardType');
 });
 
 

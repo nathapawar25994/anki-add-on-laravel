@@ -21,6 +21,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pages/plans.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/pages/reports.css') }}" rel="stylesheet">
 
     <!-- <link href="css/font-awesome.css" rel="stylesheet"> -->
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -72,16 +73,7 @@
                     <!-- <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li> -->
                     <li><a href="{{ route('Add') }}"><i class="icon-bar-chart"></i><span>Add</span> </a> </li>
                     <li><a href="{{ route('browser') }}"><i class="icon-search"></i><span>Browse</span> </a> </li>
-                    <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="icons.html">Icons</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="pricing.html">Pricing Plans</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="signup.html">Signup</a></li>
-                            <li><a href="error.html">404</a></li>
-                        </ul>
-                    </li>
+                    
                 </ul>
             </div>
             <!-- /container -->

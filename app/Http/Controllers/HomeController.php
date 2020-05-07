@@ -8,6 +8,8 @@ use App\Decks;
 use App\Fields;
 use App\FieldsAndValue;
 use App\Cards;
+use App\FeildsValueWithCardType;
+use App\CardTypes;
 
 class HomeController extends Controller
 {
@@ -63,7 +65,7 @@ class HomeController extends Controller
         //Model Validation
         // $this->validate($request, ['name' => 'unique:mst_goals,name']);
         $req = $request->all();
-        // print_r($request->deck_id);die;
+        // print_r($req);die;
         if (!empty($request->deck_id) && !empty($req)) {
             $fields = Fields::where('deck_id', $request->deck_id)->pluck('name', 'id');
             if (!empty($fields)) {
@@ -82,7 +84,7 @@ class HomeController extends Controller
                         $fields_nd_val->number_id = $number_id;
                         $fields_nd_val->deck_id = $request->deck_id;
                         $fields_nd_val->save();
-                    }else{
+                    }elseif($key==8){
                         $fields_nd_val = new FieldsAndValue();
                         $fields_nd_val->field_id = 8;
                         $fields_nd_val->value = $value;
@@ -90,6 +92,404 @@ class HomeController extends Controller
                         $fields_nd_val->number_id = $number_id;
                         $fields_nd_val->deck_id = $request->deck_id;
                         $fields_nd_val->save();
+                    }else{
+                        if($key == 'active_word_card' && !empty($value)){
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 2;
+                            $active_word_card->card_type_id = 1;
+                            $active_word_card->value = $req[2];
+                            $active_word_card->type = 1;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 1;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+                            if(!empty($req['pic0'])){
+                                $active_word_card = new FeildsValueWithCardType();
+                                $active_word_card->field_id = 8;
+                                $active_word_card->card_type_id = 1;
+                                $active_word_card->value =$req['pic0'];
+                                $active_word_card->type = 1;
+                                $active_word_card->deck_id = $request->deck_id;
+                                $active_word_card->position = 2;
+                                $active_word_card->number_id = $number_id;
+                                $active_word_card->status = 1;
+                                $active_word_card->save();
+                            }
+
+                            if(!empty($req['pic1'])){
+                                $active_word_card = new FeildsValueWithCardType();
+                                $active_word_card->field_id = 8;
+                                $active_word_card->value =$req['pic1'];
+                                $active_word_card->card_type_id = 1;
+                                $active_word_card->type = 1;
+                                $active_word_card->deck_id = $request->deck_id;
+                                $active_word_card->position = 2;
+                                $active_word_card->number_id = $number_id;
+                                $active_word_card->status = 1;
+                                $active_word_card->save();
+                            }
+
+                            if(!empty($req['pic2'])){
+                                $active_word_card = new FeildsValueWithCardType();
+                                $active_word_card->field_id = 8;
+                                $active_word_card->value =$req['pic2'];
+                                $active_word_card->type = 1;
+                                $active_word_card->card_type_id = 1;
+                                $active_word_card->deck_id = $request->deck_id;
+                                $active_word_card->position = 2;
+                                $active_word_card->number_id = $number_id;
+                                $active_word_card->status = 1;
+                                $active_word_card->save();
+                            }
+
+                           
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 6;
+                            $active_word_card->card_type_id = 1;
+                            $active_word_card->value = $req[6];
+                            $active_word_card->type = 1;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 3;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 7;
+                            $active_word_card->value = $req[7];
+                            $active_word_card->card_type_id = 1;
+                            $active_word_card->type = 1;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 4;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 4;
+                            $active_word_card->card_type_id = 1;
+                            $active_word_card->value = $req[4];
+                            $active_word_card->type = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 1;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 5;
+                            $active_word_card->card_type_id = 1;
+                            $active_word_card->value = $req[5];
+                            $active_word_card->type = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 2;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 9;
+                            $active_word_card->card_type_id = 1;
+                            $active_word_card->value = $req[9];
+                            $active_word_card->type = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 3;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 1;
+                            $active_word_card->value = $req[1];
+                            $active_word_card->card_type_id = 1;
+                            $active_word_card->type = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 4;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 14;
+                            $active_word_card->card_type_id = 1;
+                            $active_word_card->value = $req[14];
+                            $active_word_card->type = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 5;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+
+
+
+
+
+                        }elseif($key == 'active_word_sentence_card' && !empty($value)){
+
+
+                            $active_word_sentence_card = new FeildsValueWithCardType();
+                            $active_word_sentence_card->field_id = 4;
+                            $active_word_sentence_card->value = $req[4];
+                            $active_word_card->card_type_id = 4;
+                            $active_word_sentence_card->type = 1;
+                            $active_word_sentence_card->deck_id = $request->deck_id;
+                            $active_word_sentence_card->position = 1;
+                            $active_word_sentence_card->number_id = $number_id;
+                            $active_word_sentence_card->status = 1;
+                            $active_word_sentence_card->save();
+                            if(!empty($req['pic0'])){
+                                $active_word_card = new FeildsValueWithCardType();
+                                $active_word_card->field_id = 8;
+                                $active_word_card->card_type_id = 4;
+                                $active_word_card->value =$req['pic0'];
+                                $active_word_card->type = 1;
+                                $active_word_card->deck_id = $request->deck_id;
+                                $active_word_card->position = 2;
+                                $active_word_card->number_id = $number_id;
+                                $active_word_card->status = 1;
+                                $active_word_card->save();
+                            }
+
+                            if(!empty($req['pic1'])){
+                                $active_word_card = new FeildsValueWithCardType();
+                                $active_word_card->field_id = 8;
+                                $active_word_card->card_type_id = 4;
+                                $active_word_card->value =$req['pic1'];
+                                $active_word_card->type = 2;
+                                $active_word_card->deck_id = $request->deck_id;
+                                $active_word_card->position = 5;
+                                $active_word_card->number_id = $number_id;
+                                $active_word_card->status = 1;
+                                $active_word_card->save();
+                            }
+
+                            if(!empty($req['pic2'])){
+                                $active_word_card = new FeildsValueWithCardType();
+                                $active_word_card->field_id = 8;
+                                $active_word_card->card_type_id = 4;
+                                $active_word_card->value =$req['pic2'];
+                                $active_word_card->type = 2;
+                                $active_word_card->deck_id = $request->deck_id;
+                                $active_word_card->position = 5;
+                                $active_word_card->number_id = $number_id;
+                                $active_word_card->status = 1;
+                                $active_word_card->save();
+                            }
+
+                           
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 9;
+                            $active_word_card->card_type_id = 4;
+                            $active_word_card->value = $req[9];
+                            $active_word_card->type = 1;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 2;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 6;
+                            $active_word_card->value = $req[6];
+                            $active_word_card->card_type_id = 4;
+                            $active_word_card->type = 1;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 3;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 7;
+                            $active_word_card->value = $req[7];
+                            $active_word_card->card_type_id = 4;
+                            $active_word_card->type = 1;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 5;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 1;
+                            $active_word_card->value = $req[1];
+                            $active_word_card->card_type_id = 4;
+                            $active_word_card->type = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 1;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 9;
+                            $active_word_card->value = $req[9];
+                            $active_word_card->card_type_id = 4;
+                            $active_word_card->type = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 3;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 4;
+                            $active_word_card->value = $req[4];
+                            $active_word_card->card_type_id = 4;
+                            $active_word_card->type = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 2;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 5;
+                            $active_word_card->value = $req[5];
+                            $active_word_card->card_type_id = 4;
+                            $active_word_card->type = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 4;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+
+                        }elseif($key == 'active_picture_word_card' && !empty($value)){
+
+                            $active_word_sentence_card = new FeildsValueWithCardType();
+                            $active_word_sentence_card->field_id = 4;
+                            $active_word_sentence_card->value = $req[4];
+                            $active_word_card->card_type_id = 2;
+                            $active_word_sentence_card->type = 2;
+                            $active_word_sentence_card->deck_id = $request->deck_id;
+                            $active_word_sentence_card->position = 1;
+                            $active_word_sentence_card->number_id = $number_id;
+                            $active_word_sentence_card->status = 1;
+                            $active_word_sentence_card->save();
+                            if(!empty($req['pic0'])){
+                                $active_word_card = new FeildsValueWithCardType();
+                                $active_word_card->field_id = 8;
+                                $active_word_card->value =$req['pic0'];
+                                $active_word_card->type = 1;
+                                $active_word_card->card_type_id = 2;
+                                $active_word_card->deck_id = $request->deck_id;
+                                $active_word_card->position = 1;
+                                $active_word_card->number_id = $number_id;
+                                $active_word_card->status = 1;
+                                $active_word_card->save();
+                            }
+
+                            if(!empty($req['pic1'])){
+                                $active_word_card = new FeildsValueWithCardType();
+                                $active_word_card->field_id = 8;
+                                $active_word_card->value =$req['pic1'];
+                                $active_word_card->type = 2;
+                                $active_word_card->card_type_id = 2;
+                                $active_word_card->deck_id = $request->deck_id;
+                                $active_word_card->position = 1;
+                                $active_word_card->number_id = $number_id;
+                                $active_word_card->status = 1;
+                                $active_word_card->save();
+                            }
+
+                            if(!empty($req['pic2'])){
+                                $active_word_card = new FeildsValueWithCardType();
+                                $active_word_card->field_id = 8;
+                                $active_word_card->value =$req['pic2'];
+                                $active_word_card->type = 2;
+                                $active_word_card->card_type_id = 2;
+                                $active_word_card->deck_id = $request->deck_id;
+                                $active_word_card->position = 1;
+                                $active_word_card->number_id = $number_id;
+                                $active_word_card->status = 1;
+                                $active_word_card->save();
+                            }
+
+                           
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 9;
+                            $active_word_card->value = $req[9];
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 3;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 7;
+                            $active_word_card->value = $req[7];
+                            $active_word_card->type = 1;
+                            $active_word_card->card_type_id = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 3;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 1;
+                            $active_word_card->value = $req[1];
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 4;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 6;
+                            $active_word_card->value = $req[6];
+                            $active_word_card->type = 1;
+                            $active_word_card->card_type_id = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 2;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+                       
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 5;
+                            $active_word_card->value = $req[5];
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 2;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 14;
+                            $active_word_card->value = $req[14];
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 2;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 5;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+
+
+
+                        }elseif($key == 'active_listening_reading_card' && !empty($value)){
+
+                        }
                     }
                 }
 
@@ -162,13 +562,32 @@ class HomeController extends Controller
 
     public function startStudy($id)
     {
-        $questions=FieldsAndValue::where('deck_id',$id)->where('position',1)->get();
-        $answers=FieldsAndValue::where('deck_id',$id)->where('position',NULL)->get();
+    //     $questions=FieldsAndValue::where('deck_id',$id)->where('position',1)->get();
+    //     $answers=FieldsAndValue::where('deck_id',$id)->where('position',NULL)->get();
+    // //  print_r($answer->toArray());die;
+    //     $decks=Decks::find($id);
+    //     $count= $decks->total_count;
+    //     $cards=Cards::where('deck_id',$id)->first();
+    //     return view('startStudy',compact('questions','answers','cards','count'));
+        $card_types = CardTypes::where('deck_id',$id)->orWhere('deck_id',1)->get();
+        return view('card_type',compact('card_types'));
+
+    }
+
+    public function startStudyFromCardType($id)
+    {
+        $alls=FeildsValueWithCardType::Select('number_id')->where('card_type_id',$id)->groupBy('number_id')->get();
+        $questions=FeildsValueWithCardType::where('card_type_id',$id)->where('type',1)->get();
+        $answers=FeildsValueWithCardType::where('card_type_id',$id)->where('type',2)->get();
     //  print_r($answer->toArray());die;
-        $decks=Decks::find($id);
-        $count= $decks->total_count;
-        $cards=Cards::where('deck_id',$id)->first();
-        return view('startStudy',compact('questions','answers','cards','count'));
+    //  print_r($alls->number_id);die;
+        // $coun
+        $decks=Decks::find(6);
+        $count= $alls->count();
+        $cards=Cards::where('deck_id',6)->first();
+        return view('startStudy',compact('questions','alls','answers','cards','count'));
+       
+
     }
 
 
