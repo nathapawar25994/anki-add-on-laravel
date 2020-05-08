@@ -76,12 +76,153 @@
                                     </div>
 
 
-                                    <!-- <div class="control-group">
+                                    <div class="control-group">
                                         <label class="control-label" for="name">[X] Activate Listening/Reading Card (insert 'x' to activate)</label>
                                         <div class="controls">
                                             <input type="text" class="span10" name="active_listening_reading_card" id="active_listening_reading_card">
                                         </div>
-                                    </div> -->
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Word-Translation</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="active_word_translation_card" id="active_word_translation_card">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Sentence-Translation</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="active_sentence_translation_card" id="active_sentence_translation_card">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Sentence-Translation</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="active_sentence_translation_card" id="active_sentence_translation_card">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Extra Card 1 Instructions  (Front, large white text)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="extra_card1_instruction" id="extra_card1_instruction">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Extra Card 1 (Front, Sentence with a __)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="extra_card1_front" id="extra_card1_front">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Extra Card 1 Answer(Back, Yellow Text)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="extra_card1_back" id="extra_card1_back">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Extra Card 2 Instructions  (Front, large white text)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="extra_card2_instruction" id="extra_card2_instruction">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Extra Card 2 (Front, Sentence with a __)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="extra_card2_front" id="extra_card2_front">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Extra Card 2 Answer(Back, Yellow Text)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="extra_card2_back" id="extra_card2_back">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Extra Card 3 Instructions  (Front, large white text)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="extra_card3_instruction" id="extra_card3_instruction">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Extra Card 3 (Front, Sentence with a __)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="extra_card3_front" id="extra_card3_front">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Extra Card 3 Answer(Back, Yellow Text)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="extra_card3_back" id="extra_card3_back">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Extra Card 4 Instructions  (Front, large white text)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="extra_card4_instruction" id="extra_card4_instruction">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Extra Card 4 (Front, Sentence with a __)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="extra_card4_front" id="extra_card4_front">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Extra Card 4 Answer(Back, Yellow Text)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="extra_card4_back" id="extra_card4_back">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">[X] Activate Inflected Form Card (insert 'x' to activate)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="active_inflected_form_card" id="active_inflected_form_card">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">[X] Activate Pronunciation Card (insert 'x' to activate)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="active_pronunciation_card" id="active_pronunciation_card">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">[X] Activate Spelling Card (insert 'x' to activate)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="active_spelling_card" id="active_spelling_card">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">[X] Activate Translation-word Card (insert 'x' to activate)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="active_translation_word_card" id="active_translation_word_card">
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">[X] Activate Sentence-Translation-Sentence Card (insert 'x' to activate)</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="active_translation_sentence_card" id="active_translation_sentence_card">
+                                        </div>
+                                    </div>
+
 
                                     <!-- <div id="picHolder" contentEditable="true"></div>
                                     <input type="hidden" name="ticketFileAttahmentName" id="ticketFileAttahmentName" value=""> <br> -->
