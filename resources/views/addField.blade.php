@@ -223,11 +223,16 @@
                                         </div>
                                     </div>
 
+                                    <div class="control-group">
+                                        <label class="control-label" for="name">Sort Order</label>
+                                        <div class="controls">
+                                            <input type="text" class="span10" name="sort_order" id="sort_order">
+                                        </div>
+                                    </div>
+
 
                                     <!-- <div id="picHolder" contentEditable="true"></div>
                                     <input type="hidden" name="ticketFileAttahmentName" id="ticketFileAttahmentName" value=""> <br> -->
-
-
 
                                     <div class="control-group controls" id="mydiv">
 
