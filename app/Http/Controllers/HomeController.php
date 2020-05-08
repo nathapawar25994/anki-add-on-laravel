@@ -500,7 +500,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 12;
                     $extra_card->value = $req['extra_card1_instruction'];
                     $extra_card->type = 1;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
@@ -513,7 +513,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 12;
                     $extra_card->value = $req['extra_card1_front'];
                     $extra_card->type = 1;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 2;
                     $extra_card->number_id = $number_id;
@@ -525,7 +525,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 12;
                     $extra_card->value = $req['extra_card1_back'];
                     $extra_card->type = 2;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
@@ -536,7 +536,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 1;
                     $extra_card->value = $req[1];
                     $extra_card->type = 2;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 2;
                     $extra_card->number_id = $number_id;
@@ -550,7 +550,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 12;
                     $extra_card->value = $req['extra_card2_instruction'];
                     $extra_card->type = 1;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
@@ -563,7 +563,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 12;
                     $extra_card->value = $req['extra_card2_front'];
                     $extra_card->type = 1;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 2;
                     $extra_card->number_id = $number_id;
@@ -575,7 +575,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 12;
                     $extra_card->value = $req['extra_card2_back'];
                     $extra_card->type = 2;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
@@ -586,7 +586,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 1;
                     $extra_card->value = $req[1];
                     $extra_card->type = 2;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 2;
                     $extra_card->number_id = $number_id;
@@ -601,7 +601,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 12;
                     $extra_card->value = $req['extra_card3_instruction'];
                     $extra_card->type = 1;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
@@ -614,7 +614,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 12;
                     $extra_card->value = $req['extra_card3_front'];
                     $extra_card->type = 1;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 2;
                     $extra_card->number_id = $number_id;
@@ -626,7 +626,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 12;
                     $extra_card->value = $req['extra_card3_back'];
                     $extra_card->type = 2;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
@@ -637,7 +637,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 1;
                     $extra_card->value = $req[1];
                     $extra_card->type = 2;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 2;
                     $extra_card->number_id = $number_id;
@@ -651,7 +651,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 12;
                     $extra_card->value = $req['extra_card4_instruction'];
                     $extra_card->type = 1;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
@@ -664,7 +664,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 12;
                     $extra_card->value = $req['extra_card4_front'];
                     $extra_card->type = 1;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 2;
                     $extra_card->number_id = $number_id;
@@ -676,7 +676,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 12;
                     $extra_card->value = $req['extra_card4_back'];
                     $extra_card->type = 2;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
@@ -687,7 +687,7 @@ class HomeController extends Controller
                     $extra_card->field_id = 1;
                     $extra_card->value = $req[1];
                     $extra_card->type = 2;
-                    $extra_card->card_type_id = 8;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 2;
                     $extra_card->number_id = $number_id;
