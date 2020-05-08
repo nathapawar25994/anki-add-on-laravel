@@ -498,20 +498,21 @@ class HomeController extends Controller
                     $number_id = rand(1, 1000000);
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = $req['extra_card1_instruction'];
+                    $extra_card->value = '<span style="color:black;text-align:Center" >'.'#'.$req['extra_card1_instruction'].'#'.'</span>';
                     $extra_card->type = 1;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
                     $extra_card->status = 1;
+                    
                     $extra_card->save();
 
 
                   
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = $req['extra_card1_front'];
+                    $extra_card->value =  '<span style="color:red;text-align:Center" >'.$req['extra_card1_front'].'</span>';
                     $extra_card->type = 1;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -523,7 +524,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = $req['extra_card1_back'];
+                    $extra_card->value = '<i style="color:black;text-align:Center" >'.'Answer:'.'</i>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -532,13 +533,25 @@ class HomeController extends Controller
                     $extra_card->status = 1;
                     $extra_card->save();
 
+
                     $extra_card = new FeildsValueWithCardType();
-                    $extra_card->field_id = 1;
-                    $extra_card->value = $req[1];
+                    $extra_card->field_id = 12;
+                    $extra_card->value = '<span style="color:yellow;text-align:Center" >'.$req['extra_card1_back'].'</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 2;
+                    $extra_card->number_id = $number_id;
+                    $extra_card->status = 1;
+                    $extra_card->save();
+
+                    $extra_card = new FeildsValueWithCardType();
+                    $extra_card->field_id = 1;
+                    $extra_card->value ='<span style="color:red;text-align:Center" >'. $req[1].'</span>';
+                    $extra_card->type = 2;
+                    $extra_card->card_type_id = 6;
+                    $extra_card->deck_id = $request->deck_id;
+                    $extra_card->position = 3;
                     $extra_card->number_id = $number_id;
                     $extra_card->status = 1;
                     $extra_card->save();
@@ -548,20 +561,21 @@ class HomeController extends Controller
                     $number_id = rand(1, 1000000);
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = $req['extra_card2_instruction'];
+                    $extra_card->value = '<span style="color:black;text-align:Center" >'.'#'.$req['extra_card2_instruction'].'#'.'</span>';
                     $extra_card->type = 1;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
                     $extra_card->status = 1;
+                    
                     $extra_card->save();
 
 
                   
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = $req['extra_card2_front'];
+                    $extra_card->value =  '<span style="color:red;text-align:Center" >'.$req['extra_card2_front'].'</span>';
                     $extra_card->type = 1;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -573,7 +587,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = $req['extra_card2_back'];
+                    $extra_card->value = '<i style="color:black;text-align:Center" >'.'Answer:'.'</i>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -582,13 +596,25 @@ class HomeController extends Controller
                     $extra_card->status = 1;
                     $extra_card->save();
 
+
                     $extra_card = new FeildsValueWithCardType();
-                    $extra_card->field_id = 1;
-                    $extra_card->value = $req[1];
+                    $extra_card->field_id = 12;
+                    $extra_card->value = '<span style="color:yellow;text-align:Center" >'.$req['extra_card2_back'].'</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 2;
+                    $extra_card->number_id = $number_id;
+                    $extra_card->status = 1;
+                    $extra_card->save();
+
+                    $extra_card = new FeildsValueWithCardType();
+                    $extra_card->field_id = 1;
+                    $extra_card->value ='<span style="color:red;text-align:Center" >'. $req[1].'</span>';
+                    $extra_card->type = 2;
+                    $extra_card->card_type_id = 6;
+                    $extra_card->deck_id = $request->deck_id;
+                    $extra_card->position = 3;
                     $extra_card->number_id = $number_id;
                     $extra_card->status = 1;
                     $extra_card->save();
@@ -597,22 +623,24 @@ class HomeController extends Controller
 
                 if(!empty($req['extra_card3_instruction']) && !empty( $req['extra_card3_front']) && !empty($req['extra_card3_back'])){
                     $number_id = rand(1, 1000000);
+                   
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = $req['extra_card3_instruction'];
+                    $extra_card->value = '<span style="color:black;text-align:Center" >'.'#'.$req['extra_card3_instruction'].'#'.'</span>';
                     $extra_card->type = 1;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
                     $extra_card->status = 1;
+                    
                     $extra_card->save();
 
 
                   
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = $req['extra_card3_front'];
+                    $extra_card->value =  '<span style="color:red;text-align:Center" >'.$req['extra_card3_front'].'</span>';
                     $extra_card->type = 1;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -624,7 +652,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = $req['extra_card3_back'];
+                    $extra_card->value = '<i style="color:black;text-align:Center" >'.'Answer:'.'</i>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -633,38 +661,52 @@ class HomeController extends Controller
                     $extra_card->status = 1;
                     $extra_card->save();
 
+
                     $extra_card = new FeildsValueWithCardType();
-                    $extra_card->field_id = 1;
-                    $extra_card->value = $req[1];
+                    $extra_card->field_id = 12;
+                    $extra_card->value = '<span style="color:yellow;text-align:Center" >'.$req['extra_card3_back'].'</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 2;
+                    $extra_card->number_id = $number_id;
+                    $extra_card->status = 1;
+                    $extra_card->save();
+
+                    $extra_card = new FeildsValueWithCardType();
+                    $extra_card->field_id = 1;
+                    $extra_card->value ='<span style="color:red;text-align:Center" >'. $req[1].'</span>';
+                    $extra_card->type = 2;
+                    $extra_card->card_type_id = 6;
+                    $extra_card->deck_id = $request->deck_id;
+                    $extra_card->position = 3;
                     $extra_card->number_id = $number_id;
                     $extra_card->status = 1;
                     $extra_card->save();
                 }
 
                 if(!empty($req['extra_card4_instruction']) && !empty($req['extra_card4_front']) && !empty($req['extra_card4_back'])){
+                    
                     $number_id = rand(1, 1000000);
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = $req['extra_card4_instruction'];
+                    $extra_card->value = '<span style="color:black;text-align:Center" >'.'#'.$req['extra_card4_instruction'].'#'.'</span>';
                     $extra_card->type = 1;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
                     $extra_card->status = 1;
+                    
                     $extra_card->save();
 
 
                   
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = $req['extra_card4_front'];
+                    $extra_card->value =  '<span style="color:red;text-align:Center" >'.$req['extra_card4_front'].'</span>';
                     $extra_card->type = 1;
-                    $extra_card->card_type_id = 6;
+                    $extra_card->card_type_id =6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 2;
                     $extra_card->number_id = $number_id;
@@ -674,7 +716,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = $req['extra_card4_back'];
+                    $extra_card->value = '<i style="color:black;text-align:Center" >'.'Answer:'.'</i>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -684,12 +726,23 @@ class HomeController extends Controller
                     $extra_card->save();
 
                     $extra_card = new FeildsValueWithCardType();
-                    $extra_card->field_id = 1;
-                    $extra_card->value = $req[1];
+                    $extra_card->field_id = 12;
+                    $extra_card->value = '<span style="color:yellow;text-align:Center" >'.$req['extra_card4_back'].'</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 2;
+                    $extra_card->number_id = $number_id;
+                    $extra_card->status = 1;
+                    $extra_card->save();
+
+                    $extra_card = new FeildsValueWithCardType();
+                    $extra_card->field_id = 1;
+                    $extra_card->value ='<span style="color:red;text-align:Center" >'. $req[1].'</span>';
+                    $extra_card->type = 2;
+                    $extra_card->card_type_id = 6;
+                    $extra_card->deck_id = $request->deck_id;
+                    $extra_card->position = 3;
                     $extra_card->number_id = $number_id;
                     $extra_card->status = 1;
                     $extra_card->save();
