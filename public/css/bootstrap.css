@@ -3148,6 +3148,8 @@ button.close {
   display: none;
   overflow: auto;
   overflow-y: scroll;
+  width:760px;
+  height: 450px;
 }
 
 .modal.fade .modal-dialog {
@@ -3223,6 +3225,7 @@ button.close {
 .modal-body {
   position: relative;
   padding: 20px;
+  text-align: center;
 }
 
 .modal-footer {

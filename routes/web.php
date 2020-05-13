@@ -27,11 +27,14 @@ Auth::routes();
 //Project        
 Route::group(['prefix' => 'search', 'middleware' => ['auth']], function () {
     Route::get('/browser', 'SearchController@index')->name('browser');
+    Route::get('/get_images_from_browser', 'SearchController@GetImagesfromBrowser')->name('get_images_from_browser');
+
     // Route::get('create', 'ProjectController@create');
     Route::post('/', 'SearchController@search')->name('search');
     Route::get('/sentence', 'SearchController@setSentence')->name('searchSentence');
     // Route::post('/searchImage', 'SearchController@searchImage')->name('searchImage');
     Route::post('/get_images', 'SearchController@searchImage');
+    Route::post('/get_image', 'SearchController@searchImage');
 
     // Route::get('{id}/edit', 'ProjectController@edit');
     // Route::post('{id}/update', 'ProjectController@update');
@@ -46,6 +49,8 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
     Route::get('{id}/edit', 'HomeController@edit');
     Route::post('{id}/update', 'HomeController@update')->name('update');
     Route::get('{id}/delete', 'HomeController@delete');
+    Route::post('/get_details_of_word', 'SearchController@searchAllDetails');
+    Route::post('/get_sound', 'SearchController@getSound');
     Route::post('/get_word', 'SearchController@searchWord');
     Route::post('/get_PronCodes', 'SearchController@getPronCodes');
     Route::post('/update_count', 'HomeController@updateCount');
@@ -57,6 +62,9 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
     Route::get('{id}/start', 'HomeController@startStudyFromCardType');
 });
 
+
+Route::get('/dropzone','ImageController@index');
+Route::post('/dropzone/store','ImageController@store')->name('dropzone.store');
 
 
 

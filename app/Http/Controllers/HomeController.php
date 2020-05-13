@@ -65,7 +65,6 @@ class HomeController extends Controller
         //Model Validation
         // $this->validate($request, ['name' => 'unique:mst_goals,name']);
         $req = $request->all();
-        //  print_r($req);die;
         if (!empty($request->deck_id) && !empty($req)) {
             $fields = Fields::where('deck_id', $request->deck_id)->pluck('name', 'id');
             if (!empty($fields)) {
@@ -84,16 +83,24 @@ class HomeController extends Controller
                         $fields_nd_val->number_id = $number_id;
                         $fields_nd_val->deck_id = $request->deck_id;
                         $fields_nd_val->save();
-                    }elseif($key==8){
-                        $fields_nd_val = new FieldsAndValue();
-                        $fields_nd_val->field_id = 8;
-                        $fields_nd_val->value = $value;
-                        $fields_nd_val->status = 1;
-                        $fields_nd_val->number_id = $number_id;
-                        $fields_nd_val->deck_id = $request->deck_id;
-                        $fields_nd_val->save();
-                    }else{
-                        if($key == 'active_word_card' && !empty($value)){
+                    } elseif ($key == 'images') {
+
+                        foreach ($req['images'] as  $key => $value) {
+
+                            $fields_nd_val = new FieldsAndValue();
+                            $fields_nd_val->field_id = 8;
+                            $style = 'height: 100px; width: 100px; padding-right: 20px;';
+                            $fields_nd_val->value = '<img src = \'' . $value . '\' style =\'' . $style . '\' >';
+
+
+                            //   print_r( $fields_nd_val->value);die;
+                            $fields_nd_val->status = 1;
+                            $fields_nd_val->number_id = $number_id;
+                            $fields_nd_val->deck_id = $request->deck_id;
+                            $fields_nd_val->save();
+                        }
+                    } else {
+                        if ($key == 'active_word_card' && !empty($value)) {
 
                             $number_id = rand(1, 1000000);
                             $active_word_card = new FeildsValueWithCardType();
@@ -106,46 +113,23 @@ class HomeController extends Controller
                             $active_word_card->number_id = $number_id;
                             $active_word_card->status = 1;
                             $active_word_card->save();
-                            if(!empty($req['pic0'])){
-                                $active_word_card = new FeildsValueWithCardType();
-                                $active_word_card->field_id = 8;
-                                $active_word_card->card_type_id = 1;
-                                $active_word_card->value =$req['pic0'];
-                                $active_word_card->type = 1;
-                                $active_word_card->deck_id = $request->deck_id;
-                                $active_word_card->position = 2;
-                                $active_word_card->number_id = $number_id;
-                                $active_word_card->status = 1;
-                                $active_word_card->save();
+                            if (!empty($req['images'])) {
+                                foreach ($req['images'] as  $key => $value) {
+                                    $active_word_card = new FeildsValueWithCardType();
+                                    $active_word_card->field_id = 8;
+                                    $active_word_card->card_type_id = 1;
+                                    $style = 'height: 100px; width: 100px; padding-right: 20px;';
+                                    $active_word_card->value = '<img src = \'' . $value . '\' style =\'' . $style . '\' >';
+
+                                    $active_word_card->type = 1;
+                                    $active_word_card->deck_id = $request->deck_id;
+                                    $active_word_card->position = 2;
+                                    $active_word_card->number_id = $number_id;
+                                    $active_word_card->status = 1;
+                                    $active_word_card->save();
+                                }
                             }
 
-                            if(!empty($req['pic1'])){
-                                $active_word_card = new FeildsValueWithCardType();
-                                $active_word_card->field_id = 8;
-                                $active_word_card->value =$req['pic1'];
-                                $active_word_card->card_type_id = 1;
-                                $active_word_card->type = 1;
-                                $active_word_card->deck_id = $request->deck_id;
-                                $active_word_card->position = 2;
-                                $active_word_card->number_id = $number_id;
-                                $active_word_card->status = 1;
-                                $active_word_card->save();
-                            }
-
-                            if(!empty($req['pic2'])){
-                                $active_word_card = new FeildsValueWithCardType();
-                                $active_word_card->field_id = 8;
-                                $active_word_card->value =$req['pic2'];
-                                $active_word_card->type = 1;
-                                $active_word_card->card_type_id = 1;
-                                $active_word_card->deck_id = $request->deck_id;
-                                $active_word_card->position = 2;
-                                $active_word_card->number_id = $number_id;
-                                $active_word_card->status = 1;
-                                $active_word_card->save();
-                            }
-
-                           
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 6;
@@ -224,13 +208,7 @@ class HomeController extends Controller
                             $active_word_card->number_id = $number_id;
                             $active_word_card->status = 1;
                             $active_word_card->save();
-
-
-
-
-
-
-                        }elseif($key == 'active_word_sentence_card' && !empty($value)){
+                        } elseif ($key == 'active_word_sentence_card' && !empty($value)) {
 
                             $number_id = rand(1, 1000000);
                             $active_word_sentence_card = new FeildsValueWithCardType();
@@ -242,47 +220,22 @@ class HomeController extends Controller
                             $active_word_sentence_card->position = 1;
                             $active_word_sentence_card->number_id = $number_id;
                             $active_word_sentence_card->status = 1;
-                            $active_word_sentence_card->save();
-                            if(!empty($req['pic0'])){
-                                $active_word_card = new FeildsValueWithCardType();
-                                $active_word_card->field_id = 8;
-                                $active_word_card->card_type_id = 4;
-                                $active_word_card->value =$req['pic0'];
-                                $active_word_card->type = 1;
-                                $active_word_card->deck_id = $request->deck_id;
-                                $active_word_card->position = 2;
-                                $active_word_card->number_id = $number_id;
-                                $active_word_card->status = 1;
-                                $active_word_card->save();
+                            // $active_word_sentence_card->save();<img class="picNameId" name="picNameId" style="height: 100px; width: 100px; display:block ;">'
+                            if (!empty($req['images'])) {
+                                foreach ($req['images'] as  $key => $value) {
+                                    $active_word_card = new FeildsValueWithCardType();
+                                    $active_word_card->field_id = 8;
+                                    $active_word_card->card_type_id = 4;
+                                    $style = 'height: 100px; width: 100px; padding-right: 20px;';
+                                    $active_word_card->value = '<img src = \'' . $value . '\' style =\'' . $style . '\' >';
+                                    $active_word_card->type = 2;
+                                    $active_word_card->deck_id = $request->deck_id;
+                                    $active_word_card->position = 5;
+                                    $active_word_card->number_id = $number_id;
+                                    $active_word_card->status = 1;
+                                    $active_word_card->save();
+                                }
                             }
-
-                            if(!empty($req['pic1'])){
-                                $active_word_card = new FeildsValueWithCardType();
-                                $active_word_card->field_id = 8;
-                                $active_word_card->card_type_id = 4;
-                                $active_word_card->value =$req['pic1'];
-                                $active_word_card->type = 2;
-                                $active_word_card->deck_id = $request->deck_id;
-                                $active_word_card->position = 5;
-                                $active_word_card->number_id = $number_id;
-                                $active_word_card->status = 1;
-                                $active_word_card->save();
-                            }
-
-                            if(!empty($req['pic2'])){
-                                $active_word_card = new FeildsValueWithCardType();
-                                $active_word_card->field_id = 8;
-                                $active_word_card->card_type_id = 4;
-                                $active_word_card->value =$req['pic2'];
-                                $active_word_card->type = 2;
-                                $active_word_card->deck_id = $request->deck_id;
-                                $active_word_card->position = 5;
-                                $active_word_card->number_id = $number_id;
-                                $active_word_card->status = 1;
-                                $active_word_card->save();
-                            }
-
-                           
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 9;
@@ -361,9 +314,7 @@ class HomeController extends Controller
                             $active_word_card->number_id = $number_id;
                             $active_word_card->status = 1;
                             $active_word_card->save();
-
-
-                        }elseif($key == 'active_picture_word_card' && !empty($value)){
+                        } elseif ($key == 'active_picture_word_card' && !empty($value)) {
                             $number_id = rand(1, 1000000);
                             $active_word_sentence_card = new FeildsValueWithCardType();
                             $active_word_sentence_card->field_id = 4;
@@ -375,46 +326,26 @@ class HomeController extends Controller
                             $active_word_sentence_card->number_id = $number_id;
                             $active_word_sentence_card->status = 1;
                             $active_word_sentence_card->save();
-                            if(!empty($req['pic0'])){
-                                $active_word_card = new FeildsValueWithCardType();
-                                $active_word_card->field_id = 8;
-                                $active_word_card->value =$req['pic0'];
-                                $active_word_card->type = 1;
-                                $active_word_card->card_type_id = 2;
-                                $active_word_card->deck_id = $request->deck_id;
-                                $active_word_card->position = 1;
-                                $active_word_card->number_id = $number_id;
-                                $active_word_card->status = 1;
-                                $active_word_card->save();
+                            if (!empty($req['images'])) {
+                                foreach ($req['images'] as  $key => $value) {
+                                    $active_word_card = new FeildsValueWithCardType();
+                                    $active_word_card->field_id = 8;
+                                    $style = 'height: 100px; width: 100px; padding-right: 20px;';
+                                    $active_word_card->value = '<img src = \'' . $value . '\' style =\'' . $style . '\' >';
+
+                                    $active_word_card->type = 2;
+                                    $active_word_card->card_type_id = 2;
+                                    $active_word_card->deck_id = $request->deck_id;
+                                    $active_word_card->position = 1;
+                                    $active_word_card->number_id = $number_id;
+                                    $active_word_card->status = 1;
+                                    $active_word_card->save();
+                                }
                             }
 
-                            if(!empty($req['pic1'])){
-                                $active_word_card = new FeildsValueWithCardType();
-                                $active_word_card->field_id = 8;
-                                $active_word_card->value =$req['pic1'];
-                                $active_word_card->type = 2;
-                                $active_word_card->card_type_id = 2;
-                                $active_word_card->deck_id = $request->deck_id;
-                                $active_word_card->position = 1;
-                                $active_word_card->number_id = $number_id;
-                                $active_word_card->status = 1;
-                                $active_word_card->save();
-                            }
 
-                            if(!empty($req['pic2'])){
-                                $active_word_card = new FeildsValueWithCardType();
-                                $active_word_card->field_id = 8;
-                                $active_word_card->value =$req['pic2'];
-                                $active_word_card->type = 2;
-                                $active_word_card->card_type_id = 2;
-                                $active_word_card->deck_id = $request->deck_id;
-                                $active_word_card->position = 1;
-                                $active_word_card->number_id = $number_id;
-                                $active_word_card->status = 1;
-                                $active_word_card->save();
-                            }
 
-                           
+
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 9;
@@ -427,7 +358,7 @@ class HomeController extends Controller
                             $active_word_card->status = 1;
                             $active_word_card->save();
 
-                            
+
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 7;
                             $active_word_card->value = $req[7];
@@ -461,7 +392,7 @@ class HomeController extends Controller
                             $active_word_card->number_id = $number_id;
                             $active_word_card->status = 1;
                             $active_word_card->save();
-                       
+
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 5;
@@ -484,35 +415,31 @@ class HomeController extends Controller
                             $active_word_card->number_id = $number_id;
                             $active_word_card->status = 1;
                             $active_word_card->save();
-
-
-
-
-                        }elseif($key == 'active_listening_reading_card' && !empty($value)){
+                        } elseif ($key == 'active_listening_reading_card' && !empty($value)) {
                             $number_id = rand(1, 1000000);
                         }
                     }
                 }
 
-                if(!empty($req['extra_card1_instruction']) && !empty($req['extra_card1_front']) && !empty($req['extra_card1_back'])){
+                if (!empty($req['extra_card1_instruction']) && !empty($req['extra_card1_front']) && !empty($req['extra_card1_back'])) {
                     $number_id = rand(1, 1000000);
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = '<span style="color:black;text-align:Center" >'.'#'.$req['extra_card1_instruction'].'#'.'</span>';
+                    $extra_card->value = '<span style="color:black;text-align:Center" >' . '#' . $req['extra_card1_instruction'] . '#' . '</span>';
                     $extra_card->type = 1;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
                     $extra_card->status = 1;
-                    
+
                     $extra_card->save();
 
 
-                  
+
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value =  '<span style="color:red;text-align:Center" >'.$req['extra_card1_front'].'</span>';
+                    $extra_card->value =  '<span style="color:red;text-align:Center" >' . $req['extra_card1_front'] . '</span>';
                     $extra_card->type = 1;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -524,7 +451,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = '<i style="color:black;text-align:Center" >'.'Answer:'.'</i>';
+                    $extra_card->value = '<i style="color:black;text-align:Center" >' . 'Answer:' . '</i>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -536,7 +463,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = '<span style="color:yellow;text-align:Center" >'.$req['extra_card1_back'].'</span>';
+                    $extra_card->value = '<span style="color:yellow;text-align:Center" >' . $req['extra_card1_back'] . '</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -547,7 +474,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 1;
-                    $extra_card->value ='<span style="color:red;text-align:Center" >'. $req[1].'</span>';
+                    $extra_card->value = '<span style="color:red;text-align:Center" >' . $req[1] . '</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -557,25 +484,25 @@ class HomeController extends Controller
                     $extra_card->save();
                 }
 
-                if(!empty($req['extra_card2_instruction']) && !empty($req['extra_card2_front']) && !empty($req['extra_card2_back'])){
+                if (!empty($req['extra_card2_instruction']) && !empty($req['extra_card2_front']) && !empty($req['extra_card2_back'])) {
                     $number_id = rand(1, 1000000);
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = '<span style="color:black;text-align:Center" >'.'#'.$req['extra_card2_instruction'].'#'.'</span>';
+                    $extra_card->value = '<span style="color:black;text-align:Center" >' . '#' . $req['extra_card2_instruction'] . '#' . '</span>';
                     $extra_card->type = 1;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
                     $extra_card->status = 1;
-                    
+
                     $extra_card->save();
 
 
-                  
+
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value =  '<span style="color:red;text-align:Center" >'.$req['extra_card2_front'].'</span>';
+                    $extra_card->value =  '<span style="color:red;text-align:Center" >' . $req['extra_card2_front'] . '</span>';
                     $extra_card->type = 1;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -587,7 +514,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = '<i style="color:black;text-align:Center" >'.'Answer:'.'</i>';
+                    $extra_card->value = '<i style="color:black;text-align:Center" >' . 'Answer:' . '</i>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -599,7 +526,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = '<span style="color:yellow;text-align:Center" >'.$req['extra_card2_back'].'</span>';
+                    $extra_card->value = '<span style="color:yellow;text-align:Center" >' . $req['extra_card2_back'] . '</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -610,7 +537,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 1;
-                    $extra_card->value ='<span style="color:red;text-align:Center" >'. $req[1].'</span>';
+                    $extra_card->value = '<span style="color:red;text-align:Center" >' . $req[1] . '</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -621,26 +548,26 @@ class HomeController extends Controller
                 }
 
 
-                if(!empty($req['extra_card3_instruction']) && !empty( $req['extra_card3_front']) && !empty($req['extra_card3_back'])){
+                if (!empty($req['extra_card3_instruction']) && !empty($req['extra_card3_front']) && !empty($req['extra_card3_back'])) {
                     $number_id = rand(1, 1000000);
-                   
+
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = '<span style="color:black;text-align:Center" >'.'#'.$req['extra_card3_instruction'].'#'.'</span>';
+                    $extra_card->value = '<span style="color:black;text-align:Center" >' . '#' . $req['extra_card3_instruction'] . '#' . '</span>';
                     $extra_card->type = 1;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
                     $extra_card->status = 1;
-                    
+
                     $extra_card->save();
 
 
-                  
+
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value =  '<span style="color:red;text-align:Center" >'.$req['extra_card3_front'].'</span>';
+                    $extra_card->value =  '<span style="color:red;text-align:Center" >' . $req['extra_card3_front'] . '</span>';
                     $extra_card->type = 1;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -652,7 +579,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = '<i style="color:black;text-align:Center" >'.'Answer:'.'</i>';
+                    $extra_card->value = '<i style="color:black;text-align:Center" >' . 'Answer:' . '</i>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -664,7 +591,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = '<span style="color:yellow;text-align:Center" >'.$req['extra_card3_back'].'</span>';
+                    $extra_card->value = '<span style="color:yellow;text-align:Center" >' . $req['extra_card3_back'] . '</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -675,7 +602,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 1;
-                    $extra_card->value ='<span style="color:red;text-align:Center" >'. $req[1].'</span>';
+                    $extra_card->value = '<span style="color:red;text-align:Center" >' . $req[1] . '</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -685,28 +612,28 @@ class HomeController extends Controller
                     $extra_card->save();
                 }
 
-                if(!empty($req['extra_card4_instruction']) && !empty($req['extra_card4_front']) && !empty($req['extra_card4_back'])){
-                    
+                if (!empty($req['extra_card4_instruction']) && !empty($req['extra_card4_front']) && !empty($req['extra_card4_back'])) {
+
                     $number_id = rand(1, 1000000);
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = '<span style="color:black;text-align:Center" >'.'#'.$req['extra_card4_instruction'].'#'.'</span>';
+                    $extra_card->value = '<span style="color:black;text-align:Center" >' . '#' . $req['extra_card4_instruction'] . '#' . '</span>';
                     $extra_card->type = 1;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 1;
                     $extra_card->number_id = $number_id;
                     $extra_card->status = 1;
-                    
+
                     $extra_card->save();
 
 
-                  
+
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value =  '<span style="color:red;text-align:Center" >'.$req['extra_card4_front'].'</span>';
+                    $extra_card->value =  '<span style="color:red;text-align:Center" >' . $req['extra_card4_front'] . '</span>';
                     $extra_card->type = 1;
-                    $extra_card->card_type_id =6;
+                    $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
                     $extra_card->position = 2;
                     $extra_card->number_id = $number_id;
@@ -716,7 +643,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = '<i style="color:black;text-align:Center" >'.'Answer:'.'</i>';
+                    $extra_card->value = '<i style="color:black;text-align:Center" >' . 'Answer:' . '</i>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -727,7 +654,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = '<span style="color:yellow;text-align:Center" >'.$req['extra_card4_back'].'</span>';
+                    $extra_card->value = '<span style="color:yellow;text-align:Center" >' . $req['extra_card4_back'] . '</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -738,7 +665,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 1;
-                    $extra_card->value ='<span style="color:red;text-align:Center" >'. $req[1].'</span>';
+                    $extra_card->value = '<span style="color:red;text-align:Center" >' . $req[1] . '</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -811,40 +738,35 @@ class HomeController extends Controller
     {
         // print_r);die;
         Decks::where('id', $request->deck_id)->update(array('total_count' => $request->count));
-       
+
         echo json_encode($request->deck_id);
         die;
     }
 
     public function startStudy($id)
     {
-    //     $questions=FieldsAndValue::where('deck_id',$id)->where('position',1)->get();
-    //     $answers=FieldsAndValue::where('deck_id',$id)->where('position',NULL)->get();
-    // //  print_r($answer->toArray());die;
-    //     $decks=Decks::find($id);
-    //     $count= $decks->total_count;
-    //     $cards=Cards::where('deck_id',$id)->first();
-    //     return view('startStudy',compact('questions','answers','cards','count'));
-        $card_types = CardTypes::where('deck_id',$id)->orWhere('deck_id',1)->get();
-        return view('card_type',compact('card_types'));
-
+        //     $questions=FieldsAndValue::where('deck_id',$id)->where('position',1)->get();
+        //     $answers=FieldsAndValue::where('deck_id',$id)->where('position',NULL)->get();
+        // //  print_r($answer->toArray());die;
+        //     $decks=Decks::find($id);
+        //     $count= $decks->total_count;
+        //     $cards=Cards::where('deck_id',$id)->first();
+        //     return view('startStudy',compact('questions','answers','cards','count'));
+        $card_types = CardTypes::where('deck_id', $id)->orWhere('deck_id', 1)->get();
+        return view('card_type', compact('card_types'));
     }
 
     public function startStudyFromCardType($id)
     {
-        $alls=FeildsValueWithCardType::Select('number_id')->where('card_type_id',$id)->groupBy('number_id')->get();
-        $questions=FeildsValueWithCardType::where('card_type_id',$id)->where('type',1)->get();
-        $answers=FeildsValueWithCardType::where('card_type_id',$id)->where('type',2)->get();
-    //  print_r($answer->toArray());die;
-    //  print_r($alls->number_id);die;
+        $alls = FeildsValueWithCardType::Select('number_id')->where('card_type_id', $id)->groupBy('number_id')->get();
+        $questions = FeildsValueWithCardType::where('card_type_id', $id)->where('type', 1)->get();
+        $answers = FeildsValueWithCardType::where('card_type_id', $id)->where('type', 2)->get();
+        //  print_r($answer->toArray());die;
+        //  print_r($alls->number_id);die;
         // $coun
-        $decks=Decks::find(6);
-        $count= $alls->count();
-        $cards=Cards::where('deck_id',6)->first();
-        return view('startStudy',compact('questions','alls','answers','cards','count'));
-       
-
+        $decks = Decks::find(6);
+        $count = $alls->count();
+        $cards = Cards::where('deck_id', 6)->first();
+        return view('startStudy', compact('questions', 'alls', 'answers', 'cards', 'count'));
     }
-
-
 }

@@ -16,12 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
 
-    <link rel="canonical" href="https://www.ldoceonline.com/dictionary/good" />
-    <link rel="alternate" hreflang="x-default" href="https://www.ldoceonline.com/dictionary/good" />
-    <link rel="alternate" hreflang="en" href="https://www.ldoceonline.com/dictionary/good" />
-    <link rel="alternate" hreflang="ja" href="https://www.ldoceonline.com/jp/dictionary/good" />
-    <link rel="alternate" hreflang="es-419" href="https://www.ldoceonline.com/es-LA/dictionary/good" />
-    <link rel="alternate" hreflang="ko" href="https://www.ldoceonline.com/ko/dictionary/good" />
+
     <!-- <link rel="shortcut icon" type="image/x-icon" href="https://d27ucmmhxk51xv.cloudfront.net/external/images/favicon.ico?version=1.2.1" /> -->
     <link rel="stylesheet" href="https://d27ucmmhxk51xv.cloudfront.net/common.css?version=1.2.1" />
     <link rel="stylesheet" href="https://d27ucmmhxk51xv.cloudfront.net/external/fonts/font-awesome/5.12.0/css/font-awesome.min.css?version=1.2.1" />
@@ -116,9 +111,9 @@
 
   <script src="{{ asset('js/extention/choices.js') }}"></script>
   
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
 
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
 
 <script type="text/javascript">
     $(document).ready(function() {

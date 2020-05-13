@@ -34,6 +34,12 @@ class SearchController extends Controller
     {
         return view('browser');
     }
+
+
+    public function GetImagesfromBrowser()
+    {
+        return view('image_browser');
+    }
     /**
      * Display the specified resource.
      *
@@ -109,47 +115,47 @@ class SearchController extends Controller
         return view('setSentence.create', compact('someArray'));
     }
 
-    public function searchImage1(Request $request)
-    {
-        $someArray = [
-            [
-                "ID" => "COO1",
-                "Name" => "Spec_1",
-                "Image" => "https://www.encodedna.com/images/theme/jQuery.png"
-            ],
-            [
-                "ID" => "COO3",
-                "Name" => "Spec_3",
-                "Image" => "https://www.encodedna.com/images/theme/angularjs.png"
-            ],
-            [
-                "ID" => "COO2",
-                "Name" => "Spec_2",
-                "Image" => "https://www.encodedna.com/images/theme/json.png"
-            ]
-        ];
-        // $post_data = json_encode($someArray);
+    // public function searchImage1(Request $request)
+    // {
+    //     $someArray = [
+    //         [
+    //             "ID" => "COO1",
+    //             "Name" => "Spec_1",
+    //             "Image" => "https://www.encodedna.com/images/theme/jQuery.png"
+    //         ],
+    //         [
+    //             "ID" => "COO3",
+    //             "Name" => "Spec_3",
+    //             "Image" => "https://www.encodedna.com/images/theme/angularjs.png"
+    //         ],
+    //         [
+    //             "ID" => "COO2",
+    //             "Name" => "Spec_2",
+    //             "Image" => "https://www.encodedna.com/images/theme/json.png"
+    //         ]
+    //     ];
+    //     // $post_data = json_encode($someArray);
 
-        // print_r($someArray[Image]);die;
-        // $someArray=$someArray->toArray();
-        // $query = 'Foobar';
-        // $ch = curl_init();
-        // // set url 
-        // curl_setopt($ch, CURLOPT_URL, "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" . urlencode($query));
+    //     // print_r($someArray[Image]);die;
+    //     // $someArray=$someArray->toArray();
+    //     // $query = 'Foobar';
+    //     // $ch = curl_init();
+    //     // // set url 
+    //     // curl_setopt($ch, CURLOPT_URL, "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" . urlencode($query));
 
-        // //return the transfer as a string 
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    //     // //return the transfer as a string 
+    //     // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-        // // $output contains the output string as json
-        // $output = json_decode(curl_exec($ch));
+    //     // // $output contains the output string as json
+    //     // $output = json_decode(curl_exec($ch));
 
-        // // close curl resource to free up system resources 
-        // curl_close($ch);
+    //     // // close curl resource to free up system resources 
+    //     // curl_close($ch);
 
-        // print_r($output);die;
+    //     // print_r($output);die;
 
-        return view('setSentence.create', compact('someArray'));
-    }
+    //     return view('setSentence.create', compact('someArray'));
+    // }
 
     public function searchWord(Request $request)
     {
@@ -172,8 +178,12 @@ class SearchController extends Controller
             'timeout' => 60,
             'verify' => false
         ));
+
+       
         $goutteClient->setClient($guzzleClient);
+
         $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/' . $word);
+        // print_r('asdas');die;
         $crawler->filter('.DEF')->each(function ($node) {
             $results = $node->text();
             echo $results;
@@ -181,6 +191,73 @@ class SearchController extends Controller
         });
     }
 
+    public function getSound(Request $request)
+    {
+        // $parameters = array(
+        //     'start' => 10,
+        //     'num' => 10 ,
+        //     'searchType'=>'image',
+
+        // );
+
+        // $fulltext = new LaravelGoogleCustomSearchEngine(); // initialize
+        // $results = $fulltext->getResults($request->search,$parameters); // get first 10 results for query 'some phrase'
+
+        // echo json_encode($results);
+        // die;
+        $word = $request->search;
+        //    print_r($word);die;
+        $goutteClient = new Client();
+        $guzzleClient = new GuzzleClient(array(
+            'timeout' => 60,
+            'verify' => false
+        ));
+
+       
+        $goutteClient->setClient($guzzleClient);
+
+        $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/' . $word);
+        // print_r('asdas');die;
+        $crawler->filter('.amefile')->each(function ($node) {
+            $results = $node->html();
+            echo $results;
+            die;
+        });
+    }
+    
+    public function searchAllDetails(Request $request)
+    {
+        // $parameters = array(
+        //     'start' => 10,
+        //     'num' => 10 ,
+        //     'searchType'=>'image',
+
+        // );
+
+        // $fulltext = new LaravelGoogleCustomSearchEngine(); // initialize
+        // $results = $fulltext->getResults($request->search,$parameters); // get first 10 results for query 'some phrase'
+
+        // echo json_encode($results);
+        // die;
+        $word = $request->search;
+        //    print_r($word);die;
+        $goutteClient = new Client();
+        $guzzleClient = new GuzzleClient(array(
+            'timeout' => 60,
+            'verify' => false
+        ));
+
+       
+        $goutteClient->setClient($guzzleClient);
+
+        $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/' . $word);
+        // print_r('asdas');die;
+        $crawler->filter('.dictionary')->each(function ($node) {
+            $results = $node->html();
+            echo $results;
+            die;
+        });
+    }
     public function getPronCodes(Request $request)
     {
         // $parameters = array(
@@ -215,7 +292,7 @@ class SearchController extends Controller
     {
         $parameters = array(
             'start' => 10,
-            'num' => 3,
+            'num' => 10,
             'searchType' => 'image',
 
         );

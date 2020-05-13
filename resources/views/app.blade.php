@@ -7,22 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
     <!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet"> -->
     <link href="{{ asset('css/bootstrap-responsive.min.css') }}" rel="stylesheet">
     <!-- <link href="css/pages/plans.css" rel="stylesheet">  -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
 
+    <link href="{{ asset('css/image-picker.css') }}" rel="stylesheet">
 
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
-    <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">     -->
-    <!-- <link href="css/style.css" rel="stylesheet"> -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pages/plans.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pages/reports.css') }}" rel="stylesheet">
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> -->
 
+
+    @yield('haider_scripts')
+    <style>
+
+        /* * {
+  border: 1px solid #000000;
+} */
+</style>
     <!-- <link href="css/font-awesome.css" rel="stylesheet"> -->
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -42,14 +55,14 @@
                                 <li><a href="javascript:;">Help</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> {{Auth::User()->name}}  <b class="caret"></b></a>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> {{Auth::User()->name}} <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:;">Profile</a></li>
                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Logout</a></li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"  >
-                                        @csrf
-                                    </form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </ul>
                         </li>
                     </ul>
@@ -73,7 +86,7 @@
                     <!-- <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li> -->
                     <li><a href="{{ route('Add') }}"><i class="icon-bar-chart"></i><span>Add</span> </a> </li>
                     <li><a href="{{ route('browser') }}"><i class="icon-search"></i><span>Browse</span> </a> </li>
-                    
+
                 </ul>
             </div>
             <!-- /container -->
@@ -84,7 +97,7 @@
     <div class="">
         <div class="main-inner">
             <div class="container">
-            @yield('content')
+                @yield('content')
 
                 <!-- /row -->
             </div>
@@ -93,7 +106,7 @@
         <!-- /main-inner -->
     </div>
     <!-- /main -->
-   
+
     <!-- /extra -->
     <div class="footer">
         <div class="footer-inner">
@@ -112,18 +125,29 @@
     <!-- Le javascript
 ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/base.js') }}"></script> -->
+
+    <script src="{{asset('js/jquery-1.7.2.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+
+    <script src="{{asset('js/bootstrap.js')}}"></script>
+    <script src="{{ asset('js/base.js') }}"></script>
+
+
     <!-- <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script> -->
     <!-- <script src="js/excanvas.min.js"></script> -->
     <script src="{{ asset('js/full-calendar/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('js/extention/choices.js') }}"></script>
 
     <script src="{{ asset('js/excanvas.min.js') }}"></script>
     <script src="{{ asset('js/chart.min.js') }}"></script>
-    <script src="{{ asset('js/base.js') }}"></script>
     <script src="{{ asset('js/ouicards.js') }}"></script>
+    <script src="{{ asset('js/image-picker.min.js') }}"></script>
+
 
     @yield('footer_scripts')
 

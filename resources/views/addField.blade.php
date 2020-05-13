@@ -1,6 +1,10 @@
 @extends('app')
+@section('haider_scripts')
 
+<!-- <link href="{{ asset('css/main.css') }}" rel="stylesheet" /> -->
+@stop
 @section('content')
+
 
 <div class="main">
     <div class="main-inner">
@@ -16,7 +20,9 @@
                             @if($errors->any())
                             <h4>{{$errors->first()}}</h4>
                             @endif
-                            <form id="edit-profile" method="POST" action="{{ route('store_addField_form') }}" class="form-horizontal">
+
+
+                            <form id="edit-profile" method="POST" action="{{ route('store_addField_form') }}" enctype="multipart/form-data" class=" form-horizontal">
                                 @csrf
                                 <fieldset>
 
@@ -39,11 +45,66 @@
 
                                     @if($field->id==8)
                                     <div class="control-group">
-                                        <label class="control-label" for="name"><strong>Images</strong></label>
-                                        <div class="controls" id="picHolder" contentEditable="true">
+                                        <label class="control-label"><strong>Images</strong></label>
+                                        <div class="controls">
+                                            <!-- Button to trigger modal -->
+                                            <!-- <a href="{{ route('get_images_from_browser')   }}" role="button" class="btn btn-success">Get Images</a> -->
 
+                                            <a href="#myModal" role="button" class="btn btn-success" data-toggle="modal">Get Images</a>
+
+                                            <!-- Modal -->
+                                            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    <h3 id="myModalLabel">Select Images</h3>
+                                                </div>
+                                                <div class="modal-body row">
+                                                    <div class="s130 col-lg-12">
+                                                        <!-- <form> -->
+                                                          
+                                                            <div class="inner-form">
+                                                                <div class="input-field first-wrap">
+                                                                    <div class="svg-wrapper">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                                            <!-- <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path> -->
+                                                                        </svg>
+                                                                    </div>
+                                                                    <input type="text" class="search-query" id="inpu_word" placeholder="What are you looking for?" />
+                                                                    <input type="button" value="Search" name="search_images" class="btn btn-success" id="search1">
+
+                                                                </div>
+
+                                                                <div class="input-field second-wrap">
+
+                                                                </div>
+
+                                                            </div>
+                                                            <span class="info">ex. Game, Music, Video, Photography</span>
+                                                            <!-- <div class="inner-form"> -->
+                                                            <div class="control-group">
+                                                                <div class="controls">
+                                                                    <select class="image-picker limit_callback show-html" name="images[]" data-limit="4" multiple="multiple">
+
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="input-field second-wrap">
+                                                                <!-- <a href="{{ action('SearchController@setSentence')}}" type="button" class="btn btn-primary">Search</a> -->
+                                                            </div>
+                                                            <!-- </div> -->
+                                                        <!-- </form> -->
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                                    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Save changes</button>
+                                                </div>
+                                            </div>
                                         </div> <!-- /controls -->
                                     </div> <!-- /control-group -->
+
                                     @else
                                     <div class="control-group">
                                         <label class="control-label" for="name"><strong>{{$field->name}}</strong></label>
@@ -53,6 +114,7 @@
                                     </div> <!-- /control-group -->
                                     @endif
                                     @endforeach
+
 
                                     <div class="control-group">
                                         <label class="control-label" for="name">[X] Activate New Word Card (insert 'x' to activate)</label>
@@ -105,7 +167,7 @@
                                     </div>
 
                                     <div class="control-group">
-                                        <label class="control-label" for="name">Extra Card 1 Instructions  (Front, large white text)</label>
+                                        <label class="control-label" for="name">Extra Card 1 Instructions (Front, large white text)</label>
                                         <div class="controls">
                                             <input type="text" class="span10" name="extra_card1_instruction" id="extra_card1_instruction">
                                         </div>
@@ -126,7 +188,7 @@
                                     </div>
 
                                     <div class="control-group">
-                                        <label class="control-label" for="name">Extra Card 2 Instructions  (Front, large white text)</label>
+                                        <label class="control-label" for="name">Extra Card 2 Instructions (Front, large white text)</label>
                                         <div class="controls">
                                             <input type="text" class="span10" name="extra_card2_instruction" id="extra_card2_instruction">
                                         </div>
@@ -138,7 +200,7 @@
                                             <input type="text" class="span10" name="extra_card2_front" id="extra_card2_front">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="control-group">
                                         <label class="control-label" for="name">Extra Card 2 Answer(Back, Yellow Text)</label>
                                         <div class="controls">
@@ -147,7 +209,7 @@
                                     </div>
 
                                     <div class="control-group">
-                                        <label class="control-label" for="name">Extra Card 3 Instructions  (Front, large white text)</label>
+                                        <label class="control-label" for="name">Extra Card 3 Instructions (Front, large white text)</label>
                                         <div class="controls">
                                             <input type="text" class="span10" name="extra_card3_instruction" id="extra_card3_instruction">
                                         </div>
@@ -168,7 +230,7 @@
                                     </div>
 
                                     <div class="control-group">
-                                        <label class="control-label" for="name">Extra Card 4 Instructions  (Front, large white text)</label>
+                                        <label class="control-label" for="name">Extra Card 4 Instructions (Front, large white text)</label>
                                         <div class="controls">
                                             <input type="text" class="span10" name="extra_card4_instruction" id="extra_card4_instruction">
                                         </div>
@@ -201,7 +263,7 @@
                                             <input type="text" class="span10" name="active_pronunciation_card" id="active_pronunciation_card">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="control-group">
                                         <label class="control-label" for="name">[X] Activate Spelling Card (insert 'x' to activate)</label>
                                         <div class="controls">
@@ -253,12 +315,16 @@
     </div> <!-- /widget -->
 </div> <!-- /span8 -->
 
+
+
+
 @stop
 
 @section('footer_scripts')
 <script type="text/javascript">
     $(document).ready(function() {
 
+        $("select").imagepicker();
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -279,8 +345,23 @@
                 .done(function(data) {
 
                     var response = data;
-                    console.log(response);
+
                     $('#7').val(response);
+                });
+
+            $.ajax({
+                    url: '{{ url("home/get_sound")}}',
+                    type: "POST",
+                    data: {
+                        'search': search
+                    }
+                })
+                .done(function(data) {
+
+                    var response = data;
+                    console.log(response);
+
+                    $('#getSound').append(response);
                 });
 
             $.ajax({
@@ -311,21 +392,77 @@
                         // var file = ticketFileAttahmentName1[i];
                         //  alert(response['i']);
                         var src = response[i].link;
-                        var pic = $('<img  name=\'pic' + i + '\' class="picNameId" style="height: 100px; width: 100px; padding-right: 20px; display: ;">');
+                        var pic = $('<img  name=\'pic' + i + '\' id=\'pic' + i + '\' class="picNameId" style="height: 100px; width: 100px; padding-right: 20px; display: ;">');
 
                         pic.attr('src', src);
                         $('#picHolder').append(pic);
                         var style = 'height: 100px; width: 100px; padding-right: 20px;';
-                        var src1 =' <img src = \''+src+'\' style =\'' +style+'\' >';
-                  
-                            $('#picHolder').append("<input type='hidden' name=\"pic" + i + "\" value=\"" + src1 + "\" >");
+                        var src1 = ' <img src = \'' + src + '\' style =\'' + style + '\' >';
+
+                        $('#picHolder').append("<input type='hidden' name=\"pic" + i + "\" value=\"" + src1 + "\" >");
 
                     }
                 });
 
+        
 
         });
 
+    
+
+        $('body').on('click', 'img', function() {
+            if ($(this).val() == 2) {
+
+                var picid = $(this).attr("id");
+                $('#' + picid).css({
+                    'border': '',
+                });
+
+                $(this).val(1);
+
+
+            } else {
+
+                var picid = $(this).attr("id");
+                $('#' + picid).val(2);
+                // alert($(this).val());
+                $('#' + picid).css({
+                    'border': '5px solid rgb(20, 20, 17)',
+                });
+
+
+            }
+
+        });
+
+        $('#search1').on('click', function() {
+            var search = $('#inpu_word').val();
+            // alert(search);
+
+            $.ajax({
+                    url: '{{ url("search/get_image")}}',
+                    type: "POST",
+                    data: {
+                        'search': search
+                    }
+                })
+                .done(function(data) {
+                    var response = JSON.parse(data);
+                    console.log(response);
+                    $('#picHolder').empty();
+                    $('select').find('option').remove().end();
+                    for (i = 0; i < response.length; i++) {
+                        var src = response[i].link;
+                        // var pic = $('<img class="picNameId" name="picNameId" style="height: 100px; width: 100px; display: ;">');
+                        // pic.attr('src', src);
+                        var option = $('<option></option>').attr('data-img-src', src).val(src);
+                        $('select').append(option);
+
+                    }
+                    $('select').show().closest('div').find('.bootstrap-select').hide();
+                    $('select').imagepicker();
+                });
+        });
 
     });
 </script>
