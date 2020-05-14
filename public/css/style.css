@@ -1296,3 +1296,19 @@ color: #333;
 }
 
 
+.cancel_button{
+	float: right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#871d31;
+
+	
+}
+
+.cancel_button_hover{
+	float:right;
+    display:inline-block;
+    padding:2px 5px;
+	background:#871d31;
+    color:#fff;
+}

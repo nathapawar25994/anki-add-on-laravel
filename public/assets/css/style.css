@@ -1294,3 +1294,21 @@ color: #333;
 	
 }
 
+/* css of cancel button */
+
+.cancel_button{
+	float: right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+
+	
+}
+
+.cancel_button_hover{
+	float:right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+    color:#fff;
+}

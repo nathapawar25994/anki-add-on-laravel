@@ -54,15 +54,17 @@
 
                                             <!-- Modal -->
                                             <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-xl">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h3 id="myModalLabel">Select Images</h3>
+                                                    </div>
+                                                    <div class="modal-body ">
 
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    <h3 id="myModalLabel">Select Images</h3>
-                                                </div>
-                                                <div class="modal-body row">
-                                                    <div class="s130 col-lg-12">
-                                                        <!-- <form> -->
-                                                          
+
+                                                        <div class="s130 col-lg-12">
+                                                            <!-- <form> -->
+
                                                             <div class="inner-form">
                                                                 <div class="input-field first-wrap">
                                                                     <div class="svg-wrapper">
@@ -72,34 +74,37 @@
                                                                     </div>
                                                                     <input type="text" class="search-query" id="inpu_word" placeholder="What are you looking for?" />
                                                                     <input type="button" value="Search" name="search_images" class="btn btn-success" id="search1">
-
                                                                 </div>
-
-                                                                <div class="input-field second-wrap">
-
-                                                                </div>
-
                                                             </div>
                                                             <span class="info">ex. Game, Music, Video, Photography</span>
                                                             <!-- <div class="inner-form"> -->
                                                             <div class="control-group">
                                                                 <div class="controls">
-                                                                    <select class="image-picker limit_callback show-html" name="images[]" data-limit="4" multiple="multiple">
+                                                                    <select class="image-picker limit_callback show-html" name="images[]" data-limit="4" multiple="multiple" id="picker">
 
                                                                     </select>
                                                                 </div>
                                                             </div>
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="name"><strong>Selected Images</strong></label>
 
+                                                                <div class="controls selected_images">
+                                                                    <select class="image-picker limit_callback show-html" name="images[]" data-limit="4" multiple="multiple" id="selected_picker">
+
+                                                                    </select>
+                                                                </div>
+                                                            </div>
                                                             <div class="input-field second-wrap">
                                                                 <!-- <a href="{{ action('SearchController@setSentence')}}" type="button" class="btn btn-primary">Search</a> -->
                                                             </div>
                                                             <!-- </div> -->
-                                                        <!-- </form> -->
+                                                            <!-- </form> -->
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                                                    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Save changes</button>
+                                                    <div class="modal-footer">
+                                                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                                        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Save changes</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div> <!-- /controls -->
@@ -326,7 +331,14 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        $("select").imagepicker();
+        $("picker").imagepicker();
+        $("select").imagepicker({
+            hide_select: true,
+            show_label: false
+        })
+        $("selected_picker").imagepicker();
+
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -406,11 +418,11 @@
                     }
                 });
 
-        
+
 
         });
 
-    
+
 
         // $('body').on('click', 'img', function() {
         //     if ($(this).val() == 2) {
@@ -452,18 +464,79 @@
                     var response = JSON.parse(data);
                     console.log(response);
                     $('#picHolder').empty();
-                    $('select').find('option').remove().end();
+                    $('#picker').find('option').remove().end();
                     for (i = 0; i < response.length; i++) {
                         var src = response[i].link;
                         // var pic = $('<img class="picNameId" name="picNameId" style="height: 100px; width: 100px; display: ;">');
                         // pic.attr('src', src);
                         var option = $('<option></option>').attr('data-img-src', src).val(src);
-                        $('select').append(option);
+                        $('#picker').append(option);
 
                     }
-                    $('select').show().closest('div').find('.bootstrap-select').hide();
-                    $('select').imagepicker();
+                    $('#picker').show().closest('div').find('.bootstrap-select').hide();
+                    $('#picker').imagepicker();
                 });
+        });
+
+        $('#picker1').on('change', function() {
+            // var imageValue = $('#picker').find(":selected:last").val();
+            var imageValue = $(this).val();
+
+            console.log(imageValue);
+            var option = $('<option></option>').attr('data-img-src', imageValue).val(imageValue);
+            $('#selected_picker').append(option);
+            // $('#').imagepicker();
+            // $("#selected_picker").data('picker').sync_picker_with_select();
+            $("#selected_picker").imagepicker();
+
+            // alert(imageValue);
+
+
+        });
+
+        var img_arr = [];
+        $(document).on('click', '.image_picker_image', function(e) {
+
+            e.preventDefault();
+
+
+            // var imageValue = $('#picker').find(":selected:last").val();
+            var imageValue = $(this).attr('src');
+            if (jQuery.inArray(imageValue, img_arr) == -1) {
+                console.log(imageValue);
+                var option = $('<option></option>').attr('data-img-src', imageValue).val(imageValue);
+                $('#selected_picker').append(option);
+                // $('#').imagepicker();
+                // $("#selected_picker").data('picker').sync_picker_with_select();
+                $("#selected_picker").imagepicker();
+                img_arr.push(imageValue);
+                setCancelButton();
+            }
+            
+
+        });
+
+
+        // create cancel button on Image
+        function setCancelButton() {
+
+            $(".selected_images .thumbnail").each(function() {
+                $('<span class="cancel_button cancel_button_hover">x</span>').prependTo(this);
+            });
+
+
+        }
+
+        $(document).on('click', '.cancel_button', function(e) {
+            e.preventDefault();
+            var imagePath = $(this).parent().children('.image_picker_image').attr('src');
+            $(this).closest('li').remove();
+            console.log(img_arr);
+            $(".image-picker option[value=\""+imagePath+"").remove();
+
+            img_arr.splice($.inArray(imagePath, img_arr), 1);
+            console.log(img_arr);
+
         });
 
     });
