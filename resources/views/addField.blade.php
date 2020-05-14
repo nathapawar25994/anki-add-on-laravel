@@ -321,6 +321,8 @@
 @stop
 
 @section('footer_scripts')
+<!-- <script src="{{asset('js/jquery-1.7.2.min.js')}}"></script> -->
+
 <script type="text/javascript">
     $(document).ready(function() {
 
@@ -378,7 +380,7 @@
                     $('#5').val(response);
                 });
             $.ajax({
-                    url: '{{ url("home/get_image")}}',
+                    url: '{{ url("search/get_images")}}',
                     type: "POST",
                     data: {
                         'search': search
@@ -410,37 +412,37 @@
 
     
 
-        $('body').on('click', 'img', function() {
-            if ($(this).val() == 2) {
+        // $('body').on('click', 'img', function() {
+        //     if ($(this).val() == 2) {
 
-                var picid = $(this).attr("id");
-                $('#' + picid).css({
-                    'border': '',
-                });
+        //         var picid = $(this).attr("id");
+        //         $('#' + picid).css({
+        //             'border': '',
+        //         });
 
-                $(this).val(1);
-
-
-            } else {
-
-                var picid = $(this).attr("id");
-                $('#' + picid).val(2);
-                // alert($(this).val());
-                $('#' + picid).css({
-                    'border': '5px solid rgb(20, 20, 17)',
-                });
+        //         $(this).val(1);
 
 
-            }
+        //     } else {
 
-        });
+        //         var picid = $(this).attr("id");
+        //         $('#' + picid).val(2);
+        //         // alert($(this).val());
+        //         $('#' + picid).css({
+        //             'border': '5px solid rgb(20, 20, 17)',
+        //         });
+
+
+        //     }
+
+        // });
 
         $('#search1').on('click', function() {
             var search = $('#inpu_word').val();
             // alert(search);
 
             $.ajax({
-                    url: '{{ url("search/get_image")}}',
+                    url: '{{ route("get_images")}}',
                     type: "POST",
                     data: {
                         'search': search

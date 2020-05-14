@@ -221,19 +221,39 @@ class HomeController extends Controller
                             $active_word_sentence_card->number_id = $number_id;
                             $active_word_sentence_card->status = 1;
                             // $active_word_sentence_card->save();<img class="picNameId" name="picNameId" style="height: 100px; width: 100px; display:block ;">'
+                        //    print_r();die;
                             if (!empty($req['images'])) {
+                                $i=1;
                                 foreach ($req['images'] as  $key => $value) {
-                                    $active_word_card = new FeildsValueWithCardType();
-                                    $active_word_card->field_id = 8;
-                                    $active_word_card->card_type_id = 4;
-                                    $style = 'height: 100px; width: 100px; padding-right: 20px;';
-                                    $active_word_card->value = '<img src = \'' . $value . '\' style =\'' . $style . '\' >';
-                                    $active_word_card->type = 2;
-                                    $active_word_card->deck_id = $request->deck_id;
-                                    $active_word_card->position = 5;
-                                    $active_word_card->number_id = $number_id;
-                                    $active_word_card->status = 1;
-                                    $active_word_card->save();
+
+                                    if($i == 1){
+                                        $active_word_card = new FeildsValueWithCardType();
+                                        $active_word_card->field_id = 8;
+                                        $active_word_card->card_type_id = 4;
+                                        $style = 'height: 100px; width: 100px; padding-right: 20px;';
+                                        $active_word_card->value = '<img src = \'' . $value . '\' style =\'' . $style . '\' >';
+                                        $active_word_card->type = 1;
+                                        $active_word_card->deck_id = $request->deck_id;
+                                        $active_word_card->position = 5;
+                                        $active_word_card->number_id = $number_id;
+                                        $active_word_card->status = 1;
+                                        $active_word_card->save();
+                                        $i+=1;
+
+                                    }else{
+                                        $active_word_card = new FeildsValueWithCardType();
+                                        $active_word_card->field_id = 8;
+                                        $active_word_card->card_type_id = 4;
+                                        $style = 'height: 100px; width: 100px; padding-right: 20px;';
+                                        $active_word_card->value = '<img src = \'' . $value . '\' style =\'' . $style . '\' >';
+                                        $active_word_card->type = 2;
+                                        $active_word_card->deck_id = $request->deck_id;
+                                        $active_word_card->position = 5;
+                                        $active_word_card->number_id = $number_id;
+                                        $active_word_card->status = 1;
+                                        $active_word_card->save();
+                                    }
+                                  
                                 }
                             }
 
@@ -327,19 +347,37 @@ class HomeController extends Controller
                             $active_word_sentence_card->status = 1;
                             $active_word_sentence_card->save();
                             if (!empty($req['images'])) {
+                                $i=1;
                                 foreach ($req['images'] as  $key => $value) {
-                                    $active_word_card = new FeildsValueWithCardType();
-                                    $active_word_card->field_id = 8;
-                                    $style = 'height: 100px; width: 100px; padding-right: 20px;';
-                                    $active_word_card->value = '<img src = \'' . $value . '\' style =\'' . $style . '\' >';
-
-                                    $active_word_card->type = 2;
-                                    $active_word_card->card_type_id = 2;
-                                    $active_word_card->deck_id = $request->deck_id;
-                                    $active_word_card->position = 1;
-                                    $active_word_card->number_id = $number_id;
-                                    $active_word_card->status = 1;
-                                    $active_word_card->save();
+                                    if($i == 1){
+                                        $active_word_card = new FeildsValueWithCardType();
+                                        $active_word_card->field_id = 8;
+                                        $style = 'height: 100px; width: 100px; padding-right: 20px;';
+                                        $active_word_card->value = '<img src = \'' . $value . '\' style =\'' . $style . '\' >';
+    
+                                        $active_word_card->type = 1;
+                                        $active_word_card->card_type_id = 2;
+                                        $active_word_card->deck_id = $request->deck_id;
+                                        $active_word_card->position = 1;
+                                        $active_word_card->number_id = $number_id;
+                                        $active_word_card->status = 1;
+                                        $active_word_card->save();
+                                        $i+=1;
+                                    }else{
+                                        $active_word_card = new FeildsValueWithCardType();
+                                        $active_word_card->field_id = 8;
+                                        $style = 'height: 100px; width: 100px; padding-right: 20px;';
+                                        $active_word_card->value = '<img src = \'' . $value . '\' style =\'' . $style . '\' >';
+    
+                                        $active_word_card->type = 2;
+                                        $active_word_card->card_type_id = 2;
+                                        $active_word_card->deck_id = $request->deck_id;
+                                        $active_word_card->position = 1;
+                                        $active_word_card->number_id = $number_id;
+                                        $active_word_card->status = 1;
+                                        $active_word_card->save();
+                                    }
+                                   
                                 }
                             }
 

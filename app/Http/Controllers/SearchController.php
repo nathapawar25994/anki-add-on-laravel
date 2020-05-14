@@ -290,15 +290,19 @@ class SearchController extends Controller
 
     public function searchImage(Request $request)
     {
+
+
         $parameters = array(
             'start' => 10,
             'num' => 10,
             'searchType' => 'image',
 
         );
+        // print_r("sds");die;
 
         $fulltext = new LaravelGoogleCustomSearchEngine(); // initialize
         $results = $fulltext->getResults($request->search, $parameters); // get first 10 results for query 'some phrase'
+        // print_r("sds");die;
 
         echo json_encode($results);
         die;

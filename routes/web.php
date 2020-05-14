@@ -33,8 +33,8 @@ Route::group(['prefix' => 'search', 'middleware' => ['auth']], function () {
     Route::post('/', 'SearchController@search')->name('search');
     Route::get('/sentence', 'SearchController@setSentence')->name('searchSentence');
     // Route::post('/searchImage', 'SearchController@searchImage')->name('searchImage');
-    Route::post('/get_images', 'SearchController@searchImage');
-    Route::post('/get_image', 'SearchController@searchImage');
+    // Route::post('/get_images', 'SearchController@searchImage');
+    Route::post('/get_images', 'SearchController@searchImage')->name('get_images');
 
     // Route::get('{id}/edit', 'ProjectController@edit');
     // Route::post('{id}/update', 'ProjectController@update');
@@ -54,7 +54,7 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
     Route::post('/get_word', 'SearchController@searchWord');
     Route::post('/get_PronCodes', 'SearchController@getPronCodes');
     Route::post('/update_count', 'HomeController@updateCount');
-    Route::post('/get_image', 'SearchController@searchImage');
+    Route::post('/get_images', 'SearchController@searchImage');
     Route::post('/get_fields', 'HomeController@getFields');
     Route::get('add', 'HomeController@add')->name('Add');
     Route::post('/add', 'HomeController@storeFieldForm')->name('store_addField_form');
