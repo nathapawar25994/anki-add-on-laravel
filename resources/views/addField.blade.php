@@ -47,12 +47,7 @@
                                     <div class="control-group">
                                         <label class="control-label"><strong>Images</strong></label>
                                         <div class="controls">
-                                            <!-- Button to trigger modal -->
-                                            <!-- <a href="{{ route('get_images_from_browser')   }}" role="button" class="btn btn-success">Get Images</a> -->
-
                                             <a href="#myModal" role="button" class="btn btn-success" data-toggle="modal">Get Images</a>
-
-                                            <!-- Modal -->
                                             <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-xl">
                                                     <div class="modal-header">
@@ -60,51 +55,40 @@
                                                         <h3 id="myModalLabel">Select Images</h3>
                                                     </div>
                                                     <div class="modal-body ">
-
-
-                                                        <div class="s130 col-lg-12">
-                                                            <!-- <form> -->
-
-                                                            <div class="inner-form">
-                                                                <div class="input-field first-wrap">
-                                                                    <div class="svg-wrapper">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                                            <!-- <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path> -->
-                                                                        </svg>
-                                                                    </div>
-                                                                    <input type="text" class="search-query" id="inpu_word" placeholder="What are you looking for?" />
-                                                                    <input type="button" value="Search" name="search_images" class="btn btn-success" id="search1">
+                                                        <div class="inner-form">
+                                                            <div class="input-field first-wrap">
+                                                                <div class="svg-wrapper">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                                        <!-- <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path> -->
+                                                                    </svg>
                                                                 </div>
+                                                                <input type="text" class="search-query" id="inpu_word" placeholder="What are you looking for?" />
+                                                                <input type="button" value="Search" name="search_images" class="btn btn-success" id="search1">
                                                             </div>
-                                                            <span class="info">ex. Game, Music, Video, Photography</span>
-                                                            <!-- <div class="inner-form"> -->
-                                                            <div class="control-group">
-                                                                <div class="controls">
-                                                                    <select class="image-picker limit_callback show-html" name="images[]" data-limit="4" multiple="multiple" id="picker">
+                                                        </div>
+                                                        <span class="info">ex. Game, Music, Video, Photography</span>
+                                                        <!-- <div class="inner-form"> -->
+                                                        <div class="control-group">
+                                                            <div class="controls">
+                                                                <select class="image-picker limit_callback show-html"  data-limit="4" multiple="multiple" id="picker">
 
-                                                                    </select>
-                                                                </div>
+                                                                </select>
                                                             </div>
-                                                            <div class="control-group">
-                                                                <label class="control-label" for="name"><strong>Selected Images</strong></label>
+                                                        </div>
+                                                        <div class="control-group">
+                                                            <label class="control-label"><strong>Selected Images</strong></label>
 
-                                                                <div class="controls selected_images">
-                                                                    <select class="image-picker limit_callback show-html" name="images[]" data-limit="4" multiple="multiple" id="selected_picker">
+                                                            <div class="controls selected_images">
+                                                                <select class="image-picker limit_callback show-html" name="images[]"  data-limit="4" multiple="multiple" id="selected_picker">
 
-                                                                    </select>
-                                                                </div>
+                                                                </select>
                                                             </div>
-                                                            <div class="input-field second-wrap">
-                                                                <!-- <a href="{{ action('SearchController@setSentence')}}" type="button" class="btn btn-primary">Search</a> -->
-                                                            </div>
-                                                            <!-- </div> -->
-                                                            <!-- </form> -->
                                                         </div>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                                                        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Save changes</button>
-                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                                    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Save changes</button>
                                                 </div>
                                             </div>
                                         </div> <!-- /controls -->
@@ -504,7 +488,7 @@
             var imageValue = $(this).attr('src');
             if (jQuery.inArray(imageValue, img_arr) == -1) {
                 console.log(imageValue);
-                var option = $('<option></option>').attr('data-img-src', imageValue).val(imageValue);
+                var option = $('<option></option>').attr('data-img-src', imageValue).val(imageValue).attr('selected', true);
                 $('#selected_picker').append(option);
                 // $('#').imagepicker();
                 // $("#selected_picker").data('picker').sync_picker_with_select();
@@ -512,7 +496,7 @@
                 img_arr.push(imageValue);
                 setCancelButton();
             }
-            
+
 
         });
 
@@ -532,7 +516,7 @@
             var imagePath = $(this).parent().children('.image_picker_image').attr('src');
             $(this).closest('li').remove();
             console.log(img_arr);
-            $(".image-picker option[value=\""+imagePath+"").remove();
+            $(".image-picker option[value=\"" + imagePath + "").remove();
 
             img_arr.splice($.inArray(imagePath, img_arr), 1);
             console.log(img_arr);

@@ -65,6 +65,7 @@ class HomeController extends Controller
         //Model Validation
         // $this->validate($request, ['name' => 'unique:mst_goals,name']);
         $req = $request->all();
+        // print_r( $req);die;
         if (!empty($request->deck_id) && !empty($req)) {
             $fields = Fields::where('deck_id', $request->deck_id)->pluck('name', 'id');
             if (!empty($fields)) {
