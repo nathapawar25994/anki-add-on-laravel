@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>Decks</h3>

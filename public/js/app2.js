@@ -10,14 +10,14 @@ var input;
 var AudioContext = window.AudioContext || window.webkitAudioContext;
 var audioContext = new AudioContext;
 //new audio context to help us record 
-var recordButton = document.getElementById("recordButton");
-var stopButton = document.getElementById("stopButton");
-var pauseButton = document.getElementById("pauseButton");
+var recordButton2 = document.getElementById("recordButton2");
+var stopButton2 = document.getElementById("stopButton2");
+var pauseButton2 = document.getElementById("pauseButton2");
 //add events to those 3 buttons 
-recordButton.addEventListener("click", startRecording);
-stopButton.addEventListener("click", stopRecording);
-pauseButton.addEventListener("click", pauseRecording);
-function startRecording() { 
+recordButton2.addEventListener("click", startRecording2);
+stopButton2.addEventListener("click", stopRecording2);
+pauseButton2.addEventListener("click", pauseRecording2);
+function startRecording2() { 
     /* Simple constraints object, for more advanced audio features see
 
 https://addpipe.com/blog/audio-constraints-getusermedia/ */
@@ -28,9 +28,9 @@ var constraints = {
 } 
 /* Disable the record button until we get a success or fail from getUserMedia() */
 
-recordButton.disabled = true;
-stopButton.disabled = false;
-pauseButton.disabled = false
+recordButton2.disabled = true;
+stopButton2.disabled = false;
+pauseButton2.disabled = false
 
 /* We're using the standard promise based getUserMedia()
 
@@ -51,41 +51,41 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
     console.log("Recording started");
 }).catch(function(err) {
     //enable the record button if getUserMedia() fails 
-    recordButton.disabled = false;
-    stopButton.disabled = true;
-    pauseButton.disabled = true
+    recordButton2.disabled = false;
+    stopButton2.disabled = true;
+    pauseButton2.disabled = true
 });
 }
 
-function pauseRecording() {
-    console.log("pauseButton clicked rec.recording=", rec.recording);
+function pauseRecording2() {
+    console.log("pauseButton2 clicked rec.recording=", rec.recording);
     if (rec.recording) {
         //pause 
         rec.stop();
-        pauseButton.innerHTML = "Resume";
+        pauseButton2.innerHTML = "Resume";
     } else {
         //resume 
         rec.record()
-        pauseButton.innerHTML = "Pause";
+        pauseButton2.innerHTML = "Pause";
     }
 }
 
-function stopRecording() {
-    console.log("stopButton clicked");
+function stopRecording2() {
+    console.log("stopButton2 clicked");
     //disable the stop button, enable the record too allow for new recordings 
-    stopButton.disabled = true;
-    recordButton.disabled = false;
-    pauseButton.disabled = true;
+    stopButton2.disabled = true;
+    recordButton2.disabled = false;
+    pauseButton2.disabled = true;
     //reset button just in case the recording is stopped while paused 
-    pauseButton.innerHTML = "Pause";
+    pauseButton2.innerHTML = "Pause";
     //tell the recorder to stop the recording 
     rec.stop(); //stop microphone access 
     gumStream.getAudioTracks()[0].stop();
     //create the wav blob and pass it on to createDownloadLink 
-    rec.exportWAV(createDownloadLink);
+    rec.exportWAV(createDownloadLink2);
 }
 
-function createDownloadLink(blob) {
+function createDownloadLink2(blob) {
     var url = URL.createObjectURL(blob);
     var au = document.createElement('audio');
     
@@ -115,7 +115,7 @@ function createDownloadLink(blob) {
         xhr.onload = function(e) {
             if (this.readyState === 4) {
                 console.log("Server returned: ",e.target.responseText);
-                $('#word_audio').val(e.target.responseText);
+                $('#sentence_audio').val(e.target.responseText);
                
             }
         };
@@ -128,5 +128,5 @@ function createDownloadLink(blob) {
     li.appendChild(upload) //add the upload link to li
     
     
-    recordingsList.appendChild(li);
+    recordingsList2.appendChild(li);
 }

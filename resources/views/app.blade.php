@@ -27,6 +27,7 @@
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pages/plans.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pages/reports.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/recorder.css') }}" rel="stylesheet">
 
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> -->
@@ -100,6 +101,7 @@
     <div class="">
         <div class="main-inner">
             <div class="container">
+                @include('flash-message')
                 @yield('content')
 
                 <!-- /row -->
@@ -150,7 +152,9 @@
     <script src="{{ asset('js/chart.min.js') }}"></script>
     <script src="{{ asset('js/ouicards.js') }}"></script>
     <script src="{{ asset('js/image-picker.min.js') }}"></script>
-
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <script src="{{ asset('js/app1.js') }}"></script>
+    <script src="{{ asset('js/app2.js') }}"></script>
 
     @yield('footer_scripts')
 

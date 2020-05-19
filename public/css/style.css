@@ -1300,15 +1300,25 @@ color: #333;
 	float: right;
     display:inline-block;
     padding:2px 5px;
-    background:#871d31;
-
+   
 	
 }
+
+.white-popup {
+	position: relative;
+	background: #FFF;
+	padding: 40px;
+	width: auto;
+	max-width: 200px;
+	margin: 20px auto;
+	text-align: center;
+  }
+  
 
 .cancel_button_hover{
 	float:right;
     display:inline-block;
-    padding:2px 5px;
+    padding:4px 5px;
 	background:#871d31;
     color:#fff;
 }

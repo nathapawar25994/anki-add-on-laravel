@@ -45,6 +45,9 @@ class HomeController extends Controller
         return view('addField');
     }
 
+
+    
+
     public function store(Request $request)
     {
         //Model Validation
@@ -57,7 +60,7 @@ class HomeController extends Controller
 
         // flash()->success('Database was successfully created');
 
-        return redirect('home/');
+        return redirect('home/')->with('success','Deck created successfully!');
     }
 
     public function storeFieldForm(Request $request)
@@ -65,7 +68,7 @@ class HomeController extends Controller
         //Model Validation
         // $this->validate($request, ['name' => 'unique:mst_goals,name']);
         $req = $request->all();
-        // print_r( $req);die;
+        print_r( $req);die;
         if (!empty($request->deck_id) && !empty($req)) {
             $fields = Fields::where('deck_id', $request->deck_id)->pluck('name', 'id');
             if (!empty($fields)) {
@@ -77,13 +80,32 @@ class HomeController extends Controller
                 foreach ($req as  $key => $value) {
                     // print_r($key);die;
                     if (array_key_exists($key, $fields)) {
-                        $fields_nd_val = new FieldsAndValue();
-                        $fields_nd_val->field_id = $key;
-                        $fields_nd_val->value = $value;
-                        $fields_nd_val->status = 1;
-                        $fields_nd_val->number_id = $number_id;
-                        $fields_nd_val->deck_id = $request->deck_id;
-                        $fields_nd_val->save();
+                        if($key == 8){
+                            $fields_nd_val = new FieldsAndValue();
+                            $fields_nd_val->field_id = $key;
+                            $fields_nd_val->value = $value;
+                            $fields_nd_val->status = 1;
+                            $fields_nd_val->number_id = $number_id;
+                            $fields_nd_val->deck_id = $request->deck_id;
+                            $fields_nd_val->save();
+                        }elseif($key == 9){
+                            $fields_nd_val = new FieldsAndValue();
+                            $fields_nd_val->field_id = $key;
+                            $fields_nd_val->value = $value;
+                            $fields_nd_val->status = 1;
+                            $fields_nd_val->number_id = $number_id;
+                            $fields_nd_val->deck_id = $request->deck_id;
+                            $fields_nd_val->save();
+                        }else{
+                            $fields_nd_val = new FieldsAndValue();
+                            $fields_nd_val->field_id = $key;
+                            $fields_nd_val->value = $value;
+                            $fields_nd_val->status = 1;
+                            $fields_nd_val->number_id = $number_id;
+                            $fields_nd_val->deck_id = $request->deck_id;
+                            $fields_nd_val->save();
+                        }
+                       
                     } elseif ($key == 'images') {
 
                         foreach ($req['images'] as  $key => $value) {
@@ -728,7 +750,7 @@ class HomeController extends Controller
 
         // flash()->success('Database was successfully created');
 
-        return redirect('home/');
+        return redirect('home/')->with('success','Card created successfully!');
     }
 
     public function edit($id)
@@ -746,7 +768,7 @@ class HomeController extends Controller
         $decks->save();
         //  flash()->success('Database details were successfully updated');
 
-        return redirect('home/');
+        return redirect('home/')->with('success','Deck details were successfully updated!');
     }
 
     public function delete($id, Request $request)

@@ -34,7 +34,7 @@ Route::group(['prefix' => 'search', 'middleware' => ['auth']], function () {
     Route::get('/sentence', 'SearchController@setSentence')->name('searchSentence');
     // Route::post('/searchImage', 'SearchController@searchImage')->name('searchImage');
     // Route::post('/get_images', 'SearchController@searchImage');
-    Route::post('/get_images', 'SearchController@searchImage')->name('get_images');
+    Route::post('/get_images', 'SearchController@searchImage')->name('get_img');
 
     // Route::get('{id}/edit', 'ProjectController@edit');
     // Route::post('{id}/update', 'ProjectController@update');
@@ -58,6 +58,7 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
     Route::post('/get_fields', 'HomeController@getFields');
     Route::get('add', 'HomeController@add')->name('Add');
     Route::post('/add', 'HomeController@storeFieldForm')->name('store_addField_form');
+    Route::post('/upload_audio_file', 'HomeController@uploadRecordingFile')->name('upload_audio_file');
     Route::get('{id}/study', 'HomeController@startStudy');
     Route::get('{id}/start', 'HomeController@startStudyFromCardType');
 });
