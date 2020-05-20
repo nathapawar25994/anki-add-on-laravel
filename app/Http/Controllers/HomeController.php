@@ -36,6 +36,7 @@ class HomeController extends Controller
 
     public function create()
     {
+        // print_r(env('APP_URL'));die;
         return view('createDeck');
     }
 
@@ -84,7 +85,7 @@ class HomeController extends Controller
                             $fields_nd_val = new FieldsAndValue();
                             $fields_nd_val->field_id = $key;
                             // print_r($value);
-                            $fields_nd_val->value = '<audio controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $value . '\'  ></audio>';
+                            $fields_nd_val->value = '<audio class="audio_card"    id="audio_record" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $value . '\'  ></audio>';
                             $fields_nd_val->status = 1;
                             $fields_nd_val->number_id = $number_id;
                             $fields_nd_val->deck_id = $request->deck_id;
@@ -93,7 +94,7 @@ class HomeController extends Controller
                         }elseif($key == 10){
                             $fields_nd_val = new FieldsAndValue();
                             $fields_nd_val->field_id = $key;
-                            $fields_nd_val->value = '<audio controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $value . '\'  ></audio>';
+                            $fields_nd_val->value = '<audio class="audio_card"    id="audio_record" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $value . '\'  ></audio>';
                             $fields_nd_val->status = 1;
                             $fields_nd_val->number_id = $number_id;
                             $fields_nd_val->deck_id = $request->deck_id;
@@ -204,7 +205,7 @@ class HomeController extends Controller
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 9;
                             $active_word_card->card_type_id = 1;
-                            $active_word_card->value = $req[9];
+                            $active_word_card->value = '<audio class="audio_card"     id="audio_record" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $req[9] . '\'  ></audio>';
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
                             $active_word_card->position = 3;
@@ -226,7 +227,7 @@ class HomeController extends Controller
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 10;
                             $active_word_card->card_type_id = 1;
-                            $active_word_card->value = $req[10];
+                            $active_word_card->value ='<audio class="audio_card"     id="audio_record" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $req[10] . '\'  ></audio>';
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
                             $active_word_card->position = 5;
@@ -285,7 +286,7 @@ class HomeController extends Controller
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 9;
                             $active_word_card->card_type_id = 4;
-                            $active_word_card->value = $req[9];
+                            $active_word_card->value ='<audio class="audio_card"     id="audio_record" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $req[9] . '\'  ></audio>';
                             $active_word_card->type = 1;
                             $active_word_card->deck_id = $request->deck_id;
                             $active_word_card->position = 2;
@@ -329,7 +330,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 9;
-                            $active_word_card->value = $req[9];
+                            $active_word_card->value ='<audio     id="audio_record" class="audio_card"     id="audio_record" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $req[9] . '\'  ></audio>';
                             $active_word_card->card_type_id = 4;
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -412,7 +413,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 9;
-                            $active_word_card->value = $req[9];
+                            $active_word_card->value ='<audio     id="audio_record" class="audio_card" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $req[9] . '\'  ></audio>';
                             $active_word_card->type = 2;
                             $active_word_card->card_type_id = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -470,7 +471,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 10;
-                            $active_word_card->value = $req[10];
+                            $active_word_card->value ='<audio     id="audio_record" class="audio_card" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $req[10] . '\'  ></audio>';
                             $active_word_card->type = 2;
                             $active_word_card->card_type_id = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -480,6 +481,91 @@ class HomeController extends Controller
                             $active_word_card->save();
                         } elseif ($key == 'active_listening_reading_card' && !empty($value)) {
                             $number_id = rand(1, 1000000);
+
+
+                          
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 10;
+                            $active_word_card->value = '<audio id="audio_record" allow=”autoplay” autoplay="autoplay"  class="audio_card" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $req[10] . '\'  ></audio>';
+                            $active_word_card->type = 1;
+                            $active_word_card->card_type_id = 7;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 3;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                          
+
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 1;
+                            $active_word_card->value = $req[1];
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 7;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 1;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 4;
+                            $active_word_card->value = $req[4];
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 7;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 2;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 9;
+                            $active_word_card->value = '<audio allow=”autoplay” autoplay="autoplay"      id="audio_record" class="audio_card" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $req[9] . '\'  ></audio>';
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 7;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 3;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+                            if (!empty($req['images'])) {
+                                $i=1;
+                                foreach ($req['images'] as  $key => $value) {
+                                    if($i == 1){
+                                        $active_word_card = new FeildsValueWithCardType();
+                                        $active_word_card->field_id = 8;
+                                        $style = 'height: 100px; width: 100px; padding-right: 20px;';
+                                        $active_word_card->value = '<img src = \'' . $value . '\' style =\'' . $style . '\' >';
+    
+                                        $active_word_card->type = 2;
+                                        $active_word_card->card_type_id = 7;
+                                        $active_word_card->deck_id = $request->deck_id;
+                                        $active_word_card->position = 4;
+                                        $active_word_card->number_id = $number_id;
+                                        $active_word_card->status = 1;
+                                        $active_word_card->save();
+                                        $i+=1;
+                                    }else{
+                                        $active_word_card = new FeildsValueWithCardType();
+                                        $active_word_card->field_id = 8;
+                                        $style = 'height: 100px; width: 100px; padding-right: 20px;';
+                                        $active_word_card->value = '<img src = \'' . $value . '\' style =\'' . $style . '\' >';
+    
+                                        $active_word_card->type = 2;
+                                        $active_word_card->card_type_id = 7;
+                                        $active_word_card->deck_id = $request->deck_id;
+                                        $active_word_card->position = 4;
+                                        $active_word_card->number_id = $number_id;
+                                        $active_word_card->status = 1;
+                                        $active_word_card->save();
+                                    }
+                                   
+                                }
+                            }
+
                         }
                     }
                 }

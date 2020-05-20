@@ -178,13 +178,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="control-group">
-                                        <label class="control-label" for="name">Sentence-Translation</label>
-                                        <div class="controls">
-                                            <input type="text" class="span10" name="active_sentence_translation_card" id="active_sentence_translation_card">
-                                        </div>
-                                    </div>
-
+                                
                                     <div class="control-group">
                                         <label class="control-label" for="name">Sentence-Translation</label>
                                         <div class="controls">

@@ -94,10 +94,16 @@
         $('#wrong').first().hide();
         $('#searchL').first().hide();
         $('#searchI').first().hide();
-
-
+     
     });
+
+//     window.onload=function(){
+//         // $('#audio_record')[0].play();
+//         document.getElementById('#audio_record').play();
+// }
     $(document).ready(function() {
+        // $('#audio_record').parent().children('current-question').get(0).play();
+        
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -121,7 +121,7 @@ function createDownloadLink(blob) {
         };
         var fd = new FormData();
         fd.append("audio_data", blob, filename);
-        xhr.open("POST", "http://localhost/Anki-search/public/js/upload.php", true);
+        xhr.open("POST", "http://localhost/Anki-search/public/assets/audio/upload.php", true);
         xhr.send(fd);
     })
     li.appendChild(document.createTextNode(" ")) //add a space in between 
