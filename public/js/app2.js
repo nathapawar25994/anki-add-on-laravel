@@ -1,5 +1,5 @@
 //webkitURL is deprecated but nevertheless 
-URL = window.URL || window.webkitURL;
+URL = window.URL || window.webkitURL || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 var gumStream;
 //stream from getUserMedia() 
 var rec;
@@ -7,7 +7,7 @@ var rec;
 var input;
 //MediaStreamAudioSourceNode we'll be recording 
 // shim for AudioContext when it's not avb. 
-var AudioContext = window.AudioContext || window.webkitAudioContext;
+var AudioContext = window.AudioContext || window.webkitAudioContext || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 var audioContext = new AudioContext;
 //new audio context to help us record 
 var recordButton2 = document.getElementById("recordButton2");
