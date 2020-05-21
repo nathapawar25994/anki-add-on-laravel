@@ -142,6 +142,8 @@
     <script src="{{asset('js/bootstrap.js')}}"></script>
     <script src="{{ asset('js/base.js') }}"></script>
 
+    <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"
+        type="text/javascript"></script>
 
     <!-- <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script> -->
     <!-- <script src="js/excanvas.min.js"></script> -->

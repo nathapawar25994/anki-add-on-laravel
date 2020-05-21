@@ -178,16 +178,16 @@ class SearchController extends Controller
             'timeout' => 60,
             'verify' => false
         ));
-
+        $word = str_replace(' ', '-', $word);
        
         $goutteClient->setClient($guzzleClient);
 
         $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/' . $word);
         // print_r('asdas');die;
-        $crawler->filter('.DEF')->each(function ($node) {
-            $results = $node->text();
+        $crawler->filter('.Sense  .DEF')->each(function ($node) {
+            $results = $node->text()."\n";
             echo $results;
-            die;
+           
         });
     }
 
@@ -213,13 +213,59 @@ class SearchController extends Controller
             'verify' => false
         ));
 
-       
+        $word = str_replace(' ', '-', $word);
         $goutteClient->setClient($guzzleClient);
 
         $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/' . $word);
         // print_r('asdas');die;
         $crawler->filter('.amefile')->each(function ($node) {
             $results = $node->html();
+            echo $results;
+            die;
+        });
+    }
+
+    public function getPOS(Request $request)
+    {
+      
+        $word = $request->search;
+        //    print_r($word);die;
+        $goutteClient = new Client();
+        $guzzleClient = new GuzzleClient(array(
+            'timeout' => 60,
+            'verify' => false
+        ));
+
+        $word = str_replace(' ', '-', $word);
+        $goutteClient->setClient($guzzleClient);
+
+        $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/' . $word);
+        // print_r('asdas');die;
+        $crawler->filter('.POS')->each(function ($node) {
+            $results = $node->text();
+            echo $results;
+            die;
+        });
+    }
+
+    public function getGRAM(Request $request)
+    {
+      
+        $word = $request->search;
+        //    print_r($word);die;
+        $goutteClient = new Client();
+        $guzzleClient = new GuzzleClient(array(
+            'timeout' => 60,
+            'verify' => false
+        ));
+
+        $word = str_replace(' ', '-', $word);
+        $goutteClient->setClient($guzzleClient);
+
+        $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/' . $word);
+        // print_r('asdas');die;
+        $crawler->filter('.GRAM')->each(function ($node) {
+            $results = $node->text();
             echo $results;
             die;
         });
@@ -247,7 +293,7 @@ class SearchController extends Controller
             'verify' => false
         ));
 
-       
+        $word = str_replace(' ', '-', $word);
         $goutteClient->setClient($guzzleClient);
 
         $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/' . $word);
@@ -279,6 +325,7 @@ class SearchController extends Controller
             'timeout' => 60,
             'verify' => false
         ));
+        $word = str_replace(' ', '-', $word);
         $goutteClient->setClient($guzzleClient);
         $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/' . $word);
         $crawler->filter('.PronCodes')->each(function ($node) {

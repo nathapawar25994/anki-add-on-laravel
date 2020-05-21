@@ -131,6 +131,15 @@
                                         </div>
                                     </div> <!-- /control-group -->
                                     <input class="span10" name="{{$field->id}}" id="sentence_audio" type="hidden">
+                                    @elseif($field->id == 7)
+                                    <div class="control-group">
+                                        <label class="control-label" for="name"><strong>{{$field->name}}</strong></label>
+                                        <div class="controls">
+                                            <select id="def_arr" class="span10" name="def_arr[]" multiple="multiple">
+                                                
+                                            </select>
+                                        </div> <!-- /controls -->
+                                    </div> <!-- /control-group -->
                                     @else
                                     <div class="control-group">
                                         <label class="control-label" for="name"><strong>{{$field->name}}</strong></label>
@@ -139,6 +148,7 @@
                                         </div> <!-- /controls -->
                                     </div> <!-- /control-group -->
                                     @endif
+
                                     @endforeach
 
 
@@ -178,7 +188,7 @@
                                         </div>
                                     </div>
 
-                                
+
                                     <div class="control-group">
                                         <label class="control-label" for="name">Sentence-Translation</label>
                                         <div class="controls">
@@ -352,13 +362,10 @@
                         <div class="form-group span6">
                             <div class="input-group">
                                 <img class="img-thumbnail zoom" id="editImage" src="images/04.png" style="height: 100px;  padding-right: 20px;" alt="dental">
-
                             </div>
                         </div>
                         <div class="control-group span6">
                             <label class="control-label">Add Logo</label>
-
-
                             <div class="controls">
                                 <label class="radio inline">
                                     <input type="radio" name="radiobtns"> Cross mark on Image
@@ -382,9 +389,20 @@
 
     @section('footer_scripts')
     <!-- <script src="{{asset('js/jquery-1.7.2.min.js')}}"></script> -->
-
+    <!-- <script id="example">
+        require(['bootstrap-multiselect'], function(purchase) {
+           
+        });
+        
+    </script> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2-bootstrap.min.css" integrity="sha256-NAWFcNIZdH+TS1xpWujF/EB/Y8gwBbEOCoaK/eqaer8=" crossorigin="anonymous" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" integrity="sha256-Zlen06xFBs47DKkjTfT2O2v/jpTpLyH513khsWb8aSU=" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js" integrity="sha256-WO6QcQSEM5vwHL4eANUd/mzxRqRyxP3RWj+r6FS5qXk=" crossorigin="anonymous"></script>
+   
+   
     <script type="text/javascript">
         $(document).ready(function() {
+            // $('#def_arr').select2();
 
             $("picker").imagepicker();
             $("select").imagepicker({
@@ -399,11 +417,13 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+            $('#def_arr').select2();
             var deck_id = $('#deck_id').val();
 
-            $('#4').change(function() {
-                var search = $('#4').val();
-
+            $('#3').change(function() {
+                var search = $('#3').val();
+                $('#4').val(search);
                 $.ajax({
                         url: '{{ url("home/get_word")}}',
                         type: "POST",
@@ -414,8 +434,17 @@
                     .done(function(data) {
 
                         var response = data;
+                        var arr = response.split("\n");
+                        arr = arr.filter(v => v != '');
+                        console.log(arr);
 
-                        $('#7').val(response);
+                        $('#def_arr').find('option').remove().end();
+                        for (var i = 0; i < arr.length; i++) {
+                            var option = $('<option></option>').text(arr[i]).val(arr[i]);
+                            $('#def_arr').append(option);
+                        }
+                        // $('#def_arr').show().closest('div').find('.bootstrap-select').hide();
+                        // $('#7').val(response);
                     });
 
                 $.ajax({
@@ -446,6 +475,38 @@
                         console.log(response);
                         $('#5').val(response);
                     });
+
+                $.ajax({
+                        url: '{{ url("home/get_POS")}}',
+                        type: "POST",
+                        data: {
+                            'search': search
+                        }
+                    })
+                    .done(function(data) {
+
+                        var response = data;
+                        console.log(response);
+                        $('#6').val(response);
+                        $.ajax({
+                                url: '{{ url("home/get_GRAM")}}',
+                                type: "POST",
+                                data: {
+                                    'search': search
+                                }
+                            })
+                            .done(function(data) {
+
+                                var response = data;
+                                console.log(response);
+                                // if()
+                                var pos_value = $('#6').val();
+                                var set_value = pos_value + " " + response;
+                                $('#6').val(set_value);
+                            });
+                    });
+
+
                 $.ajax({
                         url: '{{ url("search/get_images")}}',
                         type: "POST",
@@ -565,7 +626,7 @@
                     // $("#selected_picker").data('picker').sync_picker_with_select();
                     $("#selected_picker").imagepicker();
                     img_arr.push(imageValue);
-                    setEditButton();
+                    // setEditButton();
                     setCancelButton();
 
                 }
@@ -585,15 +646,15 @@
             }
 
 
-            // create edit button on Image
-            function setEditButton() {
+            // // create edit button on Image
+            // function setEditButton() {
 
-                $(".selected_images .thumbnail").each(function() {
-                    $('<a hrf="#second" data-toggle="modal" data-target="#demo-2" class="cancel_button second-popup-link icon-large icon-pencil"></a>').prependTo(this);
-                });
+            //     $(".selected_images .thumbnail").each(function() {
+            //         $('<a hrf="#second" data-toggle="modal" data-target="#demo-2" class="cancel_button second-popup-link icon-large icon-pencil"></a>').prependTo(this);
+            //     });
 
 
-            }
+            // }
 
             $(document).on('click', '.cancel_button_hover', function(e) {
                 e.preventDefault();
@@ -620,6 +681,13 @@
             //     closeBtnInside: true
             // });
 
+
         });
+        // $(function () {
+        //     $('#def_arr').multiselect({
+        //         includeSelectAllOption: true
+        //     });
+
+        // });
     </script>
     @stop 

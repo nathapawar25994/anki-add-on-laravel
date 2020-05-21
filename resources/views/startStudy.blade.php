@@ -14,8 +14,8 @@
 
                     <div class="info-box" id="flashcards">
                         <div class="row-fluid stats-box ">
-                            <div id='current-question' style="color:{{$cards->color}};text-align:Center" class="main"><br></div>
-                            <div id='current-answer' style="color:{{$cards->color}};text-align:Center"><br></div>
+                            <div id='current-question' style="color:{{$cards->color}};text-align:Center" class="main"></div>
+                            <div id='current-answer' style="color:{{$cards->color}};text-align:Center"></div>
 
                             <ul>
 
@@ -31,14 +31,14 @@
                                     </div> <!-- /plan-title -->
                                     @else
                                     <div class="plan-title question">
-                                        {{$question->value.'<br>'}}
+                                        {{$question->value}}
                                     </div> <!-- /plan-title -->
                                     @endif
                                     @endif
                                     @endforeach
                                     @foreach ($answers as $answer)
                                     @if($answer->number_id ==$all->number_id)
-                                    <div class="answer"><span>{{'<br>'.$answer->value}}</span></div>
+                                    <div class="answer"><span>{{$answer->value}}</span></div>
                                     @endif
                                     @endforeach
                                 </li>

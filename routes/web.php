@@ -53,6 +53,8 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
     Route::post('/get_sound', 'SearchController@getSound');
     Route::post('/get_word', 'SearchController@searchWord');
     Route::post('/get_PronCodes', 'SearchController@getPronCodes');
+    Route::post('/get_POS', 'SearchController@getPOS');
+    Route::post('/get_GRAM', 'SearchController@getGRAM');
     Route::post('/update_count', 'HomeController@updateCount');
     Route::post('/get_images', 'SearchController@searchImage');
     Route::post('/get_fields', 'HomeController@getFields');
