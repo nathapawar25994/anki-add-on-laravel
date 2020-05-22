@@ -1155,7 +1155,17 @@ color: #333;
 }
 
 
-
+.modal_box_for_image{
+	position: fixed;
+    top: 50%!important;
+    left: 50%!important;
+    transform: translate(-50%, -50%);
+    z-index: 1050;
+    overflow: auto;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
 
 
 /*------------------------------------------------------------------

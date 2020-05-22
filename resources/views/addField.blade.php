@@ -48,7 +48,7 @@
                                         <label class="control-label"><strong>Images</strong></label>
                                         <div class="controls">
                                             <a href="#myModal" role="button" class="btn btn-success" data-toggle="modal">Get Images</a>
-                                            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div id="myModal" class="modal hide fade modal_box_for_image" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-xl">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -418,7 +418,9 @@
                 }
             });
 
-            $('#def_arr').select2();
+            $('#def_arr').select2({
+                tags: true
+            });
             var deck_id = $('#deck_id').val();
 
             $('#3').change(function() {

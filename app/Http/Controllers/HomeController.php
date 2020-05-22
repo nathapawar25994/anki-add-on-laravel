@@ -252,7 +252,7 @@ class HomeController extends Controller
                             $active_word_sentence_card->position = 1;
                             $active_word_sentence_card->number_id = $number_id;
                             $active_word_sentence_card->status = 1;
-                            // $active_word_sentence_card->save();<img class="picNameId" name="picNameId" style="height: 100px; width: 100px; display:block ;">'
+                            $active_word_sentence_card->save();
                             //    print_r();die;
                             if (!empty($req['images'])) {
                                 $i = 1;
@@ -623,7 +623,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = "<br>" . '<span style="color:yellow;text-align:Center" >' . $req['extra_card1_back'] . '</span>';
+                    $extra_card->value = "<br>" . '<span style="color:#33bb2a;text-decoration: underline;text-align:Center" >' . $req['extra_card1_back'] . '</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -686,7 +686,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = "<br>" . '<span style="color:yellow;text-align:Center" >' . $req['extra_card2_back'] . '</span>';
+                    $extra_card->value = "<br>" . '<span style="color:#33bb2a;text-decoration: underline;text-align:Center" >' . $req['extra_card2_back'] . '</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -751,7 +751,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = "<br>" . '<span style="color:yellow;text-align:Center" >' . $req['extra_card3_back'] . '</span>';
+                    $extra_card->value = "<br>" . '<span style="color:#33bb2a;text-decoration: underline;text-align:Center" >' . $req['extra_card3_back'] . '</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
@@ -814,7 +814,7 @@ class HomeController extends Controller
 
                     $extra_card = new FeildsValueWithCardType();
                     $extra_card->field_id = 12;
-                    $extra_card->value = "<br>" . '<span style="color:yellow;text-align:Center" >' . $req['extra_card4_back'] . '</span>';
+                    $extra_card->value = "<br>" . '<span style="color:#33bb2a;text-decoration: underline;text-align:Center" >' . $req['extra_card4_back'] . '</span>';
                     $extra_card->type = 2;
                     $extra_card->card_type_id = 6;
                     $extra_card->deck_id = $request->deck_id;
