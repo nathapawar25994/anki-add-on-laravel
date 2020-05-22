@@ -132,7 +132,7 @@ class HomeController extends Controller
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 2;
                             $active_word_card->card_type_id = 1;
-                            $active_word_card->value = "<br>" . $req[2];
+                            $active_word_card->value = "<br>" . '<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >'.$req[2].'</span>';
                             $active_word_card->type = 1;
                             $active_word_card->deck_id = $request->deck_id;
                             $active_word_card->position = 1;
@@ -160,7 +160,7 @@ class HomeController extends Controller
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 6;
                             $active_word_card->card_type_id = 1;
-                            $active_word_card->value = "<br>" . $req[6];
+                            $active_word_card->value = "<br>" .'<span style="color:red;text-align:Center" >'. $req[6].'</span>';
                             $active_word_card->type = 1;
                             $active_word_card->deck_id = $request->deck_id;
                             $active_word_card->position = 3;
@@ -172,7 +172,7 @@ class HomeController extends Controller
                                 foreach ($req['def_arr'] as  $key => $value) {
                                     $active_word_card = new FeildsValueWithCardType();
                                     $active_word_card->field_id = 7;
-                                    $active_word_card->value = "<br>" . $value;
+                                    $active_word_card->value = "<br>" .'<span style="color:#581e3e;font-style: italic;text-align:Center" >'. $value .'</span>';
                                     $active_word_card->card_type_id = 1;
                                     $active_word_card->type = 1;
                                     $active_word_card->deck_id = $request->deck_id;
@@ -188,7 +188,7 @@ class HomeController extends Controller
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 4;
                             $active_word_card->card_type_id = 1;
-                            $active_word_card->value = "<br>" . $req[4];
+                            $active_word_card->value = "<br>" .'<span style="color:black;text-decoration: underline;text-align:Center" >'. $req[4].'</span>';
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
                             $active_word_card->position = 1;
@@ -200,7 +200,7 @@ class HomeController extends Controller
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 5;
                             $active_word_card->card_type_id = 1;
-                            $active_word_card->value = "<br>" . $req[5];
+                            $active_word_card->value = "<br>" .'<span style="color:red;text-align:Center" >'. $req[5].'</span>';
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
                             $active_word_card->position = 2;
@@ -221,7 +221,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 1;
-                            $active_word_card->value = "<br>" . $req[1];
+                            $active_word_card->value = "<br>" .'<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >'. $req[1].'</span>';
                             $active_word_card->card_type_id = 1;
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -245,7 +245,7 @@ class HomeController extends Controller
                             $number_id = rand(1, 1000000);
                             $active_word_sentence_card = new FeildsValueWithCardType();
                             $active_word_sentence_card->field_id = 4;
-                            $active_word_sentence_card->value = "<br>" . $req[4];
+                            $active_word_sentence_card->value = "<br>" .'<span style="color:black;text-decoration: underline;text-align:Center" >'. $req[4].'</span>';
                             $active_word_sentence_card->card_type_id = 4;
                             $active_word_sentence_card->type = 1;
                             $active_word_sentence_card->deck_id = $request->deck_id;
@@ -300,7 +300,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 6;
-                            $active_word_card->value = "<br>" . $req[6];
+                            $active_word_card->value = "<br>" .'<span style="color:red;text-align:Center" >'. $req[6].'</span>';
                             $active_word_card->card_type_id = 4;
                             $active_word_card->type = 1;
                             $active_word_card->deck_id = $request->deck_id;
@@ -313,7 +313,7 @@ class HomeController extends Controller
                                 foreach ($req['def_arr'] as  $key => $value) {
                                     $active_word_card = new FeildsValueWithCardType();
                                     $active_word_card->field_id = 7;
-                                    $active_word_card->value = "<br>" . $value;
+                                    $active_word_card->value = "<br>" . '<span style="color:#581e3e;font-style: italic;text-align:Center" >'.$value.'</span>';
                                     $active_word_card->card_type_id = 4;
                                     $active_word_card->type = 1;
                                     $active_word_card->deck_id = $request->deck_id;
@@ -328,7 +328,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 1;
-                            $active_word_card->value = "<br>" . $req[1];
+                            $active_word_card->value = "<br>" .'<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >'. $req[1].'</span>';
                             $active_word_card->card_type_id = 4;
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -350,7 +350,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 4;
-                            $active_word_card->value = "<br>" . $req[4];
+                            $active_word_card->value = "<br>" .'<span style="color:black;text-decoration: underline;text-align:Center" >'. $req[4].'</span>';
                             $active_word_card->card_type_id = 4;
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -361,7 +361,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 5;
-                            $active_word_card->value = "<br>" . $req[5];
+                            $active_word_card->value = "<br>" .'<span style="color:red;text-align:Center" >'. $req[5].'</span>';
                             $active_word_card->card_type_id = 4;
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -373,7 +373,7 @@ class HomeController extends Controller
                             $number_id = rand(1, 1000000);
                             $active_word_sentence_card = new FeildsValueWithCardType();
                             $active_word_sentence_card->field_id = 4;
-                            $active_word_sentence_card->value = "<br>" . $req[4];
+                            $active_word_sentence_card->value = "<br>" .'<span style="color:black;text-decoration: underline;text-align:Center" >'. $req[4].'</span>';
                             $active_word_sentence_card->card_type_id = 2;
                             $active_word_sentence_card->type = 2;
                             $active_word_sentence_card->deck_id = $request->deck_id;
@@ -436,7 +436,7 @@ class HomeController extends Controller
                                 foreach ($req['def_arr'] as  $key => $value) {
                                     $active_word_card = new FeildsValueWithCardType();
                                     $active_word_card->field_id = 7;
-                                    $active_word_card->value = "<br>" . $value;
+                                    $active_word_card->value = "<br>" . '<span style="color:#581e3e;font-style: italic;text-align:Center" >'. $value.'</span>';
                                     $active_word_card->type = 1;
                                     $active_word_card->card_type_id = 2;
                                     $active_word_card->deck_id = $request->deck_id;
@@ -450,7 +450,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 1;
-                            $active_word_card->value = "<br>" . $req[1];
+                            $active_word_card->value = "<br>" .'<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >'. $req[1].'</span>';
                             $active_word_card->type = 2;
                             $active_word_card->card_type_id = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -461,7 +461,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 6;
-                            $active_word_card->value = "<br>" . $req[6];
+                            $active_word_card->value = "<br>" .'<span style="color:red;text-align:Center" >'. $req[6].'</span>';
                             $active_word_card->type = 1;
                             $active_word_card->card_type_id = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -473,7 +473,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 5;
-                            $active_word_card->value = "<br>" . $req[5];
+                            $active_word_card->value = "<br>" .'<span style="color:red;text-align:Center" >'. $req[5].'</span>';
                             $active_word_card->type = 2;
                             $active_word_card->card_type_id = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -514,7 +514,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 1;
-                            $active_word_card->value = "<br>" . $req[1];
+                            $active_word_card->value = "<br>" .'<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >'. $req[1].'</span>';
                             $active_word_card->type = 2;
                             $active_word_card->card_type_id = 7;
                             $active_word_card->deck_id = $request->deck_id;
@@ -525,7 +525,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 4;
-                            $active_word_card->value = "<br>" . $req[4];
+                            $active_word_card->value = "<br>" .'<span style="color:black;text-decoration: underline;text-align:Center" >'. $req[4].'</span>';
                             $active_word_card->type = 2;
                             $active_word_card->card_type_id = 7;
                             $active_word_card->deck_id = $request->deck_id;
