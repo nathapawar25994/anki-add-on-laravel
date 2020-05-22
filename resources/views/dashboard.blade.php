@@ -15,7 +15,7 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th> Name </th>
+                    <th>Name</th>
                     <th> Due </th>
                     <th> New </th>
                     <th class="td-actions">Action </th>

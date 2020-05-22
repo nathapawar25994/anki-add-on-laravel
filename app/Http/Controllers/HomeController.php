@@ -169,10 +169,14 @@ class HomeController extends Controller
                             $active_word_card->save();
 
                             if (!empty($req['def_arr'])) {
+                                $i=1;
                                 foreach ($req['def_arr'] as  $key => $value) {
+
+                                    $value = str_replace($req[4], '____', $value); 
+
                                     $active_word_card = new FeildsValueWithCardType();
                                     $active_word_card->field_id = 7;
-                                    $active_word_card->value = "<br>" .'<span style="color:#581e3e;font-style: italic;text-align:Center" >'. $value .'</span>';
+                                    $active_word_card->value = "<br>" .'<span style="color:#581e3e;font-style: italic;text-align:Center" >'.$i .'.'. $value .'</span>';
                                     $active_word_card->card_type_id = 1;
                                     $active_word_card->type = 1;
                                     $active_word_card->deck_id = $request->deck_id;
@@ -180,6 +184,7 @@ class HomeController extends Controller
                                     $active_word_card->number_id = $number_id;
                                     $active_word_card->status = 1;
                                     $active_word_card->save();
+                                    $i++;
                                 }
                             }
 
@@ -310,10 +315,12 @@ class HomeController extends Controller
                             $active_word_card->save();
 
                             if (!empty($req['def_arr'])) {
+                                $i=1;
                                 foreach ($req['def_arr'] as  $key => $value) {
+                                    $value = str_replace($req[4], '____', $value); 
                                     $active_word_card = new FeildsValueWithCardType();
                                     $active_word_card->field_id = 7;
-                                    $active_word_card->value = "<br>" . '<span style="color:#581e3e;font-style: italic;text-align:Center" >'.$value.'</span>';
+                                    $active_word_card->value = "<br>" . '<span style="color:#581e3e;font-style: italic;text-align:Center" >'.$i.'.'.$value.'</span>';
                                     $active_word_card->card_type_id = 4;
                                     $active_word_card->type = 1;
                                     $active_word_card->deck_id = $request->deck_id;
@@ -321,6 +328,7 @@ class HomeController extends Controller
                                     $active_word_card->number_id = $number_id;
                                     $active_word_card->status = 1;
                                     $active_word_card->save();
+                                    $i++;
                                 }
                             }
 
@@ -433,10 +441,12 @@ class HomeController extends Controller
 
 
                             if (!empty($req['def_arr'])) {
+                                $i=1;
                                 foreach ($req['def_arr'] as  $key => $value) {
+                                    $value = str_replace($req[4], '____', $value); 
                                     $active_word_card = new FeildsValueWithCardType();
                                     $active_word_card->field_id = 7;
-                                    $active_word_card->value = "<br>" . '<span style="color:#581e3e;font-style: italic;text-align:Center" >'. $value.'</span>';
+                                    $active_word_card->value = "<br>" . '<span style="color:#581e3e;font-style: italic;text-align:Center" >'.$i.'.'. $value.'</span>';
                                     $active_word_card->type = 1;
                                     $active_word_card->card_type_id = 2;
                                     $active_word_card->deck_id = $request->deck_id;
@@ -444,6 +454,8 @@ class HomeController extends Controller
                                     $active_word_card->number_id = $number_id;
                                     $active_word_card->status = 1;
                                     $active_word_card->save();
+                                    $i++;
+
                                 }
                             }
                           
