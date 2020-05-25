@@ -439,7 +439,7 @@
                         console.log(response);
 
                         $('#4').val(response);
-
+// alert($('#4').val())
                         var search =  $('#4').val();
                         $.ajax({
                         url: '{{ url("home/get_word")}}',

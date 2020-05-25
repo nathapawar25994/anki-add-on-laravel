@@ -269,6 +269,9 @@ class SearchController extends Controller
             echo $results;
             die;
         });
+
+        echo $word;
+
     }
 
     public function getGRAM(Request $request)

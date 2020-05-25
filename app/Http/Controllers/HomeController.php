@@ -69,7 +69,7 @@ class HomeController extends Controller
         //Model Validation
         // $this->validate($request, ['name' => 'unique:mst_goals,name']);
         $req = $request->all();
-        // print_r($req['def_arr']);
+        // print_r($req);
         // die;
         if (!empty($request->deck_id) && !empty($req)) {
             $fields = Fields::where('deck_id', $request->deck_id)->pluck('name', 'id');
@@ -132,7 +132,7 @@ class HomeController extends Controller
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 2;
                             $active_word_card->card_type_id = 1;
-                            $active_word_card->value = "<br>" . '<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >'.$req[2].'</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >' . $req[2] . '</span>';
                             $active_word_card->type = 1;
                             $active_word_card->deck_id = $request->deck_id;
                             $active_word_card->position = 1;
@@ -160,7 +160,7 @@ class HomeController extends Controller
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 6;
                             $active_word_card->card_type_id = 1;
-                            $active_word_card->value = "<br>" .'<span style="color:red;text-align:Center" >'. $req[6].'</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:red;text-align:Center" >' . $req[6] . '</span>';
                             $active_word_card->type = 1;
                             $active_word_card->deck_id = $request->deck_id;
                             $active_word_card->position = 3;
@@ -169,14 +169,14 @@ class HomeController extends Controller
                             $active_word_card->save();
 
                             if (!empty($req['def_arr'])) {
-                                $i=1;
+                                $i = 1;
                                 foreach ($req['def_arr'] as  $key => $value) {
 
-                                    $value = str_replace($req[4], '____', $value); 
+                                    $value = str_replace($req[3], '____', $value);
 
                                     $active_word_card = new FeildsValueWithCardType();
                                     $active_word_card->field_id = 7;
-                                    $active_word_card->value = "<br>" .'<span style="color:#581e3e;font-style: italic;text-align:Center" >'.$i .'.'. $value .'</span>';
+                                    $active_word_card->value = "<br>" . '<span style="color:#581e3e;font-style: italic;text-align:Center" >' . $i . '.' . $value . '</span>';
                                     $active_word_card->card_type_id = 1;
                                     $active_word_card->type = 1;
                                     $active_word_card->deck_id = $request->deck_id;
@@ -191,9 +191,9 @@ class HomeController extends Controller
 
 
                             $active_word_card = new FeildsValueWithCardType();
-                            $active_word_card->field_id = 4;
+                            $active_word_card->field_id = 3;
                             $active_word_card->card_type_id = 1;
-                            $active_word_card->value = "<br>" .'<span style="color:black;text-decoration: underline;text-align:Center" >'. $req[4].'</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' . $req[3] . '</span>';
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
                             $active_word_card->position = 1;
@@ -205,7 +205,7 @@ class HomeController extends Controller
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 5;
                             $active_word_card->card_type_id = 1;
-                            $active_word_card->value = "<br>" .'<span style="color:red;text-align:Center" >'. $req[5].'</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:red;text-align:Center" >' . $req[5] . '</span>';
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
                             $active_word_card->position = 2;
@@ -226,7 +226,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 1;
-                            $active_word_card->value = "<br>" .'<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >'. $req[1].'</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >' . $req[1] . '</span>';
                             $active_word_card->card_type_id = 1;
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -249,8 +249,8 @@ class HomeController extends Controller
 
                             $number_id = rand(1, 1000000);
                             $active_word_sentence_card = new FeildsValueWithCardType();
-                            $active_word_sentence_card->field_id = 4;
-                            $active_word_sentence_card->value = "<br>" .'<span style="color:black;text-decoration: underline;text-align:Center" >'. $req[4].'</span>';
+                            $active_word_sentence_card->field_id = 3;
+                            $active_word_sentence_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' . $req[3] . '</span>';
                             $active_word_sentence_card->card_type_id = 4;
                             $active_word_sentence_card->type = 1;
                             $active_word_sentence_card->deck_id = $request->deck_id;
@@ -305,7 +305,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 6;
-                            $active_word_card->value = "<br>" .'<span style="color:red;text-align:Center" >'. $req[6].'</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:red;text-align:Center" >' . $req[6] . '</span>';
                             $active_word_card->card_type_id = 4;
                             $active_word_card->type = 1;
                             $active_word_card->deck_id = $request->deck_id;
@@ -315,12 +315,12 @@ class HomeController extends Controller
                             $active_word_card->save();
 
                             if (!empty($req['def_arr'])) {
-                                $i=1;
+                                $i = 1;
                                 foreach ($req['def_arr'] as  $key => $value) {
-                                    $value = str_replace($req[4], '____', $value); 
+                                    $value = str_replace($req[3], '____', $value);
                                     $active_word_card = new FeildsValueWithCardType();
                                     $active_word_card->field_id = 7;
-                                    $active_word_card->value = "<br>" . '<span style="color:#581e3e;font-style: italic;text-align:Center" >'.$i.'.'.$value.'</span>';
+                                    $active_word_card->value = "<br>" . '<span style="color:#581e3e;font-style: italic;text-align:Center" >' . $i . '.' . $value . '</span>';
                                     $active_word_card->card_type_id = 4;
                                     $active_word_card->type = 1;
                                     $active_word_card->deck_id = $request->deck_id;
@@ -336,7 +336,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 1;
-                            $active_word_card->value = "<br>" .'<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >'. $req[1].'</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >' . $req[1] . '</span>';
                             $active_word_card->card_type_id = 4;
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -357,8 +357,8 @@ class HomeController extends Controller
                             $active_word_card->save();
 
                             $active_word_card = new FeildsValueWithCardType();
-                            $active_word_card->field_id = 4;
-                            $active_word_card->value = "<br>" .'<span style="color:black;text-decoration: underline;text-align:Center" >'. $req[4].'</span>';
+                            $active_word_card->field_id = 3;
+                            $active_word_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' . $req[3] . '</span>';
                             $active_word_card->card_type_id = 4;
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -369,7 +369,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 5;
-                            $active_word_card->value = "<br>" .'<span style="color:red;text-align:Center" >'. $req[5].'</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:red;text-align:Center" >' . $req[5] . '</span>';
                             $active_word_card->card_type_id = 4;
                             $active_word_card->type = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -380,8 +380,8 @@ class HomeController extends Controller
                         } elseif ($key == 'active_picture_word_card' && !empty($value)) {
                             $number_id = rand(1, 1000000);
                             $active_word_sentence_card = new FeildsValueWithCardType();
-                            $active_word_sentence_card->field_id = 4;
-                            $active_word_sentence_card->value = "<br>" .'<span style="color:black;text-decoration: underline;text-align:Center" >'. $req[4].'</span>';
+                            $active_word_sentence_card->field_id = 3;
+                            $active_word_sentence_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' . $req[3] . '</span>';
                             $active_word_sentence_card->card_type_id = 2;
                             $active_word_sentence_card->type = 2;
                             $active_word_sentence_card->deck_id = $request->deck_id;
@@ -441,12 +441,12 @@ class HomeController extends Controller
 
 
                             if (!empty($req['def_arr'])) {
-                                $i=1;
+                                $i = 1;
                                 foreach ($req['def_arr'] as  $key => $value) {
-                                    $value = str_replace($req[4], '____', $value); 
+                                    $value = str_replace($req[3], '____', $value);
                                     $active_word_card = new FeildsValueWithCardType();
                                     $active_word_card->field_id = 7;
-                                    $active_word_card->value = "<br>" . '<span style="color:#581e3e;font-style: italic;text-align:Center" >'.$i.'.'. $value.'</span>';
+                                    $active_word_card->value = "<br>" . '<span style="color:#581e3e;font-style: italic;text-align:Center" >' . $i . '.' . $value . '</span>';
                                     $active_word_card->type = 1;
                                     $active_word_card->card_type_id = 2;
                                     $active_word_card->deck_id = $request->deck_id;
@@ -455,14 +455,13 @@ class HomeController extends Controller
                                     $active_word_card->status = 1;
                                     $active_word_card->save();
                                     $i++;
-
                                 }
                             }
-                          
+
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 1;
-                            $active_word_card->value = "<br>" .'<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >'. $req[1].'</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >' . $req[1] . '</span>';
                             $active_word_card->type = 2;
                             $active_word_card->card_type_id = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -473,7 +472,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 6;
-                            $active_word_card->value = "<br>" .'<span style="color:red;text-align:Center" >'. $req[6].'</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:red;text-align:Center" >' . $req[6] . '</span>';
                             $active_word_card->type = 1;
                             $active_word_card->card_type_id = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -485,7 +484,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 5;
-                            $active_word_card->value = "<br>" .'<span style="color:red;text-align:Center" >'. $req[5].'</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:red;text-align:Center" >' . $req[5] . '</span>';
                             $active_word_card->type = 2;
                             $active_word_card->card_type_id = 2;
                             $active_word_card->deck_id = $request->deck_id;
@@ -507,9 +506,6 @@ class HomeController extends Controller
                         } elseif ($key == 'active_listening_reading_card' && !empty($value)) {
                             $number_id = rand(1, 1000000);
 
-
-
-
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 10;
                             $active_word_card->value = "<br>" . '<audio id="audio_record" allow=”autoplay” autoplay="autoplay"  class="audio_card" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $req[10] . '\'  ></audio>';
@@ -521,12 +517,9 @@ class HomeController extends Controller
                             $active_word_card->status = 1;
                             $active_word_card->save();
 
-
-
-
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 1;
-                            $active_word_card->value = "<br>" .'<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >'. $req[1].'</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >' . $req[1] . '</span>';
                             $active_word_card->type = 2;
                             $active_word_card->card_type_id = 7;
                             $active_word_card->deck_id = $request->deck_id;
@@ -536,8 +529,8 @@ class HomeController extends Controller
                             $active_word_card->save();
 
                             $active_word_card = new FeildsValueWithCardType();
-                            $active_word_card->field_id = 4;
-                            $active_word_card->value = "<br>" .'<span style="color:black;text-decoration: underline;text-align:Center" >'. $req[4].'</span>';
+                            $active_word_card->field_id = 3;
+                            $active_word_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' . $req[3] . '</span>';
                             $active_word_card->type = 2;
                             $active_word_card->card_type_id = 7;
                             $active_word_card->deck_id = $request->deck_id;
@@ -589,6 +582,140 @@ class HomeController extends Controller
                                     }
                                 }
                             }
+                        } elseif ($key == 'active_spelling_card' && !empty($value)) {
+                            $number_id = rand(1, 1000000);
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 12;
+                            $active_word_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' .'Spell:' . '</span>';
+                            $active_word_card->type = 1;
+                            $active_word_card->card_type_id = 10;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 1;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+
+                           $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 9;
+                            $active_word_card->value = "<br>" . '<audio allow=”autoplay” autoplay="autoplay"      id="audio_record" class="audio_card" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $req[9] . '\'  ></audio>';
+                            $active_word_card->type = 1;
+                            $active_word_card->card_type_id = 10;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 2;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 2;
+                            $active_word_card->value = "<br>" . '<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >' . $req[2] . '</span>';
+                            $active_word_card->type = 1;
+                            $active_word_card->card_type_id = 10;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 3;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                          
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 10;
+                            $active_word_card->value = "<br>" . '<audio id="audio_record" allow=”autoplay” autoplay="autoplay"  class="audio_card" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $req[10] . '\'  ></audio>';
+                            $active_word_card->type = 1;
+                            $active_word_card->card_type_id = 10;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 4;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 3;
+                            $active_word_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' . $req[3] . '</span>';
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 10;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 1;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 5;
+                            $active_word_card->value = "<br>" . '<span style="color:red;text-align:Center" >' . $req[5] . '</span>';
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 10;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 2;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 1;
+                            $active_word_card->value = "<br>" . '<span style="color:blue;-webkit-text-stroke-width: medium;text-align:Center" >' . $req[1] . '</span>';
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 10;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 3;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+                            
+                            
+                        } elseif ($key == 'active_pronunciation_card' && !empty($value)) {
+                            $number_id = rand(1, 1000000);
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 12;
+                            $active_word_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' .'Pronounce this word:' . '</span>';
+                            $active_word_card->type = 1;
+                            $active_word_card->card_type_id = 9;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 1;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 3;
+                            $active_word_card->value = "<br>" . '<span style="color:blue;text-decoration:" >' . $req[3] . '</span>';
+                            $active_word_card->type = 1;
+                            $active_word_card->card_type_id = 9;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 2;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 5;
+                            $active_word_card->value = "<br>" . '<span style="color:red;text-align:Center" >' . $req[5] . '</span>';
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 9;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 1;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+
+                           $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 9;
+                            $active_word_card->value = "<br>" . '<audio   id="audio_record" class="audio_card" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $req[9] . '\'  ></audio>';
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 9;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 2;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            
                         }
                     }
                 }
