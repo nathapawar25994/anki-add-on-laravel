@@ -248,6 +248,29 @@ class SearchController extends Controller
         });
     }
 
+    public function getConjugate(Request $request)
+    {
+      
+        $word = $request->search;
+        //    print_r($word);die;
+        $goutteClient = new Client();
+        $guzzleClient = new GuzzleClient(array(
+            'timeout' => 60,
+            'verify' => false
+        ));
+
+        $word = str_replace(' ', '-', $word);
+        $goutteClient->setClient($guzzleClient);
+
+        $crawler = $goutteClient->request('GET', 'https://conjugator.reverso.net/conjugation-english-verb-'.$word.'.html');
+        // print_r('asdas');die;
+        $crawler->filter('.targetted-word-transl')->each(function ($node) {
+            $results = $node->text();
+            echo $results;
+            die;
+        });
+    }
+
     public function getGRAM(Request $request)
     {
       

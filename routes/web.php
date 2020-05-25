@@ -51,6 +51,7 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
     Route::get('{id}/delete', 'HomeController@delete');
     Route::post('/get_details_of_word', 'SearchController@searchAllDetails');
     Route::post('/get_sound', 'SearchController@getSound');
+    Route::post('/get_conjugate', 'SearchController@getConjugate');
     Route::post('/get_word', 'SearchController@searchWord');
     Route::post('/get_PronCodes', 'SearchController@getPronCodes');
     Route::post('/get_POS', 'SearchController@getPOS');

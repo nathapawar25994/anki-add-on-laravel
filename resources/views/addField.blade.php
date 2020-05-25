@@ -136,7 +136,7 @@
                                         <label class="control-label" for="name"><strong>{{$field->name}}</strong></label>
                                         <div class="controls">
                                             <select id="def_arr" class="span10" name="def_arr[]" multiple="multiple">
-                                                
+
                                             </select>
                                         </div> <!-- /controls -->
                                     </div> <!-- /control-group -->
@@ -397,9 +397,9 @@
     </script> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2-bootstrap.min.css" integrity="sha256-NAWFcNIZdH+TS1xpWujF/EB/Y8gwBbEOCoaK/eqaer8=" crossorigin="anonymous" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" integrity="sha256-Zlen06xFBs47DKkjTfT2O2v/jpTpLyH513khsWb8aSU=" crossorigin="anonymous" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js" integrity="sha256-WO6QcQSEM5vwHL4eANUd/mzxRqRyxP3RWj+r6FS5qXk=" crossorigin="anonymous"></script>
-   
-   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js" integrity="sha256-WO6QcQSEM5vwHL4eANUd/mzxRqRyxP3RWj+r6FS5qXk=" crossorigin="anonymous"></script>
+
+
     <script type="text/javascript">
         $(document).ready(function() {
             // $('#def_arr').select2();
@@ -424,9 +424,24 @@
             var deck_id = $('#deck_id').val();
 
             $('#3').change(function() {
-                var search = $('#3').val();
-                $('#4').val(search);
+
+                var search= $('#3').val();
                 $.ajax({
+                        url: '{{ url("home/get_conjugate")}}',
+                        type: "POST",
+                        data: {
+                            'search': search
+                        }
+                    })
+                    .done(function(data) {
+
+                        var response = data;
+                        console.log(response);
+
+                        $('#4').val(response);
+
+                        var search =  $('#4').val();
+                        $.ajax({
                         url: '{{ url("home/get_word")}}',
                         type: "POST",
                         data: {
@@ -448,7 +463,6 @@
                         // $('#def_arr').show().closest('div').find('.bootstrap-select').hide();
                         // $('#7').val(response);
                     });
-
                 $.ajax({
                         url: '{{ url("home/get_sound")}}',
                         type: "POST",
@@ -509,36 +523,17 @@
                     });
 
 
-                $.ajax({
-                        url: '{{ url("search/get_images")}}',
-                        type: "POST",
-                        data: {
-                            'search': search
-                        }
-                    })
-                    .done(function(data) {
-                        var response = JSON.parse(data);
-                        console.log(response);
-                        $('#picHolder').empty();
-                        for (i = 0; i < response.length; i++) {
-                            // var file = ticketFileAttahmentName1[i];
-                            //  alert(response['i']);
-                            var src = response[i].link;
-                            var pic = $('<img  name=\'pic' + i + '\' id=\'pic' + i + '\' class="picNameId" style="height: 100px; width: 100px; padding-right: 20px; display: ;">');
 
-                            pic.attr('src', src);
-                            $('#picHolder').append(pic);
-                            var style = 'height: 100px; width: 100px; padding-right: 20px;';
-                            var src1 = ' <img src = \'' + src + '\' style =\'' + style + '\' >';
-
-                            $('#picHolder').append("<input type='hidden' name=\"pic" + i + "\" value=\"" + src1 + "\" >");
-
-                        }
                     });
 
-
-
             });
+
+            // $('#4').change(function() {
+
+            //    var search= $('#4').val();
+              
+
+            // });
 
 
 
