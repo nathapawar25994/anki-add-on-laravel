@@ -28,6 +28,7 @@
     <link href="{{ asset('css/pages/plans.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pages/reports.css') }}" rel="stylesheet">
     <link href="{{ asset('css/recorder.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/demo.min.css') }}" rel="stylesheet"> -->
 
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> -->

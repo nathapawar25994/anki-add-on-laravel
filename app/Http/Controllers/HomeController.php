@@ -11,6 +11,10 @@ use App\Cards;
 use App\FeildsValueWithCardType;
 use App\CardTypes;
 
+use JanDrda\LaravelGoogleCustomSearchEngine\LaravelGoogleCustomSearchEngine;
+use Goutte\Client;
+use GuzzleHttp\Client as GuzzleClient;
+
 class HomeController extends Controller
 {
     /**
@@ -69,8 +73,11 @@ class HomeController extends Controller
         //Model Validation
         // $this->validate($request, ['name' => 'unique:mst_goals,name']);
         $req = $request->all();
-        // print_r($req);
-        // die;
+
+        
+
+
+       
         if (!empty($request->deck_id) && !empty($req)) {
             $fields = Fields::where('deck_id', $request->deck_id)->pluck('name', 'id');
             if (!empty($fields)) {
@@ -587,7 +594,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 12;
-                            $active_word_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' .'Spell:' . '</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' . 'Spell:' . '</span>';
                             $active_word_card->type = 1;
                             $active_word_card->card_type_id = 10;
                             $active_word_card->deck_id = $request->deck_id;
@@ -597,7 +604,7 @@ class HomeController extends Controller
                             $active_word_card->save();
 
 
-                           $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 9;
                             $active_word_card->value = "<br>" . '<audio allow=”autoplay” autoplay="autoplay"      id="audio_record" class="audio_card" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $req[9] . '\'  ></audio>';
                             $active_word_card->type = 1;
@@ -619,7 +626,7 @@ class HomeController extends Controller
                             $active_word_card->status = 1;
                             $active_word_card->save();
 
-                          
+
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 10;
@@ -664,14 +671,12 @@ class HomeController extends Controller
                             $active_word_card->number_id = $number_id;
                             $active_word_card->status = 1;
                             $active_word_card->save();
-                            
-                            
                         } elseif ($key == 'active_pronunciation_card' && !empty($value)) {
                             $number_id = rand(1, 1000000);
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 12;
-                            $active_word_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' .'Pronounce this word:' . '</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' . 'Pronounce this word:' . '</span>';
                             $active_word_card->type = 1;
                             $active_word_card->card_type_id = 9;
                             $active_word_card->deck_id = $request->deck_id;
@@ -704,7 +709,7 @@ class HomeController extends Controller
                             $active_word_card->save();
 
 
-                           $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 9;
                             $active_word_card->value = "<br>" . '<audio   id="audio_record" class="audio_card" controls="" src = \'http://localhost/Anki-search/public/assets/audio/' . $req[9] . '\'  ></audio>';
                             $active_word_card->type = 2;
@@ -714,8 +719,159 @@ class HomeController extends Controller
                             $active_word_card->number_id = $number_id;
                             $active_word_card->status = 1;
                             $active_word_card->save();
+                        } elseif ($key == 'active_inflected_form_card' && !empty($value)) {
+                            $number_id = rand(1, 1000000);
 
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 12;
+                            $active_word_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' . 'Whats the Inflected Form?' . '</span>';
+                            $active_word_card->type = 1;
+                            $active_word_card->card_type_id = 11;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 1;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 2;
+                            $active_word_card->value = "<br>" . '<span style="color:blue;text-decoration:" >' . $req[2] . '</span>';
+                            $active_word_card->type = 1;
+                            $active_word_card->card_type_id = 11;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 2;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 4;
+                            $active_word_card->value = "<br>" . '<span style="color:red;text-align:Center" >' . $req[4] . '</span>';
+                            $active_word_card->type = 1;
+                            $active_word_card->card_type_id = 11;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 3;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 3;
+                            $active_word_card->value = "<br>" . '<span style="color:#581e3e; text-align:Center;font-weight: bold;" >' . '<i style="color:black;">Inflected Form:  </i>' . $req[3] . '</span>';
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 11;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 1;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 4;
+                            $active_word_card->value = "<br>" . '<span style="color:#581e3e; text-align:Center;font-weight: bold;" >' . '<i style="color:black;">Dictionary Form:  </i>' . $req[4] . '</span>';
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 11;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 2;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 5;
+                            $active_word_card->value = "<br>" . '<span style="color:#FF8C00	; text-align:Center" >' . $req[5] . '</span>';
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 11;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 3;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 9;
+                            $active_word_card->value = "<br>" . '<audio   id="audio_record" class="audio_card" controls="" src = \'http://flashcards.vishleshak.io/assets/audio/' . $req[9] . '\'  ></audio>';
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 11;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 4;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 1;
+                            $active_word_card->value = "<br>" . '<span style="color:blue;text-decoration:" >' . $req[1] . '</span>';
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 11;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 5;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 10;
+                            $active_word_card->value = "<br>" . '<audio   id="audio_record" class="audio_card" controls="" src = \'http://flashcards.vishleshak.io/assets/audio/' . $req[10] . '\'  ></audio>';
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 11;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 6;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
+                            $active_word_card->save();
+
+                            $active_word_card = new FeildsValueWithCardType();
+                            $active_word_card->field_id = 12;
+                        //   = "<br>" . '<audio   id="audio_record" class="audio_card" controls="" src = \'http://flashcards.vishleshak.io/assets/audio/' . $req[10] . '\'  ></audio>';
+                            $active_word_card->type = 2;
+                            $active_word_card->card_type_id = 11;
+                            $active_word_card->deck_id = $request->deck_id;
+                            $active_word_card->position = 7;
+                            $active_word_card->number_id = $number_id;
+                            $active_word_card->status = 1;
                             
+                           
+                            $word = $req[3];
+                           
+                            $goutteClient = new Client();
+                            $guzzleClient = new GuzzleClient(array(
+                                'timeout' => 60,
+                                'verify' => false
+                            ));
+                    
+                            $word = str_replace(' ', '-', $word);
+                            $goutteClient->setClient($guzzleClient);
+                    
+                            $crawler = $goutteClient->request('GET', 'https://conjugator.reverso.net/conjugation-english-verb-'.$word.'.html');
+                          
+                            $present=$crawler->filter('.wrap-three-col div[mobile-title="Indicative Present"] ul>li  ')->text();
+                            $preterite = $crawler->filter('.wrap-three-col div[mobile-title="Indicative Preterite"] ul>li ')->text();
+                            $present_continuous = $crawler->filter('.wrap-three-col div[mobile-title="Indicative Present continuous"] ul>li ')->text();
+                    
+                            if(!empty($present) &&  strpos($present, $word) !== false){
+                                $present_data=$crawler->filter('.wrap-three-col div[mobile-title="Indicative Present"]')->first()->html();
+                                $active_word_card->value='<div class="indicative">'.$present_data.'</div>';
+                                // print_r($present_data);die;
+                            }elseif(!empty($preterite) && strpos($preterite, $word) !== false){
+                                $preterite_data= $crawler->filter('.wrap-three-col div[mobile-title="Indicative Preterite"]')->first()->html();
+                                $active_word_card->value= '<div class="indicative">' .$preterite_data .'</div>';
+                                // print_r($preterite_data);die;
+                            }else{
+                               
+                                $present_continuous_data = $crawler->filter('.wrap-three-col div[mobile-title="Indicative Present continuous"]')->first()->html();
+                                $active_word_card->value= '<div class="indicative">'.$present_continuous_data .'</div>';
+                                // print_r($present_continuous_data);die;
+                            }
+                            //  print_r($active_word_card->value);die;
+                            $active_word_card->save();
+
+                    
                         }
                     }
                 }
@@ -1057,7 +1213,7 @@ class HomeController extends Controller
 
     public function startStudyFromCardType($id)
     {
-        $alls = FeildsValueWithCardType::Select('number_id')->where('card_type_id', $id)->groupBy('number_id')->get();
+        $alls = FeildsValueWithCardType::Select('number_id')->where('card_type_id', $id)->groupBy('number_id')->orderBy('id', 'DESC')->get();
         $questions = FeildsValueWithCardType::where('card_type_id', $id)->where('type', 1)->get();
         $answers = FeildsValueWithCardType::where('card_type_id', $id)->where('type', 2)->get();
         //  print_r($answer->toArray());die;

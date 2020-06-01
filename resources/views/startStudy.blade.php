@@ -15,12 +15,12 @@
                     <div class="info-box" id="flashcards">
                         <div class="row-fluid stats-box ">
                             <div id='current-question' style="color:{{$cards->color}};text-align:Center" class="main"></div>
-                            <div id='current-answer' style="color:{{$cards->color}};text-align:Center"></div>
+                            <div id='current-answer' style="color: #33173e;text-align:Center"></div>
 
                             <ul>
 
                             @foreach ($alls as $all)
-                                <li>
+                                <li class='cards_list'>
                                     @foreach ($questions as $question)
                                     @if($question->number_id ==$all->number_id)
                                    
@@ -129,6 +129,20 @@
 
                 });
         });
+
+        $(document).on('click', '#correct', function(e) {
+                e.preventDefault();
+                // alert();
+                ouicards.next();
+                // $(this).parentsUntil('.row-fluid').children('ul').find('li.cards_list').remove();
+                // $(this).parent().closest('.cards_list').remove();
+            });
+
+            $(document).on('click', '#wrong', function(e) {
+                e.preventDefault();
+                $(this).closest('#current-question').remove();
+                $(this).closest('#current-answer').remove();
+            });
     });
 </script>
 @stop 

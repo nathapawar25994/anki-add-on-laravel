@@ -819,6 +819,12 @@ html .fc, .fc table {
 	top: 50%;
 	left: 0
 }
+
+.result-block-api .wrap-verbs-listing .hglhOver-parent {
+    border: 1px solid #369;
+    border-radius: 3px;
+    background: #fff
+}
 .fc-state-default .fc-button-effect span {
 	position: absolute;
 	top: -100px;
@@ -1265,7 +1271,21 @@ color: #333;
 }
     
 
+.indicative{
+	
+    padding: 5px 10px;
+    background-color: #EEEEEE;
+    border: 1px solid #DDDDDD;
+	width: 100%;
+	max-width: 464px;
+	margin: 0 auto;
+    margin-top: 10px;
 
+}
+
+.indicative p{
+	border-bottom: 1px solid #000;
+}
 
 
 /*------------------------------------------------------------------

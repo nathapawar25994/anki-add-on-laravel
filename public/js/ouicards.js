@@ -106,7 +106,7 @@
     questionEl.innerHTML = rawQuestion.question;
 
     answerEl = document.createElement('p');
-    answerEl.innerHTML = rawQuestion.answer.replace(/\n/g, '<br>');
+    answerEl.innerHTML = rawQuestion.answer.replace(/\n/g, '');
 
     return {question: questionEl, answer: answerEl};
   }
@@ -180,24 +180,26 @@
 
     $('a#correct').click(function(event) {
       event.preventDefault();
+      correct();
+      showNext();
       $('#show-answer').first().show();
       $('#correct').first().hide();
       $('#wrong').first().hide();
       $('#searchL').first().hide();
       $('#searchI').first().hide();
-      correct();
-      showNext();
+     
     });
 
     $('a#wrong').click(function(event) {
       event.preventDefault();
+      wrong();
+      showNext();
       $('#show-answer').first().show();
       $('#correct').first().hide();
       $('#wrong').first().hide();
       $('#searchL').first().hide();
       $('#searchI').first().hide();
-      wrong();
-      showNext();
+     
     });
 
     $('a#show-answer').click(function(event){
