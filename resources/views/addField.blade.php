@@ -181,7 +181,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="control-group">
+                                    <!-- <div class="control-group">
                                         <label class="control-label" for="name">Word-Translation</label>
                                         <div class="controls">
                                             <input type="text" class="span10" name="active_word_translation_card" id="active_word_translation_card">
@@ -194,7 +194,7 @@
                                         <div class="controls">
                                             <input type="text" class="span10" name="active_sentence_translation_card" id="active_sentence_translation_card">
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="control-group">
                                         <label class="control-label" for="name">Extra Card 1 Instructions (Front, large white text)</label>

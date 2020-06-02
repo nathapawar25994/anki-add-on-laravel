@@ -256,8 +256,8 @@ class HomeController extends Controller
 
                             $number_id = rand(1, 1000000);
                             $active_word_sentence_card = new FeildsValueWithCardType();
-                            $active_word_sentence_card->field_id = 3;
-                            $active_word_sentence_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' . $req[3] . '</span>';
+                            $active_word_sentence_card->field_id =4 ;
+                            $active_word_sentence_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' . $req[4] . '</span>';
                             $active_word_sentence_card->card_type_id = 4;
                             $active_word_sentence_card->type = 1;
                             $active_word_sentence_card->deck_id = $request->deck_id;
