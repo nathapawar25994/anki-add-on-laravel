@@ -724,7 +724,7 @@ class HomeController extends Controller
 
                             $active_word_card = new FeildsValueWithCardType();
                             $active_word_card->field_id = 12;
-                            $active_word_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' . 'Whats the Inflected Form?' . '</span>';
+                            $active_word_card->value = "<br>" . '<span style="color:black;text-decoration: underline;text-align:Center" >' . "What's the Inflected Form?" . '</span>';
                             $active_word_card->type = 1;
                             $active_word_card->card_type_id = 11;
                             $active_word_card->deck_id = $request->deck_id;
