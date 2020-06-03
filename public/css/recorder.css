@@ -79,12 +79,12 @@ red {
 
   .audio_card{
     display: block;
-    height: 100px;
+    /* height: 100px; */
      width: 100%;
      max-width: 250px; 
      text-align: center;
     margin: 0 auto;
-     padding-right: 20px;
+     /* padding-right: 20px; */
   }
   
   li {

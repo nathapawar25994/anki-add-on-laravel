@@ -19,11 +19,11 @@
 
                             <ul>
 
-                            @foreach ($alls as $all)
+                                @foreach ($alls as $all)
                                 <li class='cards_list'>
                                     @foreach ($questions as $question)
                                     @if($question->number_id ==$all->number_id)
-                                   
+
                                     @if($question->field_id == 8)
                                     <div class="plan-title question">
                                         {{$question->value}}
@@ -94,16 +94,34 @@
         $('#wrong').first().hide();
         $('#searchL').first().hide();
         $('#searchI').first().hide();
-     
+
     });
 
-//     window.onload=function(){
-//         // $('#audio_record')[0].play();
-//         document.getElementById('#audio_record').play();
-// }
+    function picture() {
+
+        // document.getElementsByClassName('open_img').style.display='block';
+        var elems = document.getElementsByClassName('open_img');
+        for (var i = 0; i < elems.length; i += 1) {
+            elems[i].style.display = 'block';
+        }
+        $("#show_img").hide();
+
+
+
+    }
+
+    //     window.onload=function(){
+    //         // $('#audio_record')[0].play();
+    //         document.getElementById('#audio_record').play();
+    // } function picture(){ 
+    // var pic = "http://img.tesco.com/Groceries/pi/118/5000175411118/IDShot_90x90.jpg"
+    // document.getElementById('bigpic').src = pic.replace('90x90', '225x225');
+    // document.getElementsByClassName('open_img').style.display='block';
+
+    // }
     $(document).ready(function() {
         // $('#audio_record').parent().children('current-question').get(0).play();
-        
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -131,18 +149,18 @@
         });
 
         $(document).on('click', '#correct', function(e) {
-                e.preventDefault();
-                // alert();
-                ouicards.next();
-                // $(this).parentsUntil('.row-fluid').children('ul').find('li.cards_list').remove();
-                // $(this).parent().closest('.cards_list').remove();
-            });
+            e.preventDefault();
+            // alert();
+            ouicards.next();
+            // $(this).parentsUntil('.row-fluid').children('ul').find('li.cards_list').remove();
+            // $(this).parent().closest('.cards_list').remove();
+        });
 
-            $(document).on('click', '#wrong', function(e) {
-                e.preventDefault();
-                $(this).closest('#current-question').remove();
-                $(this).closest('#current-answer').remove();
-            });
+        $(document).on('click', '#wrong', function(e) {
+            e.preventDefault();
+            $(this).closest('#current-question').remove();
+            $(this).closest('#current-answer').remove();
+        });
     });
 </script>
 @stop 
