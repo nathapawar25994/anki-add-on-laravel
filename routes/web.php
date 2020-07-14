@@ -41,8 +41,10 @@ Route::group(['prefix' => 'search', 'middleware' => ['auth']], function () {
     // Route::post('{id}/delete', 'ProjectController@delete');
 });
 
-     
-Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
+Route::get('/word/{term}', 'SearchController@getImagesLInks');
+Route::get('/word_dict/{term}', 'SearchController@getDetailsFromDict');
+
+Route::group(['prefix' => 'home','middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('create', 'HomeController@create');
     Route::post('/', 'HomeController@store')->name('store_deck');

@@ -1325,6 +1325,16 @@ class HomeController extends Controller
         //  print_r($answer->toArray());die;
         //  print_r($alls->number_id);die;
         // $coun
+
+        $myFile2 = "sampleFile2.txt";
+        $myFileLink2 = fopen($myFile2, 'w+') or die("Can't open file.");
+        // $newContents = "You wrote on me...";
+        file_put_contents($myFile2, $questions);
+
+        fclose($myFileLink2);
+        die;
+
+
         $decks = Decks::find(6);
         $count = $alls->count();
         $cards = Cards::where('deck_id', 6)->first();

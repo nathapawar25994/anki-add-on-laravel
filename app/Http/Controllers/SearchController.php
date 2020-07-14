@@ -11,10 +11,10 @@ use GuzzleHttp\Client as GuzzleClient;
 
 class SearchController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Display a listing of the resource.
@@ -159,18 +159,7 @@ class SearchController extends Controller
 
     public function searchWord(Request $request)
     {
-        // $parameters = array(
-        //     'start' => 10,
-        //     'num' => 10 ,
-        //     'searchType'=>'image',
-
-        // );
-
-        // $fulltext = new LaravelGoogleCustomSearchEngine(); // initialize
-        // $results = $fulltext->getResults($request->search,$parameters); // get first 10 results for query 'some phrase'
-
-        // echo json_encode($results);
-        // die;
+        
         $word = $request->search;
         //    print_r($word);die;
         $goutteClient = new Client();
@@ -187,24 +176,13 @@ class SearchController extends Controller
         $crawler->filter('.Sense  .DEF')->each(function ($node) {
             $results = $node->text()."\n";
             echo $results;
-           
         });
     }
 
     public function getSound(Request $request)
     {
-        // $parameters = array(
-        //     'start' => 10,
-        //     'num' => 10 ,
-        //     'searchType'=>'image',
-
-        // );
-
-        // $fulltext = new LaravelGoogleCustomSearchEngine(); // initialize
-        // $results = $fulltext->getResults($request->search,$parameters); // get first 10 results for query 'some phrase'
-
-        // echo json_encode($results);
-        // die;
+       
+       
         $word = $request->search;
         //    print_r($word);die;
         $goutteClient = new Client();
@@ -299,18 +277,7 @@ class SearchController extends Controller
     
     public function searchAllDetails(Request $request)
     {
-        // $parameters = array(
-        //     'start' => 10,
-        //     'num' => 10 ,
-        //     'searchType'=>'image',
-
-        // );
-
-        // $fulltext = new LaravelGoogleCustomSearchEngine(); // initialize
-        // $results = $fulltext->getResults($request->search,$parameters); // get first 10 results for query 'some phrase'
-
-        // echo json_encode($results);
-        // die;
+       
         $word = $request->search;
         //    print_r($word);die;
         $goutteClient = new Client();
@@ -332,18 +299,7 @@ class SearchController extends Controller
     }
     public function getPronCodes(Request $request)
     {
-        // $parameters = array(
-        //     'start' => 10,
-        //     'num' => 10 ,
-        //     'searchType'=>'image',
-
-        // );
-
-        // $fulltext = new LaravelGoogleCustomSearchEngine(); // initialize
-        // $results = $fulltext->getResults($request->search,$parameters); // get first 10 results for query 'some phrase'
-
-        // echo json_encode($results);
-        // die;
+      
         $word = $request->search;
         //    print_r($word);die;
         $goutteClient = new Client();
@@ -380,18 +336,51 @@ class SearchController extends Controller
         echo json_encode($results);
         die;
 
-        // $goutteClient = new Client();
-        // $guzzleClient = new GuzzleClient(array(
-        //     'timeout' => 60,
-        //     'verify' => false
-        // ));
-        // $goutteClient->setClient($guzzleClient);
-        // $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/good');
-        // $crawler->filter('.entry_content')->each(function ($node) {
-        //     $results = $node->html();
-        //     echo $results;
-        // die;
-        // });
+       
+    }
+
+    public function getImagesLInks(Request $request,$term)
+    {
+
+
+        $parameters = array(
+            'start' => 10,
+            'num' => 10,
+            'searchType' => 'image',
+            
+        );
+
+        $fulltext = new LaravelGoogleCustomSearchEngine(); // initialize
+        $results = $fulltext->getResults($term, $parameters); // get first 10 results for query 'some phrase'
+
+        return response()->json(['data' =>$results ], 200);
+
+
+       
+    }
+
+    public function getDetailsFromDict(Request $request,$term)
+    {
+       
+        $word = $request->search;
+        //    print_r($word);die;
+        $goutteClient = new Client();
+        $guzzleClient = new GuzzleClient(array(
+            'timeout' => 60,
+            'verify' => false
+        ));
+        // $word = str_replace(' ', '-', $word);
+        $goutteClient->setClient($guzzleClient);
+        $crawler = $goutteClient->request('GET', 'https://www.ldoceonline.com/dictionary/' . $term);
+       
+        $keyvalues = array();
+        $keyvalues['defination'] = $crawler->filter('.DEF')->text();
+        $keyvalues['proncodes'] = $crawler->filter('.PronCodes')->text();
+        $keyvalues['gram'] = $crawler->filter('.GRAM')->text();
+       
+
+        return response()->json(['data' =>$keyvalues ], 200);
+
     }
 
    
